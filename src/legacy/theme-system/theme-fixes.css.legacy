@@ -1,0 +1,294 @@
+/**
+ * AgroNoya - Corrections des Surcouches de Thème
+ * Optimisation de la lisibilité et du contraste pour le mode clair
+ */
+
+/* ===== CORRECTION 1: FOND BLANC PUR ===== */
+
+/* Éliminer les fonds beige/crème pour un blanc pur */
+body {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+}
+
+/* Sections principales avec fond blanc pur */
+.hero-section,
+.about-section,
+.mission-section,
+.pillars-section,
+.objectives-section,
+.differentiation-section,
+.history-section,
+.future-section,
+.team-section {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+}
+
+/* Conteneurs principaux */
+main,
+.main-content,
+.page-container {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+}
+
+/* ===== CORRECTION 2: CARTES SANS TRANSPARENCE ===== */
+
+/* Cartes de métriques avec opacité 100% */
+.metrics-card,
+.objectives-card,
+.stats-card,
+.impact-card {
+  background-color: #F9FAFB !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Cartes des piliers avec contraste amélioré */
+.pillar-card,
+.feature-card {
+  background-color: #1F2937 !important;
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+/* Cartes génériques */
+.card,
+.info-card,
+.content-card {
+  background-color: #FFFFFF !important;
+  border: 1px solid #E5E7EB !important;
+  opacity: 1 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ===== CORRECTION 3: CARTE DORÉE OPTIMISÉE ===== */
+
+/* Correction spécifique pour la carte "Ce que nous avons prouvé" */
+.proven-results-card,
+.promise-card,
+.achievements-card {
+  background-color: #FFFBEB !important; /* Jaune très clair */
+  color: #92400E !important; /* Brun foncé pour contraste */
+  border: 1px solid #FDE68A !important;
+  opacity: 1 !important;
+}
+
+/* Texte dans les cartes dorées */
+.proven-results-card h3,
+.promise-card h3,
+.achievements-card h3 {
+  color: #78350F !important; /* Brun très foncé pour les titres */
+}
+
+.proven-results-card p,
+.promise-card p,
+.achievements-card p,
+.proven-results-card li,
+.promise-card li,
+.achievements-card li {
+  color: #92400E !important; /* Brun foncé pour le texte */
+}
+
+/* ===== CORRECTION 4: ÉLIMINATION DES GRADIENTS PROBLÉMATIQUES ===== */
+
+/* Supprimer tous les gradients de fond potentiellement problématiques */
+.gradient-overlay,
+.background-overlay,
+.hero-overlay {
+  background: none !important;
+  background-image: none !important;
+  opacity: 1 !important;
+}
+
+/* Sections avec gradients supprimés */
+section::before,
+section::after,
+.section::before,
+.section::after {
+  display: none !important;
+}
+
+/* ===== CORRECTION 5: CONTRASTE TEXTE OPTIMISÉ ===== */
+
+/* Texte principal avec contraste maximum */
+h1, h2, h3, h4, h5, h6 {
+  color: #111827 !important; /* Noir presque pur */
+}
+
+/* Texte secondaire avec bon contraste */
+p, span, div {
+  color: #374151 !important; /* Gris foncé */
+}
+
+/* Texte dans les cartes sombres */
+.pillar-card h3,
+.pillar-card p,
+.feature-card h3,
+.feature-card p {
+  color: #FFFFFF !important;
+}
+
+/* ===== CORRECTION 6: BORDURES ET OMBRES NETTES ===== */
+
+/* Bordures avec contraste approprié */
+.card,
+.info-card,
+.metrics-card {
+  border: 1px solid #D1D5DB !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ombres subtiles mais visibles */
+.card:hover,
+.info-card:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* ===== CORRECTION 7: BOUTONS AVEC CONTRASTE OPTIMAL ===== */
+
+/* Boutons primaires */
+.btn-primary,
+.button-primary,
+.primary-button {
+  background-color: #57D53B !important;
+  color: #FFFFFF !important;
+  border: none !important;
+}
+
+.btn-primary:hover,
+.button-primary:hover,
+.primary-button:hover {
+  background-color: #4BC932 !important;
+}
+
+/* Boutons secondaires */
+.btn-secondary,
+.button-secondary,
+.secondary-button {
+  background-color: #FFFFFF !important;
+  color: #374151 !important;
+  border: 2px solid #D1D5DB !important;
+}
+
+.btn-secondary:hover,
+.button-secondary:hover,
+.secondary-button:hover {
+  border-color: #57D53B !important;
+  color: #57D53B !important;
+}
+
+/* ===== CORRECTION 8: NAVIGATION CLAIRE ===== */
+
+/* Header avec fond blanc pur */
+header,
+.header,
+.navigation {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E5E7EB !important;
+}
+
+/* Liens de navigation */
+.nav-link,
+.navigation-link {
+  color: #374151 !important;
+}
+
+.nav-link:hover,
+.navigation-link:hover,
+.nav-link.active,
+.navigation-link.active {
+  color: #57D53B !important;
+}
+
+/* ===== CORRECTION 9: FOOTER OPTIMISÉ ===== */
+
+/* Footer avec contraste approprié */
+footer,
+.footer {
+  background-color: #F9FAFB !important;
+  border-top: 1px solid #E5E7EB !important;
+}
+
+/* Texte du footer */
+footer p,
+footer span,
+footer a,
+.footer p,
+.footer span,
+.footer a {
+  color: #4B5563 !important;
+}
+
+footer a:hover,
+.footer a:hover {
+  color: #57D53B !important;
+}
+
+/* ===== CORRECTION 10: ACCESSIBILITÉ RENFORCÉE ===== */
+
+/* Focus visible amélioré */
+*:focus-visible {
+  outline: 2px solid #57D53B !important;
+  outline-offset: 2px !important;
+  border-radius: 4px !important;
+}
+
+/* Sélection de texte optimisée */
+::selection {
+  background-color: rgba(87, 213, 59, 0.2) !important;
+  color: #111827 !important;
+}
+
+/* ===== CORRECTION 11: RESPONSIVE OPTIMISÉ ===== */
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .card,
+  .metrics-card,
+  .pillar-card {
+    margin-bottom: 1rem !important;
+    padding: 1rem !important;
+  }
+  
+  /* Texte plus grand sur mobile pour la lisibilité */
+  p, span, div {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+/* ===== CORRECTION 12: ANIMATIONS SANS IMPACT SUR LA LISIBILITÉ ===== */
+
+/* Désactiver les animations qui peuvent affecter la lisibilité */
+.fade-overlay,
+.blur-overlay,
+.opacity-animation {
+  animation: none !important;
+  transition: none !important;
+  opacity: 1 !important;
+}
+
+/* Conserver uniquement les animations de mouvement */
+.slide-animation,
+.scale-animation {
+  opacity: 1 !important;
+}
+
+/* ===== VALIDATION FINALE ===== */
+
+/* S'assurer que tous les éléments ont un contraste suffisant */
+* {
+  /* Forcer la suppression des filtres qui peuvent affecter la lisibilité */
+  filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Garantir la lisibilité sur tous les éléments textuels */
+h1, h2, h3, h4, h5, h6, p, span, div, a, li, td, th, label, input, textarea, button {
+  text-shadow: none !important;
+}

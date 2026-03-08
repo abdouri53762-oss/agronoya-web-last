@@ -1,0 +1,506 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Sprout, 
+  TrendingUp, 
+  Droplets, 
+  Thermometer, 
+  Bug, 
+  DollarSign,
+  ArrowRight,
+  CheckCircle,
+  Zap,
+  Target,
+  Users,
+  Globe,
+  Lightbulb,
+  Shield,
+  BarChart3,
+  Leaf,
+  Satellite,
+  Brain,
+  Cpu,
+  Eye,
+  Play,
+  Pause,
+  RotateCcw,
+  Star,
+  Award,
+  TrendingDown
+} from 'lucide-react';
+
+const AboutAgroNoya = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [activeChallenge, setActiveChallenge] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [currentTech, setCurrentTech] = useState(0);
+  const intervalRef = useRef(null);
+
+  // Animation d'apparition au scroll
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('about-agronoya');
+    if (element) observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Auto-rotation des défis avec contrôle play/pause
+  useEffect(() => {
+    if (isPlaying) {
+      intervalRef.current = setInterval(() => {
+        setActiveChallenge((prev) => (prev + 1) % challenges.length);
+      }, 3500);
+    } else {
+      clearInterval(intervalRef.current);
+    }
+
+    return () => clearInterval(intervalRef.current);
+  }, [isPlaying]);
+
+  // Auto-rotation des technologies
+  useEffect(() => {
+    const techInterval = setInterval(() => {
+      setCurrentTech((prev) => (prev + 1) % technologies.length);
+    }, 4000);
+    return () => clearInterval(techInterval);
+  }, []);
+
+  const challenges = [
+    {
+      icon: TrendingDown,
+      title: "Baisse des Rendements",
+      description: "Les rendements agricoles diminuent de 2-6% par décennie à cause du changement climatique",
+      color: "text-red-500",
+      bgColor: "bg-red-50 dark:bg-red-900/20",
+      impact: "-25%"
+    },
+    {
+      icon: Droplets,
+      title: "Stress Hydrique",
+      description: "70% de l'eau douce mondiale est utilisée par l'agriculture, souvent de manière inefficace",
+      color: "text-blue-500",
+      bgColor: "bg-blue-50 dark:bg-blue-900/20",
+      impact: "70%"
+    },
+    {
+      icon: Bug,
+      title: "Ravageurs & Maladies",
+      description: "Les pertes dues aux ravageurs représentent 20-40% des récoltes mondiales chaque année",
+      color: "text-orange-500",
+      bgColor: "bg-orange-50 dark:bg-orange-900/20",
+      impact: "-40%"
+    },
+    {
+      icon: Thermometer,
+      title: "Changement Climatique",
+      description: "Les températures extrêmes et événements météo imprévisibles menacent la sécurité alimentaire",
+      color: "text-purple-500",
+      bgColor: "bg-purple-50 dark:bg-purple-900/20",
+      impact: "+2°C"
+    },
+    {
+      icon: DollarSign,
+      title: "Coûts Croissants",
+      description: "Les coûts des intrants agricoles augmentent plus vite que les prix des produits agricoles",
+      color: "text-yellow-600",
+      bgColor: "bg-yellow-50 dark:bg-yellow-900/20",
+      impact: "+35%"
+    }
+  ];
+
+  const technologies = [
+    {
+      icon: Brain,
+      title: "Intelligence Artificielle",
+      description: "Algorithmes d'apprentissage automatique pour l'analyse prédictive",
+      color: "text-purple-500",
+      bgGradient: "from-purple-500/20 to-pink-500/20"
+    },
+    {
+      icon: Satellite,
+      title: "Imagerie Satellite",
+      description: "Surveillance spatiale haute résolution avec indices NDVI/NDWI",
+      color: "text-blue-500",
+      bgGradient: "from-blue-500/20 to-cyan-500/20"
+    },
+    {
+      icon: Cpu,
+      title: "IoT & Capteurs",
+      description: "Réseau de capteurs intelligents pour monitoring temps réel",
+      color: "text-green-500",
+      bgGradient: "from-green-500/20 to-emerald-500/20"
+    },
+    {
+      icon: Eye,
+      title: "Vision par Ordinateur",
+      description: "Reconnaissance d'images pour détection précoce des problèmes",
+      color: "text-orange-500",
+      bgGradient: "from-orange-500/20 to-red-500/20"
+    }
+  ];
+
+  const solutions = [
+    {
+      icon: Target,
+      title: "Agriculture de Précision",
+      description: "Optimisation centimétrique des ressources et des traitements",
+      metric: "+35%"
+    },
+    {
+      icon: Zap,
+      title: "Automatisation Intelligente",
+      description: "Systèmes autonomes pour irrigation et pulvérisation",
+      metric: "-50%"
+    },
+    {
+      icon: Shield,
+      title: "Prévention Prédictive",
+      description: "Détection précoce 7-10 jours avant les symptômes visuels",
+      metric: "7-10j"
+    },
+    {
+      icon: BarChart3,
+      title: "Analytics Avancés",
+      description: "Tableaux de bord intelligents et recommandations IA",
+      metric: "95%"
+    }
+  ];
+
+  const stats = [
+    { value: "2M+", label: "Hectares Surveillés", icon: Globe, color: "text-blue-500" },
+    { value: "35%", label: "Augmentation Rendement", icon: TrendingUp, color: "text-green-500" },
+    { value: "40%", label: "Économie d'Eau", icon: Droplets, color: "text-cyan-500" },
+    { value: "60%", label: "Réduction Pertes", icon: Shield, color: "text-purple-500" }
+  ];
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  const resetChallenges = () => {
+    setActiveChallenge(0);
+    setIsPlaying(true);
+  };
+
+  return (
+    <section 
+      id="about-agronoya"
+      className={`py-24 bg-gradient-to-br from-background via-bg-secondary to-background relative overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+    >
+      {/* Background Effects Améliorés */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-radial from-primary/5 via-transparent to-transparent rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        {/* Header Modernisé */}
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg backdrop-blur-sm border border-primary/20">
+            <Lightbulb className="w-5 h-5" />
+            <span>Révolution Agricole</span>
+            <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+          </div>
+          
+          <h2 className="text-5xl lg:text-7xl font-black text-foreground mb-8 leading-tight">
+            <span className="bg-gradient-to-r from-foreground to-text-secondary bg-clip-text text-transparent">
+              C'est Quoi
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-primary to-primary-hover bg-clip-text text-transparent relative">
+              AgroNoya
+              <div className="absolute -top-2 -right-8 w-6 h-6 bg-primary rounded-full animate-ping opacity-75"></div>
+              <div className="absolute -top-2 -right-8 w-6 h-6 bg-primary rounded-full"></div>
+            </span>
+            <span className="text-2xl lg:text-4xl text-text-secondary block mt-4 font-normal">
+              ?
+            </span>
+          </h2>
+          
+          <p className="text-xl lg:text-2xl text-text-secondary max-w-5xl mx-auto leading-relaxed font-light">
+            La plateforme d'<span className="text-primary font-semibold">intelligence artificielle</span> qui transforme 
+            l'agriculture traditionnelle en <span className="text-primary font-semibold">écosystème intelligent</span> 
+            pour une productivité maximale et une durabilité optimale.
+          </p>
+        </div>
+
+        {/* Section Défis Interactifs */}
+        <div className="mb-24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-red-50 dark:bg-red-900/20 text-red-600 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <TrendingDown className="w-4 h-4" />
+              Défis Critiques
+            </div>
+            <h3 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Les Défis du <span className="text-primary">Terrain Agricole</span>
+            </h3>
+            <p className="text-xl text-text-secondary max-w-4xl mx-auto leading-relaxed">
+              L'agriculture mondiale fait face à des défis sans précédent qui menacent la sécurité alimentaire mondiale
+            </p>
+          </div>
+
+          {/* Contrôles de Lecture */}
+          <div className="flex justify-center gap-4 mb-12">
+            <button
+              onClick={togglePlayPause}
+              className="flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-hover transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              {isPlaying ? <Pause className="w-5 h-5" /> : <Play className="w-5 h-5" />}
+              {isPlaying ? 'Pause' : 'Play'}
+            </button>
+            <button
+              onClick={resetChallenges}
+              className="flex items-center gap-2 bg-bg-secondary text-foreground px-6 py-3 rounded-xl font-semibold hover:bg-bg-accent transition-all duration-300 shadow-lg border border-border-light"
+            >
+              <RotateCcw className="w-5 h-5" />
+              Reset
+            </button>
+          </div>
+
+          {/* Grille de Défis Interactive */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {challenges.map((challenge, index) => (
+              <div
+                key={index}
+                className={`relative p-8 rounded-3xl border-2 transition-all duration-700 cursor-pointer hover:-translate-y-3 hover:shadow-2xl group ${
+                  activeChallenge === index
+                    ? `${challenge.bgColor} border-current ${challenge.color} shadow-2xl scale-105 ring-4 ring-current ring-opacity-20`
+                    : 'bg-background border-border-light hover:border-primary/30 hover:bg-bg-secondary'
+                }`}
+                onClick={() => setActiveChallenge(index)}
+              >
+                {/* Impact Badge */}
+                <div className={`absolute -top-3 -right-3 px-3 py-1 rounded-full text-xs font-bold text-white ${
+                  challenge.color.replace('text-', 'bg-')
+                } shadow-lg`}>
+                  {challenge.impact}
+                </div>
+
+                <div className="flex flex-col items-center text-center">
+                  <div className={`p-4 rounded-2xl ${challenge.bgColor} ${challenge.color} mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <challenge.icon className="w-8 h-8" />
+                  </div>
+                  <h4 className="text-xl font-bold text-foreground mb-4">
+                    {challenge.title}
+                  </h4>
+                  <p className="text-text-secondary leading-relaxed">
+                    {challenge.description}
+                  </p>
+                </div>
+
+                {activeChallenge === index && (
+                  <div className="absolute -top-2 -left-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg animate-bounce">
+                    <CheckCircle className="w-5 h-5 text-white" />
+                  </div>
+                )}
+
+                {/* Progress Bar */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-border-light rounded-b-3xl overflow-hidden">
+                  <div 
+                    className={`h-full ${challenge.color.replace('text-', 'bg-')} transition-all duration-700 ${
+                      activeChallenge === index ? 'w-full' : 'w-0'
+                    }`}
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Section Technologies Avancées */}
+        <div className="mb-24">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Cpu className="w-4 h-4" />
+              Technologies de Pointe
+            </div>
+            <h3 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+              Notre <span className="text-primary">Arsenal Technologique</span>
+            </h3>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Technologies Carousel */}
+            <div className="relative">
+              <div className="bg-gradient-to-br from-bg-secondary to-bg-tertiary rounded-3xl p-8 shadow-2xl border border-border-light">
+                {technologies.map((tech, index) => (
+                  <div
+                    key={index}
+                    className={`transition-all duration-700 ${
+                      currentTech === index ? 'opacity-100 scale-100' : 'opacity-0 scale-95 absolute inset-8'
+                    }`}
+                  >
+                    <div className={`bg-gradient-to-br ${tech.bgGradient} rounded-2xl p-8 text-center`}>
+                      <div className={`w-20 h-20 ${tech.color.replace('text-', 'bg-')}/20 rounded-2xl flex items-center justify-center mx-auto mb-6`}>
+                        <tech.icon className={`w-10 h-10 ${tech.color}`} />
+                      </div>
+                      <h4 className="text-2xl font-bold text-foreground mb-4">{tech.title}</h4>
+                      <p className="text-text-secondary leading-relaxed">{tech.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Tech Indicators */}
+              <div className="flex justify-center gap-3 mt-6">
+                {technologies.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTech(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      currentTech === index ? 'bg-primary scale-125' : 'bg-border-default hover:bg-primary/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Solutions Grid */}
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Zap className="w-4 h-4" />
+                Nos Solutions
+              </div>
+              <h3 className="text-3xl lg:text-4xl font-bold text-foreground mb-8">
+                Comment Nous <span className="text-primary">Révolutionnons</span> l'Agriculture
+              </h3>
+
+              <div className="grid gap-6">
+                {solutions.map((solution, index) => (
+                  <div key={index} className="group p-6 bg-background rounded-2xl border border-border-light hover:border-primary/30 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
+                        <solution.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="text-lg font-bold text-foreground">{solution.title}</h4>
+                          <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
+                            {solution.metric}
+                          </span>
+                        </div>
+                        <p className="text-text-secondary leading-relaxed">{solution.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-wrap gap-4 mt-8">
+                <button className="bg-gradient-to-r from-primary to-primary-hover text-white px-8 py-4 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 hover:-translate-y-1 inline-flex items-center gap-3 group">
+                  <span>Découvrir Nos Solutions</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+                <button className="border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all duration-300 hover:shadow-lg">
+                  Demander une Démo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Impact Statistics Modernisé */}
+        <div className="relative mb-24">
+          <div className="bg-gradient-to-r from-primary via-primary-hover to-primary rounded-3xl p-12 md:p-16 text-white shadow-2xl overflow-hidden relative">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/20 via-transparent to-transparent"></div>
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-white/10 rounded-full"></div>
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-white/10 rounded-full"></div>
+            </div>
+
+            <div className="relative z-10">
+              <div className="text-center mb-16">
+                <div className="inline-flex items-center gap-2 bg-white/20 text-white px-6 py-3 rounded-full text-sm font-semibold mb-6 backdrop-blur-sm">
+                  <Award className="w-5 h-5" />
+                  Impact Prouvé
+                </div>
+                <h3 className="text-4xl lg:text-5xl font-bold mb-6">Notre Impact Révolutionnaire</h3>
+                <p className="text-xl opacity-90 max-w-3xl mx-auto">
+                  Des résultats concrets qui transforment l'agriculture mondiale
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                {stats.map((stat, index) => (
+                  <div key={index} className="text-center group">
+                    <div className="w-20 h-20 bg-white/20 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 backdrop-blur-sm">
+                      <stat.icon className="w-10 h-10 text-white" />
+                    </div>
+                    <div className="text-4xl lg:text-5xl font-black mb-3 group-hover:scale-105 transition-transform duration-300">
+                      {stat.value}
+                    </div>
+                    <div className="text-lg opacity-90 font-medium">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Call to Action Premium */}
+        <div className="text-center">
+          <div className="bg-gradient-to-br from-bg-secondary to-bg-tertiary rounded-3xl p-12 md:p-16 shadow-2xl border border-border-light relative overflow-hidden">
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-primary/5"></div>
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-primary/10 to-primary/5 text-primary px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-lg">
+                <Users className="w-5 h-5" />
+                <span>Rejoignez la Révolution</span>
+                <Star className="w-4 h-4 fill-current" />
+              </div>
+              
+              <h3 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+                Prêt à <span className="text-primary">Transformer</span> Votre Agriculture ?
+              </h3>
+              
+              <p className="text-xl text-text-secondary mb-12 max-w-4xl mx-auto leading-relaxed">
+                Découvrez comment AgroNoya peut révolutionner votre exploitation agricole 
+                avec nos solutions d'<span className="text-primary font-semibold">intelligence artificielle</span> et de 
+                <span className="text-primary font-semibold"> surveillance satellite</span> de pointe.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                <button className="bg-gradient-to-r from-primary to-primary-hover text-white px-10 py-5 rounded-xl font-bold text-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 inline-flex items-center gap-3 group">
+                  <span>Commencer Maintenant</span>
+                  <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+                <button className="border-2 border-border-default text-foreground px-10 py-5 rounded-xl font-bold text-lg hover:border-primary hover:text-primary hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  En Savoir Plus
+                </button>
+              </div>
+
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap justify-center items-center gap-8 mt-12 pt-8 border-t border-border-light">
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <Shield className="w-5 h-5 text-primary" />
+                  <span className="font-medium">Sécurisé & Certifié</span>
+                </div>
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <Users className="w-5 h-5 text-primary" />
+                  <span className="font-medium">2000+ Agriculteurs</span>
+                </div>
+                <div className="flex items-center gap-2 text-text-secondary">
+                  <Award className="w-5 h-5 text-primary" />
+                  <span className="font-medium">Support 24/7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutAgroNoya;

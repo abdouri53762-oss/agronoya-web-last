@@ -1,0 +1,431 @@
+/**
+ * AgroNoya - Styles Globaux Optimisés
+ * Intégration du système de design avec Tailwind CSS
+ */
+
+@import './design-system.css';
+@import './theme-fixes.css';
+@import './dark-mode.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== RESET ET BASE ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  color: var(--text-tertiary);
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+}
+
+/* ===== ÉLÉMENTS HTML DE BASE ===== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: var(--text-6xl);
+  font-weight: var(--font-extrabold);
+  letter-spacing: var(--tracking-tight);
+}
+
+h2 {
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-tight);
+}
+
+h3 {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+}
+
+h4 {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+}
+
+h5 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+}
+
+h6 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: var(--leading-relaxed);
+  color: var(--text-tertiary);
+}
+
+a {
+  color: var(--agronoya-primary);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--agronoya-primary-hover);
+}
+
+a:focus {
+  outline: 2px solid var(--agronoya-primary-200);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== LISTES ===== */
+
+ul, ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  line-height: var(--leading-relaxed);
+  color: var(--text-tertiary);
+}
+
+/* ===== FORMULAIRES ===== */
+
+input, textarea, select, button {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: var(--font-medium);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ===== IMAGES ===== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ===== CLASSES UTILITAIRES PERSONNALISÉES ===== */
+
+/* Conteneurs */
+.container-custom {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-custom {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-custom {
+    padding: 0 2rem;
+  }
+}
+
+/* Sections */
+.section-padding {
+  padding-top: var(--space-6xl);
+  padding-bottom: var(--space-6xl);
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+  }
+}
+
+/* Grilles responsives */
+.grid-responsive {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Cartes optimisées */
+.card-enhanced {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-enhanced:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-accent);
+  transform: translateY(-2px);
+}
+
+/* Boutons optimisés */
+.btn-enhanced {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+}
+
+.btn-primary-enhanced {
+  background: linear-gradient(135deg, var(--agronoya-primary), var(--agronoya-primary-light));
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary-enhanced:hover {
+  background: linear-gradient(135deg, var(--agronoya-primary-hover), var(--agronoya-primary));
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-enhanced {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-medium);
+}
+
+.btn-secondary-enhanced:hover {
+  border-color: var(--agronoya-primary);
+  color: var(--agronoya-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Badges */
+.badge-enhanced {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  background-color: var(--bg-accent);
+  color: var(--agronoya-primary);
+  border: 1px solid var(--border-accent);
+}
+
+/* Animations */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===== SCROLLBAR PERSONNALISÉE ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--agronoya-primary);
+}
+
+/* ===== SÉLECTION DE TEXTE ===== */
+
+::selection {
+  background-color: var(--agronoya-primary-200);
+  color: var(--text-primary);
+}
+
+::-moz-selection {
+  background-color: var(--agronoya-primary-200);
+  color: var(--text-primary);
+}
+
+/* ===== FOCUS VISIBLE ===== */
+
+:focus-visible {
+  outline: 2px solid var(--agronoya-primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== ACCESSIBILITÉ ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+  
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #111827;
+    --bg-secondary: #1F2937;
+    --bg-tertiary: #374151;
+    --text-primary: #F9FAFB;
+    --text-secondary: #E5E7EB;
+    --text-tertiary: #D1D5DB;
+    --text-muted: #9CA3AF;
+    --border-default: #374151;
+    --border-medium: #4B5563;
+  }
+  
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-tertiary);
+  }
+}
+
+/* ===== RESPONSIVE TYPOGRAPHY ===== */
+
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: var(--text-4xl); }
+  h2 { font-size: var(--text-3xl); }
+  h3 { font-size: var(--text-2xl); }
+  h4 { font-size: var(--text-xl); }
+  h5 { font-size: var(--text-lg); }
+  h6 { font-size: var(--text-base); }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 18px;
+  }
+}
+

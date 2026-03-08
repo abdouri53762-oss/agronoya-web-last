@@ -1,0 +1,245 @@
+/**
+ * AgroNoya - App.css Simplifié
+ * Version 2.0 - Système unifié avec variables CSS
+ */
+
+/* Import Tailwind CSS */
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Import Variables CSS - Source unique de vérité */
+@import "./styles/variables.css";
+
+/* Configuration Tailwind avec variables CSS */
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* Rayons de bordure */
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  /* Couleurs principales pour Tailwind */
+  --color-primary: rgb(var(--agronoya-primary-rgb));
+  --color-primary-foreground: white;
+  --color-secondary: rgb(var(--bg-secondary-rgb));
+  --color-secondary-foreground: rgb(var(--text-primary-rgb));
+  --color-muted: rgb(var(--bg-muted-rgb));
+  --color-muted-foreground: rgb(var(--text-muted-rgb));
+  --color-accent: rgb(var(--bg-accent-rgb));
+  --color-accent-foreground: rgb(var(--text-primary-rgb));
+  --color-destructive: rgb(var(--error-rgb));
+  --color-destructive-foreground: white;
+
+  /* Couleurs de fond et texte */
+  --color-background: rgb(var(--bg-primary-rgb));
+  --color-foreground: rgb(var(--text-primary-rgb));
+  --color-card: rgb(var(--bg-primary-rgb));
+  --color-card-foreground: rgb(var(--text-primary-rgb));
+  --color-popover: rgb(var(--bg-primary-rgb));
+  --color-popover-foreground: rgb(var(--text-primary-rgb));
+
+  /* Couleurs de bordure et input */
+  --color-border: rgb(var(--border-default-rgb));
+  --color-input: rgb(var(--border-default-rgb));
+  --color-ring: rgb(var(--agronoya-primary-rgb));
+
+  /* Couleurs de graphiques */
+  --color-chart-1: rgb(var(--agronoya-primary-rgb));
+  --color-chart-2: rgb(var(--info-rgb));
+  --color-chart-3: rgb(var(--warning-rgb));
+  --color-chart-4: rgb(var(--success-rgb));
+  --color-chart-5: rgb(var(--error-rgb));
+}
+
+/* Configuration de base */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-family-primary);
+    line-height: var(--leading-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    @apply text-4xl font-bold text-primary;
+    color: var(--text-primary);
+    line-height: var(--leading-tight);
+  }
+
+  h2 {
+    @apply text-3xl font-semibold;
+    color: var(--text-secondary);
+    line-height: var(--leading-tight);
+  }
+
+  h3 {
+    @apply text-2xl font-semibold;
+    color: var(--text-secondary);
+    line-height: var(--leading-snug);
+  }
+
+  h4 {
+    @apply text-xl font-medium;
+    color: var(--text-tertiary);
+  }
+
+  h5 {
+    @apply text-lg font-medium;
+    color: var(--text-tertiary);
+  }
+
+  h6 {
+    @apply text-base font-medium;
+    color: var(--text-muted);
+  }
+
+  p {
+    @apply text-base;
+    color: var(--text-tertiary);
+    line-height: var(--leading-relaxed);
+    margin-bottom: var(--space-lg);
+  }
+
+  a {
+    color: var(--agronoya-primary);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+  }
+
+  a:hover {
+    color: var(--agronoya-primary-hover);
+  }
+
+  button {
+    font-family: var(--font-family-primary);
+    transition: all 0.2s ease-in-out;
+  }
+
+  input,
+  textarea,
+  select {
+    font-family: var(--font-family-primary);
+    border-color: var(--border-default);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+  }
+
+  input:focus,
+  textarea:focus,
+  select:focus {
+    outline: 2px solid var(--agronoya-primary-200);
+    outline-offset: 2px;
+    border-color: var(--agronoya-primary);
+  }
+}
+
+/* Utilitaires personnalisés */
+@layer utilities {
+  .text-agronoya-primary {
+    color: var(--agronoya-primary);
+  }
+
+  .bg-agronoya-primary {
+    background-color: var(--agronoya-primary);
+  }
+
+  .border-agronoya-primary {
+    border-color: var(--agronoya-primary);
+  }
+
+  .transition-agronoya {
+    transition: all 0.2s ease-in-out;
+  }
+
+  .shadow-agronoya {
+    box-shadow: var(--shadow-accent);
+  }
+
+  .focus-agronoya:focus {
+    outline: 2px solid var(--agronoya-primary-200);
+    outline-offset: 2px;
+  }
+
+  .hover-agronoya:hover {
+    color: var(--agronoya-primary-hover);
+    transform: translateY(-1px);
+  }
+}
+
+/* Animations personnalisées */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Loader de page */
+.page-loader {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+}
+
+/* Responsive design helpers */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+}
+
+/* Print styles */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}

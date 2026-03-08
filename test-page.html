@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test AgroNoya</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .book {
+            background: linear-gradient(45deg, #ffeaa7, #fab1a0);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .book h1 {
+            font-size: 3em;
+            color: #2d3436;
+            margin-bottom: 10px;
+        }
+        .book h2 {
+            font-size: 1.5em;
+            color: #636e72;
+            margin-bottom: 20px;
+        }
+        .page {
+            background: white;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .year {
+            background: #00b894;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .content {
+            line-height: 1.6;
+            color: #2d3436;
+        }
+        .nav-buttons {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .nav-buttons button {
+            background: #00b894;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .nav-buttons button:hover {
+            background: #00a085;
+            transform: translateY(-2px);
+        }
+        .nav-buttons button:disabled {
+            background: #ddd;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Test du Livre Interactif AgroNoya</h1>
+        
+        <div class="book">
+            <h1>AgroNoya</h1>
+            <h2>Notre Histoire</h2>
+            <p>De l'idée à la réalité</p>
+        </div>
+
+        <div id="page-content">
+            <div class="page">
+                <div class="year">2023</div>
+                <h3>Idée, cadrage et vision</h3>
+                <div class="content">
+                    <p>Constat terrain : gaspillage d'eau, manque de suivi des sols et pertes de rendement.</p>
+                    <p>Définition d'une vision plateforme intégrée (IoT + IA + satellite + drones) pour digitaliser l'exploitation agricole tunisienne.</p>
+                    <p>Choix du modèle économique hybride CAPEX + OPEX et des marchés cibles prioritaires.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-buttons">
+            <button onclick="prevPage()" id="prevBtn">← Précédent</button>
+            <span id="pageInfo">Page 1 sur 3</span>
+            <button onclick="nextPage()" id="nextBtn">Suivant →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentPage = 0;
+        const pages = [
+            {
+                year: "2023",
+                title: "Idée, cadrage et vision",
+                content: [
+                    "Constat terrain : gaspillage d'eau, manque de suivi des sols et pertes de rendement.",
+                    "Définition d'une vision plateforme intégrée (IoT + IA + satellite + drones) pour digitaliser l'exploitation agricole tunisienne.",
+                    "Choix du modèle économique hybride CAPEX + OPEX et des marchés cibles prioritaires."
+                ]
+            },
+            {
+                year: "2024",
+                title: "Prototypes, modules et MVP",
+                content: [
+                    "Structuration des 6 modules : AgroSol, AgroIrrigation, NoyaDiag, NoyaGPT, AgroWeather, Satellite Monitoring.",
+                    "Architecture complète et moderne mise en place.",
+                    "MVP fonctionnel testé en exploitations tunisiennes.",
+                    "Résultats observés : −30% d'eau et +10–15% de rendement selon conditions."
+                ]
+            },
+            {
+                year: "2025",
+                title: "Go-to-market et création société",
+                content: [
+                    "T1–T2 : Préparation go-to-market et consolidation des offres CAPEX + abonnements OPEX.",
+                    "Préparation commerciale et recherche de financement.",
+                    "Premier investisseur seed pré-création.",
+                    "T3–T4 : Création officielle d'AgroNoya avec formalisation juridique."
+                ]
+            }
+        ];
+
+        function updatePage() {
+            const page = pages[currentPage];
+            const content = page.content.map(p => `<p>${p}</p>`).join('');
+            
+            document.getElementById('page-content').innerHTML = `
+                <div class="page">
+                    <div class="year">${page.year}</div>
+                    <h3>${page.title}</h3>
+                    <div class="content">${content}</div>
+                </div>
+            `;
+            
+            document.getElementById('pageInfo').textContent = `Page ${currentPage + 1} sur ${pages.length}`;
+            document.getElementById('prevBtn').disabled = currentPage === 0;
+            document.getElementById('nextBtn').disabled = currentPage === pages.length - 1;
+        }
+
+        function nextPage() {
+            if (currentPage < pages.length - 1) {
+                currentPage++;
+                updatePage();
+            }
+        }
+
+        function prevPage() {
+            if (currentPage > 0) {
+                currentPage--;
+                updatePage();
+            }
+        }
+
+        // Initialiser
+        updatePage();
+    </script>
+</body>
+</html>

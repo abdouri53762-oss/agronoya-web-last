@@ -1,0 +1,423 @@
+/**
+ * AgroNoya - Mode Sombre Optimisé
+ * Styles spécifiques pour le mode sombre avec contraste parfait
+ */
+
+/* ===== VARIABLES MODE SOMBRE ===== */
+
+.dark {
+  /* Couleurs de fond mode sombre */
+  --bg-primary: #0F172A;          /* Slate 900 - Fond principal */
+  --bg-secondary: #1E293B;        /* Slate 800 - Fond secondaire */
+  --bg-tertiary: #334155;         /* Slate 700 - Fond tertiaire */
+  --bg-muted: #475569;            /* Slate 600 - Fond atténué */
+  --bg-accent: #0F2A1A;           /* Vert très sombre */
+  --bg-accent-hover: #1A3B2B;     /* Vert sombre hover */
+
+  /* Couleurs de texte mode sombre */
+  --text-primary: #F8FAFC;        /* Slate 50 - Texte principal */
+  --text-secondary: #E2E8F0;      /* Slate 200 - Texte secondaire */
+  --text-tertiary: #CBD5E1;       /* Slate 300 - Texte tertiaire */
+  --text-muted: #94A3B8;          /* Slate 400 - Texte atténué */
+  --text-subtle: #64748B;         /* Slate 500 - Texte subtil */
+  --text-disabled: #475569;       /* Slate 600 - Texte désactivé */
+
+  /* Couleurs de bordure mode sombre */
+  --border-light: #334155;        /* Slate 700 - Bordure claire */
+  --border-default: #475569;      /* Slate 600 - Bordure par défaut */
+  --border-medium: #64748B;       /* Slate 500 - Bordure moyenne */
+  --border-strong: #94A3B8;       /* Slate 400 - Bordure forte */
+  --border-accent: rgba(87, 213, 59, 0.3);
+
+  /* Couleurs d'état mode sombre */
+  --success: #22C55E;
+  --success-light: #16A34A;
+  --warning: #F59E0B;
+  --warning-light: #D97706;
+  --error: #EF4444;
+  --error-light: #DC2626;
+  --info: #3B82F6;
+  --info-light: #2563EB;
+
+  /* Ombres mode sombre */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-accent: 0 4px 12px rgba(87, 213, 59, 0.25);
+}
+
+/* ===== STYLES GÉNÉRAUX MODE SOMBRE ===== */
+
+.dark body {
+  background-color: var(--bg-primary);
+  color: var(--text-tertiary);
+}
+
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: var(--text-primary);
+}
+
+.dark p,
+.dark span,
+.dark div {
+  color: var(--text-tertiary);
+}
+
+/* ===== STYLES SPÉCIFIQUES PAGE À PROPOS MODE SOMBRE ===== */
+
+/* Hero Section */
+.dark .about-hero {
+  background-color: var(--bg-primary);
+}
+
+.dark .about-hero h1 {
+  color: var(--text-primary);
+}
+
+.dark .about-hero p {
+  color: var(--text-secondary);
+}
+
+/* Mission Section */
+.dark .mission-section {
+  background-color: var(--bg-primary);
+}
+
+.dark .mission-section h2,
+.dark .mission-section h3 {
+  color: var(--text-primary);
+}
+
+.dark .mission-section p {
+  color: var(--text-secondary);
+}
+
+.dark .promise-card {
+  background-color: var(--bg-accent);
+  border-color: rgba(87, 213, 59, 0.3);
+}
+
+.dark .promise-card h3 {
+  color: #4ADE80; /* Green 400 */
+}
+
+.dark .promise-card span {
+  color: var(--text-secondary);
+}
+
+/* Pillars Section */
+.dark .pillars-section {
+  background-color: var(--bg-secondary);
+}
+
+.dark .pillars-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .pillars-section p {
+  color: var(--text-secondary);
+}
+
+.dark .pillar-card {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-default);
+}
+
+.dark .pillar-card:hover {
+  border-color: #57D53B;
+}
+
+.dark .pillar-card h3 {
+  color: var(--text-primary);
+}
+
+.dark .pillar-card p {
+  color: var(--text-secondary);
+}
+
+.dark .pillar-icon-bg {
+  background-color: rgba(87, 213, 59, 0.2);
+}
+
+/* Impact Objectives */
+.dark .impact-section {
+  background-color: var(--bg-primary);
+}
+
+.dark .impact-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .impact-section p {
+  color: var(--text-secondary);
+}
+
+.dark .impact-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-default);
+}
+
+.dark .impact-value {
+  color: #4ADE80; /* Green 400 */
+}
+
+.dark .impact-label {
+  color: var(--text-secondary);
+}
+
+/* Differentiation Section */
+.dark .differentiation-section {
+  background-color: var(--bg-secondary);
+}
+
+.dark .differentiation-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .differentiation-section span {
+  color: var(--text-secondary);
+}
+
+.dark .proven-card {
+  background-color: rgba(245, 158, 11, 0.1); /* Amber avec transparence */
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.dark .proven-card h3 {
+  color: #FCD34D; /* Amber 300 */
+}
+
+.dark .proven-card span {
+  color: #FDE68A; /* Amber 200 */
+}
+
+/* Timeline Section */
+.dark .timeline-section {
+  background-color: var(--bg-primary);
+}
+
+.dark .timeline-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .timeline-section p {
+  color: var(--text-secondary);
+}
+
+.dark .timeline-year-circle {
+  background-color: #57D53B;
+  color: var(--bg-primary);
+}
+
+.dark .timeline-card {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-default);
+}
+
+.dark .timeline-card h3 {
+  color: var(--text-primary);
+}
+
+.dark .timeline-card p {
+  color: var(--text-secondary);
+}
+
+/* Future Section */
+.dark .future-section {
+  background-color: var(--bg-secondary);
+}
+
+.dark .future-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .future-section p {
+  color: var(--text-secondary);
+}
+
+.dark .future-card {
+  background-color: var(--bg-primary);
+  border-color: var(--border-default);
+}
+
+.dark .future-card:hover {
+  border-color: var(--border-accent);
+  box-shadow: var(--shadow-accent);
+}
+
+.dark .future-card h3 {
+  color: var(--text-primary);
+}
+
+.dark .future-card p {
+  color: var(--text-secondary);
+}
+
+.dark .future-card .feature-text {
+  color: var(--text-muted);
+}
+
+.dark .objective-card {
+  background-color: rgba(87, 213, 59, 0.1);
+  border-color: rgba(87, 213, 59, 0.3);
+}
+
+.dark .objective-card h3 {
+  color: #4ADE80; /* Green 400 */
+}
+
+.dark .objective-card p {
+  color: var(--text-secondary);
+}
+
+/* Team Section - Vert vif mode sombre */
+.dark .team-section {
+  background-color: #166534; /* Green 800 - Plus sombre que le mode clair */
+}
+
+.dark .team-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .team-section p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .team-card {
+  background-color: var(--bg-primary);
+  border-color: rgba(87, 213, 59, 0.3);
+}
+
+.dark .team-card:hover {
+  border-color: rgba(87, 213, 59, 0.6);
+  box-shadow: var(--shadow-accent);
+}
+
+.dark .team-card h3 {
+  color: var(--text-primary);
+}
+
+.dark .team-card .role {
+  color: #4ADE80; /* Green 400 */
+}
+
+.dark .team-card .description {
+  color: var(--text-muted);
+}
+
+.dark .team-photo-border {
+  border-color: rgba(87, 213, 59, 0.4);
+}
+
+/* CTA Section - Vert vif mode sombre */
+.dark .cta-section {
+  background-color: #166534; /* Green 800 */
+}
+
+.dark .cta-section h2 {
+  color: var(--text-primary);
+}
+
+.dark .cta-section p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .cta-button-primary {
+  background-color: var(--bg-primary);
+  color: #4ADE80;
+  border-color: transparent;
+}
+
+.dark .cta-button-primary:hover {
+  background-color: var(--bg-secondary);
+  color: #57D53B;
+}
+
+.dark .cta-button-secondary {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.dark .cta-button-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-primary);
+}
+
+/* ===== ICÔNES ET ÉLÉMENTS VISUELS ===== */
+
+.dark .icon-primary {
+  color: #4ADE80; /* Green 400 */
+}
+
+.dark .icon-secondary {
+  color: var(--text-muted);
+}
+
+.dark .check-icon {
+  color: #4ADE80; /* Green 400 */
+}
+
+/* ===== ANIMATIONS ET TRANSITIONS ===== */
+
+.dark .hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dark .transition-smooth {
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== RESPONSIVE MODE SOMBRE ===== */
+
+@media (max-width: 768px) {
+  .dark .mobile-text {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .dark .mobile-card {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* ===== ACCESSIBILITÉ MODE SOMBRE ===== */
+
+.dark *:focus-visible {
+  outline: 2px solid #4ADE80;
+  outline-offset: 2px;
+}
+
+.dark ::selection {
+  background-color: rgba(87, 213, 59, 0.3);
+  color: var(--text-primary);
+}
+
+/* ===== SCROLLBAR MODE SOMBRE ===== */
+
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #57D53B;
+}

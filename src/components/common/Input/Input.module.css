@@ -1,0 +1,182 @@
+/* Input Component Styles */
+.container {
+  
+}
+
+.label {
+  
+}
+
+.inputWrapper {
+  
+}
+
+.input {
+  
+  
+  
+  
+}
+
+/* Variants */
+.default {
+  
+  
+}
+
+.filled {
+  
+  
+}
+
+.outlined {
+  
+  
+}
+
+/* Sizes */
+.small {
+  
+  min-height: 32px;
+}
+
+.medium {
+  
+  min-height: 40px;
+}
+
+.large {
+  
+  min-height: 48px;
+}
+
+/* States */
+.error {
+  
+}
+
+.disabled {
+  
+}
+
+/* Icon Adjustments */
+.withLeftIcon {
+  
+}
+
+.withRightIcon {
+  
+}
+
+.leftIcon {
+  
+  pointer-events: none;
+}
+
+.rightIcon {
+  
+  pointer-events: none;
+}
+
+/* Helper Text */
+.helperText {
+  
+}
+
+.errorText {
+  
+}
+
+/* Light Mode Optimizations */
+@media (prefers-color-scheme: light) {
+  .label {
+    color: #374151;
+  }
+  
+  .default {
+    background-color: #ffffff;
+    border-color: #d1d5db;
+    color: #111827;
+  }
+  
+  .default:focus {
+    border-color: #57D53B;
+    box-shadow: 0 0 0 3px rgba(87, 213, 59, 0.1);
+  }
+  
+  .filled {
+    background-color: #f3f4f6;
+    color: #111827;
+  }
+  
+  .filled:focus {
+    background-color: #ffffff;
+    border-color: #57D53B;
+  }
+  
+  .outlined {
+    border-color: #d1d5db;
+    color: #111827;
+  }
+  
+  .outlined:focus {
+    border-color: #57D53B;
+  }
+  
+  .disabled {
+    background-color: #f9fafb;
+    color: #9ca3af;
+  }
+}
+
+/* Dark Mode Optimizations */
+@media (prefers-color-scheme: dark) {
+  .label {
+    color: #d1d5db;
+  }
+  
+  .default {
+    background-color: #1f2937;
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .default:focus {
+    border-color: #57D53B;
+    box-shadow: 0 0 0 3px rgba(87, 213, 59, 0.2);
+  }
+  
+  .filled {
+    background-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .filled:focus {
+    background-color: #1f2937;
+    border-color: #57D53B;
+  }
+  
+  .outlined {
+    border-color: #4b5563;
+    color: #f9fafb;
+  }
+  
+  .outlined:focus {
+    border-color: #57D53B;
+  }
+  
+  .disabled {
+    background-color: #374151;
+    color: #6b7280;
+  }
+  
+  .leftIcon,
+  .rightIcon {
+    color: #9ca3af;
+  }
+  
+  .helperText {
+    color: #9ca3af;
+  }
+}
+

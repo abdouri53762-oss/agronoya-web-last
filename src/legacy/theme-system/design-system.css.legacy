@@ -1,0 +1,510 @@
+/**
+ * AgroNoya Design System - Mode Clair Optimisé
+ * Système de couleurs et typographie avec contrastes parfaits
+ */
+
+/* ===== PALETTE DE COULEURS OPTIMISÉE ===== */
+
+:root {
+  /* Couleurs principales AgroNoya */
+  --agronoya-primary: #57D53B;
+  --agronoya-primary-hover: #4BC932;
+  --agronoya-primary-light: #6EE049;
+  --agronoya-primary-dark: #3FB829;
+  --agronoya-primary-50: rgba(87, 213, 59, 0.05);
+  --agronoya-primary-100: rgba(87, 213, 59, 0.1);
+  --agronoya-primary-200: rgba(87, 213, 59, 0.2);
+  --agronoya-primary-300: rgba(87, 213, 59, 0.3);
+
+  /* Couleurs de texte optimisées pour le contraste */
+  --text-primary: #111827;        /* Gris très foncé - Contraste AAA */
+  --text-secondary: #1F2937;      /* Gris foncé - Contraste AA+ */
+  --text-tertiary: #374151;       /* Gris moyen foncé - Contraste AA */
+  --text-muted: #4B5563;          /* Gris moyen - Contraste AA */
+  --text-subtle: #6B7280;         /* Gris clair - Contraste minimum AA */
+  --text-disabled: #9CA3AF;       /* Gris très clair - États désactivés */
+
+  /* Couleurs de fond optimisées */
+  --bg-primary: #FFFFFF;          /* Blanc pur */
+  --bg-secondary: #F9FAFB;        /* Gris très clair */
+  --bg-tertiary: #F3F4F6;         /* Gris clair */
+  --bg-muted: #E5E7EB;            /* Gris moyen clair */
+  --bg-accent: #F0FDF4;           /* Vert très clair */
+  --bg-accent-hover: #DCFCE7;     /* Vert clair hover */
+
+  /* Couleurs de bordure */
+  --border-light: #F3F4F6;        /* Bordure très claire */
+  --border-default: #E5E7EB;      /* Bordure par défaut */
+  --border-medium: #D1D5DB;       /* Bordure moyenne */
+  --border-strong: #9CA3AF;       /* Bordure forte */
+  --border-accent: var(--agronoya-primary-200);
+
+  /* Couleurs d'état */
+  --success: #10B981;
+  --success-light: #D1FAE5;
+  --warning: #F59E0B;
+  --warning-light: #FEF3C7;
+  --error: #EF4444;
+  --error-light: #FEE2E2;
+  --info: #3B82F6;
+  --info-light: #DBEAFE;
+
+  /* Ombres optimisées */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-accent: 0 4px 12px rgba(87, 213, 59, 0.15);
+
+  /* Rayons de bordure */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* ===== TYPOGRAPHIE HIÉRARCHISÉE ===== */
+
+/* Famille de polices optimisée */
+:root {
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+/* Échelle typographique harmonieuse */
+:root {
+  /* Tailles de police */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;      /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 1.875rem;   /* 30px */
+  --text-4xl: 2.25rem;    /* 36px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 3.75rem;    /* 60px */
+  --text-7xl: 4.5rem;     /* 72px */
+  --text-8xl: 6rem;       /* 96px */
+  --text-9xl: 8rem;       /* 128px */
+
+  /* Graisses de police */
+  --font-thin: 100;
+  --font-extralight: 200;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  --font-black: 900;
+
+  /* Interlignes optimisés */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 2;
+
+  /* Espacement des lettres */
+  --tracking-tighter: -0.05em;
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+  --tracking-wider: 0.05em;
+  --tracking-widest: 0.1em;
+}
+
+/* ===== CLASSES UTILITAIRES TYPOGRAPHIQUES ===== */
+
+/* Titres hiérarchisés */
+.heading-1 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-6xl);
+  font-weight: var(--font-extrabold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.heading-2 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.heading-3 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.heading-4 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-secondary);
+  margin-bottom: 0.875rem;
+}
+
+.heading-5 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-2xl);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+}
+
+.heading-6 {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-xl);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+/* Corps de texte */
+.body-large {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.body-normal {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-tertiary);
+  margin-bottom: 1rem;
+}
+
+.body-small {
+  font-family: var(--font-family-primary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-normal);
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+/* Texte d'accent avec couleur AgroNoya */
+.text-accent {
+  color: var(--agronoya-primary);
+  font-weight: var(--font-semibold);
+}
+
+.text-accent-light {
+  color: var(--agronoya-primary-light);
+}
+
+.text-accent-dark {
+  color: var(--agronoya-primary-dark);
+}
+
+/* Texte de lien optimisé */
+.link {
+  color: var(--agronoya-primary);
+  text-decoration: none;
+  font-weight: var(--font-medium);
+  transition: all 0.2s ease-in-out;
+  border-bottom: 1px solid transparent;
+}
+
+.link:hover {
+  color: var(--agronoya-primary-hover);
+  border-bottom-color: var(--agronoya-primary-hover);
+}
+
+.link:focus {
+  outline: 2px solid var(--agronoya-primary-200);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== CLASSES UTILITAIRES DE COULEUR ===== */
+
+/* Arrière-plans */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-accent { background-color: var(--bg-accent); }
+.bg-accent-hover { background-color: var(--bg-accent-hover); }
+
+/* Textes */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+.text-subtle { color: var(--text-subtle); }
+.text-disabled { color: var(--text-disabled); }
+
+/* Bordures */
+.border-light { border-color: var(--border-light); }
+.border-default { border-color: var(--border-default); }
+.border-medium { border-color: var(--border-medium); }
+.border-strong { border-color: var(--border-strong); }
+.border-accent { border-color: var(--border-accent); }
+
+/* ===== COMPOSANTS DE BASE OPTIMISÉS ===== */
+
+/* Cartes avec contraste amélioré */
+.card-optimized {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.card-optimized:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-accent);
+}
+
+/* Boutons avec hiérarchie claire */
+.btn-primary-optimized {
+  background-color: var(--agronoya-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-normal);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-primary-optimized:hover {
+  background-color: var(--agronoya-primary-hover);
+  box-shadow: var(--shadow-accent);
+  transform: translateY(-1px);
+}
+
+.btn-secondary-optimized {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 2px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-family-primary);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: var(--leading-normal);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.btn-secondary-optimized:hover {
+  border-color: var(--agronoya-primary);
+  color: var(--agronoya-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ===== ESPACEMENT OPTIMISÉ ===== */
+
+/* Marges et paddings harmonieux */
+:root {
+  --space-xs: 0.25rem;    /* 4px */
+  --space-sm: 0.5rem;     /* 8px */
+  --space-md: 0.75rem;    /* 12px */
+  --space-lg: 1rem;       /* 16px */
+  --space-xl: 1.25rem;    /* 20px */
+  --space-2xl: 1.5rem;    /* 24px */
+  --space-3xl: 2rem;      /* 32px */
+  --space-4xl: 2.5rem;    /* 40px */
+  --space-5xl: 3rem;      /* 48px */
+  --space-6xl: 4rem;      /* 64px */
+  --space-8xl: 6rem;      /* 96px */
+  --space-10xl: 8rem;     /* 128px */
+}
+
+/* Classes d'espacement */
+.section-spacing {
+  padding-top: var(--space-6xl);
+  padding-bottom: var(--space-6xl);
+}
+
+.content-spacing {
+  margin-bottom: var(--space-3xl);
+}
+
+.element-spacing {
+  margin-bottom: var(--space-2xl);
+}
+
+/* ===== RESPONSIVE OPTIMISÉ ===== */
+
+/* Ajustements pour mobile */
+@media (max-width: 768px) {
+  .heading-1 { font-size: var(--text-4xl); }
+  .heading-2 { font-size: var(--text-3xl); }
+  .heading-3 { font-size: var(--text-2xl); }
+  
+  .section-spacing {
+    padding-top: var(--space-4xl);
+    padding-bottom: var(--space-4xl);
+  }
+}
+
+/* Ajustements pour tablette */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .heading-1 { font-size: var(--text-5xl); }
+  .heading-2 { font-size: var(--text-4xl); }
+}
+
+
+
+/* ===== STYLES TYPOGRAPHIQUES SPÉCIALISÉS ===== */
+
+/* Styles typographiques experts pour les problématiques */
+.problematique-text {
+  /* Justification avancée */
+  text-align: justify;
+  text-justify: inter-word;
+  
+  /* Espacement optimal pour la lecture */
+  line-height: var(--leading-relaxed);
+  letter-spacing: var(--tracking-wide);
+  word-spacing: 0.05em;
+  
+  /* Césure automatique */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  
+  /* Prévention des veuves et orphelines */
+  orphans: 3;
+  widows: 3;
+  
+  /* Amélioration de la lisibilité */
+  font-variant-ligatures: common-ligatures;
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  
+  /* Espacement des paragraphes */
+  margin-bottom: var(--space-2xl);
+  
+  /* Indentation de la première ligne */
+  text-indent: 1.5em;
+  
+  /* Couleur du texte */
+  color: var(--text-tertiary);
+}
+
+.problematique-text:first-of-type {
+  /* Lettrine pour le premier paragraphe */
+  position: relative;
+}
+
+.problematique-text:first-of-type::first-letter {
+  /* Style de la lettrine */
+  float: left;
+  font-size: 3.5em;
+  line-height: 0.8;
+  margin: 0.1em 0.1em 0 0;
+  font-weight: var(--font-semibold);
+  color: var(--agronoya-primary);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Amélioration pour les écrans mobiles */
+@media (max-width: 768px) {
+  .problematique-text {
+    line-height: 1.7;
+    text-indent: 1em;
+  }
+  
+  .problematique-text:first-of-type::first-letter {
+    font-size: 2.5em;
+    margin: 0.05em 0.05em 0 0;
+  }
+}
+
+/* Amélioration pour les grands écrans */
+@media (min-width: 1200px) {
+  .problematique-text {
+    line-height: 1.9;
+    max-width: 75ch; /* Largeur optimale pour la lecture */
+  }
+}
+
+/* Animation douce pour l'apparition du texte */
+.problematique-content {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Amélioration des listes dans le contenu */
+.problematique-text ul,
+.problematique-text ol {
+  margin: var(--space-lg) 0;
+  padding-left: var(--space-3xl);
+}
+
+.problematique-text li {
+  margin-bottom: var(--space-sm);
+  line-height: 1.7;
+  color: var(--text-tertiary);
+}
+
+/* Style pour les citations */
+.problematique-text blockquote {
+  border-left: 4px solid var(--agronoya-primary);
+  padding-left: var(--space-lg);
+  margin: var(--space-2xl) 0;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Amélioration des liens */
+.problematique-text a {
+  color: var(--agronoya-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--agronoya-primary-200);
+  transition: all 0.2s ease;
+}
+
+.problematique-text a:hover {
+  text-decoration-color: var(--agronoya-primary);
+  color: var(--agronoya-primary-hover);
+}
+

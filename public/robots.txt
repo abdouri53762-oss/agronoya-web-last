@@ -1,0 +1,81 @@
+# Robots.txt pour AgroNoya Smart Farming Solutions
+# https://erqmhrkk.manus.space
+
+User-agent: *
+Allow: /
+
+# Pages importantes à indexer en priorité
+Allow: /services
+Allow: /technologies
+Allow: /pricing
+Allow: /about
+Allow: /contact
+
+# Dossiers de ressources
+Allow: /images/
+Allow: /css/
+Allow: /js/
+
+# Empêcher l'indexation des fichiers système
+Disallow: /admin/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*.xml$ 
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /build/
+Disallow: /.git/
+Disallow: /package.json
+Disallow: /package-lock.json
+
+# Empêcher l'indexation des pages de test/développement
+Disallow: /test/
+Disallow: /dev/
+Disallow: /staging/
+
+# Optimisations pour les moteurs de recherche spécifiques
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Empêcher les bots indésirables
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://erqmhrkk.manus.space/sitemap.xml
+
+# Informations supplémentaires
+# Site: AgroNoya Smart Farming Solutions
+# Contact: contact@agronoya.com
+# Dernière mise à jour: 2025-08-21
+

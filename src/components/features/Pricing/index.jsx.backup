@@ -1,0 +1,518 @@
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+import { Check, Star, Zap, Crown, Sparkles, ArrowRight, ShoppingCart, Heart, TrendingUp, X } from 'lucide-react';
+
+const Pricing = () => {
+  const { t } = useTranslation();
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [favorites, setFavorites] = useState([]);
+  const [cart, setCart] = useState([]);
+  const [showCart, setShowCart] = useState(false);
+
+  const categories = [
+    { id: 'all', name: t('allProducts'), icon: <Sparkles className="w-5 h-5" /> },
+    { id: 'hardware', name: t('hardware'), icon: <Zap className="w-5 h-5" /> },
+    { id: 'software', name: t('software'), icon: <Star className="w-5 h-5" /> },
+    { id: 'servicesCategory', name: t('servicesCategory'), icon: <Crown className="w-5 h-5" /> }
+  ];
+
+  const products = [
+    {
+      id: 1,
+      category: 'hardware',
+      name: 'AgroSol',
+      description: 'Capteurs NPK/pH/température connectés + IA NoyaSol pour analyser la fertilité des sols et fournir des recommandations localisées.',
+      price: 2500,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.9,
+      reviews: 127,
+      image: "/src/assets/agro_sol.png",
+      badge: 'Système',
+      impact: '+10-15% de rendement / -30% intrants / recommandations localisées',
+      problem: 'Manque de données continues et localisées sur la fertilité des sols',
+      features: [
+        'Capteurs NPK/pH/température',
+        'IA NoyaSol intégrée',
+        'Recommandations localisées',
+        'Connectivité LoRaWAN',
+        'Batterie longue durée'
+      ],
+      inStock: true,
+      delivery: 'Installation sous 7-10 jours',
+      subscription: {
+        price: 1200,
+        period: 'an',
+        name: 'Abonnement'
+      }
+    },
+    {
+      id: 2,
+      category: 'hardware',
+      name: 'AgroIrrigation Standard',
+      description: 'Système d\'irrigation intelligent avec électrovannes moyennes pour une gestion optimisée de l\'eau.',
+      price: 1100,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.7,
+      reviews: 89,
+      image: "/src/assets/agro_irrigation.png",
+      badge: 'Système',
+      impact: '+15% productivité / -50% eau utilisée / gestion optimisée',
+      problem: 'Gaspillage d\'eau et stress hydrique dus à une irrigation non pilotée',
+      features: [
+        'Électrovannes moyennes (3)',
+        'Système de contrôle intelligent',
+        'Programmation automatique',
+        'Capteurs d\'humidité',
+        'Interface mobile'
+      ],
+      inStock: true,
+      delivery: 'Installation sous 2-3 semaines'
+    },
+    {
+      id: 3,
+      category: 'hardware',
+      name: 'AgroIrrigation Smart',
+      description: 'Système d\'irrigation intelligent avancé avec IA pour optimisation automatique de la consommation d\'eau.',
+      price: 2000,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.8,
+      reviews: 156,
+      image: "/src/assets/agro_irrigation.png",
+      badge: 'Système',
+      impact: '+15% productivité / -50% eau utilisée / gestion optimisée',
+      problem: 'Gaspillage d\'eau et stress hydrique dus à une irrigation non pilotée',
+      features: [
+        'IA d\'optimisation avancée',
+        'Capteurs météo intégrés',
+        'Gestion multi-zones',
+        'Analyse prédictive',
+        'Contrôle à distance'
+      ],
+      inStock: true,
+      delivery: 'Installation sous 2-3 semaines',
+      subscription: {
+        price: 1000,
+        period: 'an',
+        name: 'Abonnement'
+      }
+    },
+    {
+      id: 4,
+      category: 'hardware',
+      name: 'Premium Bundle',
+      description: 'Pack complet premium incluant tous les équipements pour une exploitation intelligente complète.',
+      price: 4300,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.9,
+      reviews: 234,
+      image: "/src/assets/smart_farming_1.jpg",
+      badge: 'Premium',
+      impact: 'Solution complète / Réduction complexité décisionnelle / Actions prioritaires',
+      problem: 'Données multiples, dispersées et difficiles à interpréter',
+      features: [
+        'AgroSol + AgroIrrigation Smart',
+        'Électrovannes moyennes (3)',
+        'Dashboard complet',
+        'Formation incluse',
+        'Support prioritaire'
+      ],
+      inStock: true,
+      delivery: 'Installation sous 3-4 semaines',
+      subscription: {
+        price: 2000,
+        period: 'an',
+        name: 'Abonnement'
+      }
+    },
+    {
+      id: 5,
+      category: 'software',
+      name: 'Abonnement Premium',
+      description: 'Abonnement premium avec accès à toutes les fonctionnalités avancées et support dédié.',
+      price: 2000,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.8,
+      reviews: 312,
+      image: "/src/assets/dashboard_agronoya.png",
+      badge: 'Abonnement',
+      impact: 'Décisions automatisées / Gain de temps / Actions prioritaires',
+      problem: 'Absence de plateforme centralisée pour transformer les données en action',
+      features: [
+        'Accès complet à la plateforme',
+        'Analyses IA avancées',
+        'Rapports détaillés',
+        'Support 24/7',
+        'Mises à jour incluses'
+      ],
+      inStock: true,
+      delivery: 'Accès immédiat',
+      isSubscription: true,
+      period: 'an'
+    },
+    {
+      id: 6,
+      category: 'servicesCategory',
+      name: 'Service Drone Agricole',
+      description: 'Service de surveillance aérienne par drone pour cartographie et analyse de vos cultures.',
+      price: 60,
+      originalPrice: null,
+      discount: 0,
+      rating: 4.9,
+      reviews: 78,
+      image: "/src/assets/drone_multispectral.png",
+      badge: 'Service',
+      impact: 'Détection précoce / Intervention ciblée / Réduction pertes phytosanitaires',
+      problem: 'Résolution insuffisante pour détecter les anomalies localisées',
+      features: [
+        'Cartographie multispectrale',
+        'Analyse NDVI/NDWI',
+        'Détection des maladies',
+        'Rapport détaillé',
+        'Recommandations personnalisées'
+      ],
+      inStock: true,
+      delivery: 'Sur rendez-vous',
+      isPerHectare: true,
+      unit: 'DTN/ha'
+    }
+  ];
+
+  const toggleFavorite = (productId) => {
+    setFavorites(prev => 
+      prev.includes(productId) 
+        ? prev.filter(id => id !== productId)
+        : [...prev, productId]
+    );
+  };
+
+  const addToCart = (product) => {
+    setCart(prev => {
+      const existingItem = prev.find(item => item.id === product.id);
+      if (existingItem) {
+        return prev.map(item => 
+          item.id === product.id 
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      }
+      return [...prev, { ...product, quantity: 1 }];
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(prev => prev.filter(item => item.id !== productId));
+  };
+
+  const getTotalPrice = () => {
+    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const getBadgeColor = (badge) => {
+    switch(badge) {
+      case 'Système': return 'bg-blue-500';
+      case 'Premium': return 'bg-purple-500';
+      case 'Abonnement': return 'bg-green-500';
+      case 'Service': return 'bg-orange-500';
+      default: return 'bg-gray-500';
+    }
+  };
+
+  const filteredProducts = selectedCategory === 'all' 
+    ? products 
+    : products.filter(product => product.category === selectedCategory);
+
+  return (
+    <section id="tarifs" className="py-20 bg-gradient-to-br from-[#cfb989]/15 to-[#cfb989]/5">
+      <div className="container mx-auto px-4">
+        {/* Panier flottant */}
+        <div className="fixed top-4 right-4 z-50">
+          <button
+            onClick={() => setShowCart(!showCart)}
+            className="relative bg-agronoya-green hover:bg-agronoya-green-dark text-white p-3 rounded-full shadow-lg transition-all duration-300"
+          >
+            <ShoppingCart className="w-6 h-6" />
+            {cart.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center font-bold">
+                {cart.reduce((total, item) => total + item.quantity, 0)}
+              </span>
+            )}
+          </button>
+
+          {/* Dropdown panier */}
+          {showCart && (
+            <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 max-h-96 overflow-y-auto">
+              <div className="p-4 border-b border-gray-200">
+                <h3 className="text-lg font-bold text-gray-800">Panier ({cart.length})</h3>
+              </div>
+              
+              {cart.length === 0 ? (
+                <div className="p-4 text-center text-gray-500">
+                  Votre panier est vide
+                </div>
+              ) : (
+                <>
+                  <div className="p-4 space-y-3">
+                    {cart.map((item) => (
+                      <div key={item.id} className="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-sm text-gray-800">{item.name}</h4>
+                          <p className="text-xs text-gray-600">
+                            {item.price} DTN {item.isPerHectare && item.unit} x {item.quantity}
+                          </p>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <span className="font-bold text-agronoya-green">
+                            {item.price * item.quantity} DTN
+                          </span>
+                          <button
+                            onClick={() => removeFromCart(item.id)}
+                            className="text-red-500 hover:text-red-700"
+                          >
+                            <X className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="p-4 border-t border-gray-200">
+                    <div className="flex justify-between items-center mb-3">
+                      <span className="font-bold text-lg text-gray-800">Total:</span>
+                      <span className="font-bold text-xl text-agronoya-green">
+                        {getTotalPrice()} DTN
+                      </span>
+                    </div>
+                    <button className="w-full bg-agronoya-green hover:bg-agronoya-green-dark text-white py-2 px-4 rounded-lg font-semibold transition-all duration-300">
+                      Finaliser la commande
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+        </div>
+
+        {/* En-tête de section */}
+        <div className="text-center mb-16 fade-in">
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-gray-900 dark:text-[#57D53B] mb-6">
+            Marketplace Smart Farming
+          </h2>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Découvrez notre sélection de produits et services premium pour transformer votre exploitation en ferme intelligente de nouvelle génération.
+          </p>
+        </div>
+
+        {/* Filtres par catégorie */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12 fade-in">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`flex items-center space-x-2 px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                selectedCategory === category.id
+                  ? 'bg-agronoya-green text-white shadow-lg scale-105'
+                  : 'bg-white text-agronoya-gray-dark hover:bg-agronoya-beige hover:scale-105'
+              }`}
+            >
+              {category.icon}
+              <span>{category.name}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Grille de produits */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {filteredProducts.map((product, index) => (
+            <div
+              key={product.id}
+              className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500 hover:-translate-y-2 fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {/* Badge et favoris */}
+              <div className="relative">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-48 object-cover"
+                />
+                
+                {/* Badge */}
+                <div className={`absolute top-4 left-4 ${getBadgeColor(product.badge)} text-white px-3 py-1 rounded-full text-sm font-semibold`}>
+                  {product.badge}
+                </div>
+
+                {/* Bouton favoris */}
+                <button
+                  onClick={() => toggleFavorite(product.id)}
+                  className={`absolute top-4 right-4 p-2 rounded-full transition-all duration-300 ${
+                    favorites.includes(product.id)
+                      ? 'bg-red-500 text-white'
+                      : 'bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white'
+                  }`}
+                >
+                  <Heart className="w-5 h-5" fill={favorites.includes(product.id) ? 'currentColor' : 'none'} />
+                </button>
+
+                {/* Statut stock */}
+                {product.inStock && (
+                  <div className="absolute bottom-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    En stock
+                  </div>
+                )}
+              </div>
+
+              {/* Contenu */}
+              <div className="p-6">
+                {/* Note et avis */}
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`w-4 h-4 ${
+                          i < Math.floor(product.rating)
+                            ? 'text-yellow-400 fill-current'
+                            : 'text-gray-300'
+                        }`}
+                      />
+                    ))}
+                    <span className="text-sm text-gray-600 ml-2">
+                      {product.rating} ({product.reviews} avis)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Nom et description */}
+                <h3 className="text-xl font-bold text-agronoya-gray-dark mb-3">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 mb-4 line-clamp-2">
+                  {product.description}
+                </p>
+
+                {/* Impact - Fond cohérent */}
+                <div className="bg-[#cfb989]/20 border-l-4 border-primary p-3 mb-4 rounded-r-lg">
+                  <div className="flex items-center mb-1">
+                    <TrendingUp className="w-4 h-4 text-agronoya-green mr-2" />
+                    <span className="text-sm font-semibold text-agronoya-green">Impact estimé</span>
+                  </div>
+                  <p className="text-sm text-gray-300">{product.impact}</p>
+                </div>
+
+                {/* Fonctionnalités */}
+                <ul className="space-y-2 mb-6">
+                  {product.features.slice(0, 3).map((feature, idx) => (
+                    <li key={idx} className="flex items-center text-sm text-gray-600">
+                      <Check className="w-4 h-4 text-agronoya-green mr-2 flex-shrink-0" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* Prix */}
+                <div className="mb-6">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span className="text-2xl font-bold text-agronoya-gray-dark">
+                      {product.price} DTN
+                      {product.isPerHectare && <span className="text-sm"> {product.unit}</span>}
+                      {product.isSubscription && <span className="text-sm"> /{product.period}</span>}
+                    </span>
+                  </div>
+                  
+                  {/* Abonnement si disponible */}
+                  {product.subscription && (
+                    <div className="text-sm text-gray-600">
+                      + {product.subscription.name}: {product.subscription.price} DTN/{product.subscription.period}
+                    </div>
+                  )}
+
+                  {/* Livraison */}
+                  <div className="text-sm text-gray-500 mt-2">
+                    📦 {product.delivery}
+                  </div>
+                </div>
+
+                {/* Boutons */}
+                <div className="space-y-3">
+                  <button 
+                    onClick={() => addToCart(product)}
+                    className="w-full bg-agronoya-green hover:bg-agronoya-green-dark text-white py-3 px-6 rounded-full font-semibold transition-all duration-300 flex items-center justify-center group"
+                  >
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                    Ajouter au panier
+                  </button>
+                  <Link 
+                    to={`/marketplace/product/${product.id}`}
+                    className="w-full border-2 border-primary text-agronoya-green hover:bg-agronoya-green hover:text-white py-3 px-6 rounded-full font-semibold transition-all duration-300 flex items-center justify-center"
+                  >
+                    Voir les détails
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Section offres spéciales */}
+        <div className="bg-gradient-to-r from-agronoya-green to-agronoya-green-dark rounded-3xl p-8 text-white text-center fade-in">
+          <h3 className="text-3xl font-bold mb-4">Offres Spéciales du Mois</h3>
+          <p className="text-xl mb-8">Profitez de nos promotions exclusives pour équiper votre exploitation à moindre coût.</p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+              <div className="text-3xl font-bold mb-2">-25%</div>
+              <div className="text-lg">sur tous les logiciels</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+              <div className="text-3xl font-bold mb-2">Livraison Gratuite</div>
+              <div className="text-lg">sur toutes les commandes &gt; 500 DTN</div>
+            </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+              <div className="text-3xl font-bold mb-2">3 ans</div>
+              <div className="text-lg">de garantie sur le matériel</div>
+            </div>
+          </div>
+
+          <button className="bg-white text-agronoya-green hover:bg-gray-100 px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105">
+            Découvrir les offres
+          </button>
+        </div>
+
+        {/* Avantages */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 fade-in">
+          <div className="text-center text-white">
+            <div className="bg-agronoya-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <ShoppingCart className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-2">Commande Facile</h4>
+            <p className="text-gray-300">Processus de commande simple et rapide, en quelques clics.</p>
+          </div>
+          <div className="text-center text-white">
+            <div className="bg-agronoya-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Zap className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-2">Installation Rapide</h4>
+            <p className="text-gray-300">Nos équipes assurent une mise en place efficace et rapide.</p>
+          </div>
+          <div className="text-center text-white">
+            <div className="bg-agronoya-green w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Star className="w-8 h-8" />
+            </div>
+            <h4 className="text-xl font-bold mb-2">Support Premium</h4>
+            <p className="text-gray-300">Assistance dédiée 24/7 pour toutes vos questions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Pricing;
+

@@ -1,0 +1,267 @@
+/**
+ * AgroNoya - Variables CSS Unifiées
+ * Source unique de vérité pour tous les thèmes et couleurs
+ * Version: 2.0 - Système unifié
+ */
+
+:root {
+  /* ===== COULEURS PRINCIPALES AGRONOYA ===== */
+  
+  /* Couleur primaire AgroNoya - Format RGB pour Tailwind */
+  --agronoya-primary-rgb: 87, 213, 59;
+  --agronoya-primary: rgb(var(--agronoya-primary-rgb));
+  --agronoya-primary-hover-rgb: 75, 201, 50;
+  --agronoya-primary-hover: rgb(var(--agronoya-primary-hover-rgb));
+  --agronoya-primary-light-rgb: 110, 224, 73;
+  --agronoya-primary-light: rgb(var(--agronoya-primary-light-rgb));
+  --agronoya-primary-dark-rgb: 63, 184, 41;
+  --agronoya-primary-dark: rgb(var(--agronoya-primary-dark-rgb));
+  
+  /* Vert vif spécifique pour les boutons en mode clair */
+  --bright-green-rgb: 34, 197, 94;
+  --bright-green: rgb(var(--bright-green-rgb));
+  --bright-green-hover-rgb: 22, 163, 74;
+  --bright-green-hover: rgb(var(--bright-green-hover-rgb));
+  
+  /* Opacités de la couleur primaire */
+  --agronoya-primary-50: rgba(var(--agronoya-primary-rgb), 0.05);
+  --agronoya-primary-100: rgba(var(--agronoya-primary-rgb), 0.1);
+  --agronoya-primary-200: rgba(var(--agronoya-primary-rgb), 0.2);
+  --agronoya-primary-300: rgba(var(--agronoya-primary-rgb), 0.3);
+  --agronoya-primary-400: rgba(var(--agronoya-primary-rgb), 0.4);
+  --agronoya-primary-500: rgba(var(--agronoya-primary-rgb), 0.5);
+  
+  /* ===== COULEURS DE TEXTE - MODE CLAIR (AMÉLIORÉES POUR LISIBILITÉ) ===== */
+  
+  --text-primary-rgb: 15, 23, 42;
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary-rgb: 30, 41, 59;
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-tertiary-rgb: 51, 65, 85;
+  --text-tertiary: rgb(var(--text-tertiary-rgb));
+  --text-muted-rgb: 71, 85, 105;
+  --text-muted: rgb(var(--text-muted-rgb));
+  --text-subtle-rgb: 100, 116, 139;
+  --text-subtle: rgb(var(--text-subtle-rgb));
+  --text-disabled-rgb: 148, 163, 184;
+  --text-disabled: rgb(var(--text-disabled-rgb));
+  
+  /* ===== COULEURS DE FOND - MODE CLAIR (AMÉLIORÉES POUR CONTRASTE) ===== */
+  
+  --bg-primary-rgb: 255, 255, 255;
+  --bg-primary: rgb(var(--bg-primary-rgb));
+  --bg-secondary-rgb: 248, 250, 252;
+  --bg-secondary: rgb(var(--bg-secondary-rgb));
+  --bg-tertiary-rgb: 241, 245, 249;
+  --bg-tertiary: rgb(var(--bg-tertiary-rgb));
+  
+  /* Couleur d'overlay qui bascule avec le thème */
+  --overlay-rgb: 255, 255, 255;
+  --overlay: rgb(var(--overlay-rgb));
+  --bg-muted-rgb: 226, 232, 240;
+  --bg-muted: rgb(var(--bg-muted-rgb));
+  --bg-accent-rgb: 240, 253, 244;
+  --bg-accent: rgb(var(--bg-accent-rgb));
+  --bg-accent-hover-rgb: 220, 252, 231;
+  --bg-accent-hover: rgb(var(--bg-accent-hover-rgb));
+  
+  /* ===== COULEURS DE BORDURE - MODE CLAIR (AMÉLIORÉES POUR CONTRASTE) ===== */
+  
+  --border-light-rgb: 241, 245, 249;
+  --border-light: rgb(var(--border-light-rgb));
+  --border-default-rgb: 226, 232, 240;
+  --border-default: rgb(var(--border-default-rgb));
+  --border-medium-rgb: 203, 213, 225;
+  --border-medium: rgb(var(--border-medium-rgb));
+  --border-strong-rgb: 148, 163, 184;
+  --border-strong: rgb(var(--border-strong-rgb));
+  --border-accent: var(--agronoya-primary-200);
+  
+  /* ===== COULEURS D'ÉTAT ===== */
+  
+  --success-rgb: 16, 185, 129;
+  --success: rgb(var(--success-rgb));
+  --success-light-rgb: 209, 250, 229;
+  --success-light: rgb(var(--success-light-rgb));
+  
+  --warning-rgb: 245, 158, 11;
+  --warning: rgb(var(--warning-rgb));
+  --warning-light-rgb: 254, 243, 199;
+  --warning-light: rgb(var(--warning-light-rgb));
+  
+  --error-rgb: 239, 68, 68;
+  --error: rgb(var(--error-rgb));
+  --error-light-rgb: 254, 226, 226;
+  --error-light: rgb(var(--error-light-rgb));
+  
+  --info-rgb: 59, 130, 246;
+  --info: rgb(var(--info-rgb));
+  --info-light-rgb: 219, 234, 254;
+  --info-light: rgb(var(--info-light-rgb));
+  
+  /* ===== OMBRES ===== */
+  
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-accent: 0 4px 12px rgba(var(--agronoya-primary-rgb), 0.15);
+  
+  /* ===== RAYONS DE BORDURE ===== */
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* ===== ESPACEMENT ===== */
+  
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.25rem;
+  --space-2xl: 1.5rem;
+  --space-3xl: 2rem;
+  --space-4xl: 2.5rem;
+  --space-5xl: 3rem;
+  --space-6xl: 4rem;
+  --space-8xl: 6rem;
+  --space-10xl: 8rem;
+  
+  /* ===== TYPOGRAPHIE ===== */
+  
+  --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'JetBrains Mono', 'Fira Code', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+  
+  --font-thin: 100;
+  --font-light: 300;
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-extrabold: 800;
+  
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  
+  --tracking-tight: -0.025em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.025em;
+}
+
+/* ===== MODE SOMBRE ===== */
+
+.dark {
+  /* Couleurs de texte - Mode sombre */
+  --text-primary-rgb: 249, 250, 251;
+  --text-primary: rgb(var(--text-primary-rgb));
+  --text-secondary-rgb: 229, 231, 235;
+  --text-secondary: rgb(var(--text-secondary-rgb));
+  --text-tertiary-rgb: 209, 213, 219;
+  --text-tertiary: rgb(var(--text-tertiary-rgb));
+  --text-muted-rgb: 156, 163, 175;
+  --text-muted: rgb(var(--text-muted-rgb));
+  --text-subtle-rgb: 107, 114, 128;
+  --text-subtle: rgb(var(--text-subtle-rgb));
+  --text-disabled-rgb: 75, 85, 99;
+  --text-disabled: rgb(var(--text-disabled-rgb));
+  
+  /* Couleurs de fond - Mode sombre */
+  --bg-primary-rgb: 17, 24, 39;
+  --bg-primary: rgb(var(--bg-primary-rgb));
+  --bg-secondary-rgb: 31, 41, 55;
+  --bg-secondary: rgb(var(--bg-secondary-rgb));
+  --bg-tertiary-rgb: 55, 65, 81;
+  --bg-tertiary: rgb(var(--bg-tertiary-rgb));
+  --bg-muted-rgb: 75, 85, 99;
+  --bg-muted: rgb(var(--bg-muted-rgb));
+  --bg-accent-rgb: 20, 83, 45;
+  --bg-accent: rgb(var(--bg-accent-rgb));
+  --bg-accent-hover-rgb: 22, 101, 52;
+  --bg-accent-hover: rgb(var(--bg-accent-hover-rgb));
+  
+  /* Couleur d'overlay qui bascule avec le thème */
+  --overlay-rgb: 0, 0, 0;
+  --overlay: rgb(var(--overlay-rgb));
+  
+  /* Couleurs de bordure - Mode sombre */
+  --border-light-rgb: 55, 65, 81;
+  --border-light: rgb(var(--border-light-rgb));
+  --border-default-rgb: 75, 85, 99;
+  --border-default: rgb(var(--border-default-rgb));
+  --border-medium-rgb: 107, 114, 128;
+  --border-medium: rgb(var(--border-medium-rgb));
+  --border-strong-rgb: 156, 163, 175;
+  --border-strong: rgb(var(--border-strong-rgb));
+  
+  /* Couleurs d'état - Mode sombre */
+  --success-light-rgb: 6, 78, 59;
+  --success-light: rgb(var(--success-light-rgb));
+  --warning-light-rgb: 120, 53, 15;
+  --warning-light: rgb(var(--warning-light-rgb));
+  --error-light-rgb: 127, 29, 29;
+  --error-light: rgb(var(--error-light-rgb));
+  --info-light-rgb: 30, 58, 138;
+  --info-light: rgb(var(--info-light-rgb));
+}
+
+/* ===== CLASSES UTILITAIRES ===== */
+
+/* Couleurs de texte */
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+.text-muted { color: var(--text-muted); }
+.text-subtle { color: var(--text-subtle); }
+.text-disabled { color: var(--text-disabled); }
+.text-accent { color: var(--agronoya-primary); }
+
+/* Couleurs de fond */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-tertiary { background-color: var(--bg-tertiary); }
+.bg-muted { background-color: var(--bg-muted); }
+.bg-accent { background-color: var(--bg-accent); }
+.bg-accent-hover { background-color: var(--bg-accent-hover); }
+.bg-agronoya-primary { background-color: var(--agronoya-primary); }
+.bg-bright-green { background-color: var(--bright-green); }
+.bg-bright-green-hover { background-color: var(--bright-green-hover); }
+
+/* Couleurs de bordure */
+.border-light { border-color: var(--border-light); }
+.border-default { border-color: var(--border-default); }
+.border-medium { border-color: var(--border-medium); }
+.border-strong { border-color: var(--border-strong); }
+.border-accent { border-color: var(--border-accent); }
+.border-agronoya-primary { border-color: var(--agronoya-primary); }
+
+/* Couleurs d'état */
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+.text-info { color: var(--info); }
+
+.bg-success { background-color: var(--success); }
+.bg-success-light { background-color: var(--success-light); }
+.bg-warning { background-color: var(--warning); }
+.bg-warning-light { background-color: var(--warning-light); }
+.bg-error { background-color: var(--error); }
+.bg-error-light { background-color: var(--error-light); }
+.bg-info { background-color: var(--info); }
+.bg-info-light { background-color: var(--info-light); }
+

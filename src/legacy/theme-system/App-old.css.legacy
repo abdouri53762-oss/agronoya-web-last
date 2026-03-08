@@ -1,0 +1,958 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  
+  /* Design tokens Agro Beta - Light Mode Only */
+  --color-primary: #28a745;
+  --color-bg: #ffffff;
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-border: #e9ecef;
+  --btn-radius: 12px;
+  
+  /* Couleurs AgroNoya Theme - Couleur principale mise à jour pour Agro Beta */
+  --agronoya-primary: #28a745;
+  --agronoya-primary-light: #34ce57;
+  --agronoya-primary-dark: #1e7e34;
+  --agronoya-primary-hover: #1e7e34;
+  --agronoya-text: #212529;
+  --agronoya-text-muted: #6c757d;
+  --agronoya-accent: #28a745;
+  --agronoya-golden: #28a745;
+  --agronoya-beige: #28a745;
+  --agronoya-green: #28a745;
+  --agronoya-blue-dark: #1a365d;
+  --agronoya-bg: #ffffff;
+  --agronoya-bg-secondary: #ffffff;
+  --agronoya-beige: #F5F5DC;
+  --agronoya-beige-dark: #E6E6D4;
+  --agronoya-gray-light: #f8f9fa;
+  --agronoya-gray: #6c757d;
+  --agronoya-gray-dark: #212529;
+  --agronoya-gray-darker: #212529;
+  --agronoya-green-dark: #1e7e34;
+  --agronoya-border: #e9ecef;
+  
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.75 0.08 85); /* #cfb989 en oklch */
+  --primary-foreground: oklch(0.15 0 0);
+  --accent: oklch(0.75 0.08 85); /* #cfb989 en oklch */
+  --accent-foreground: oklch(0.15 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  
+  /* Light mode - Agro Beta theme */
+  body {
+    @apply bg-background text-foreground;
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+    font-family: 'Poppins', 'Montserrat', sans-serif;
+  }
+  
+  /* Light mode global styles */
+  #root {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+  }
+  
+  .min-h-screen {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text) !important;
+  }
+  
+  /* Light mode typography */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text) !important;
+  }
+  
+  p {
+    color: var(--color-text) !important;
+  }
+  
+  a {
+    color: var(--color-text) !important;
+  }
+  
+  span {
+    color: var(--color-text) !important;
+  }
+  
+  div {
+    color: var(--color-text) !important;
+  }
+  
+  /* Light mode backgrounds */
+  .bg-white {
+    background-color: var(--color-bg) !important;
+  }
+  
+  .bg-gray-50 {
+    background-color: var(--color-bg) !important;
+  }
+  
+  .bg-gray-100 {
+    background-color: #f8f9fa !important;
+  }
+  
+  /* Dark mode overrides - keep existing dark theme */
+  .dark body {
+    background-color: #1C191F !important;
+    color: white !important;
+  }
+  
+  .dark #root {
+    background-color: #1C191F !important;
+    color: white !important;
+  }
+  
+  .dark .min-h-screen {
+    background-color: #1C191F !important;
+    color: white !important;
+  }
+  
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    color: #0DA82F !important;
+  }
+  
+  .dark p {
+    color: white !important;
+  }
+  
+  .dark a {
+    color: white !important;
+  }
+  
+  .dark span {
+    color: white !important;
+  }
+  
+  .dark div {
+    color: white !important;
+  }
+  
+  .dark .bg-white {
+    background-color: #1C191F !important;
+  }
+  
+  .dark .bg-gray-50 {
+    background-color: #1C191F !important;
+  }
+  
+  .dark .bg-gray-100 {
+    background-color: #1C191F !important;
+  }
+}
+
+/* Classes personnalisées EOS Theme */
+@layer utilities {
+  .bg-eos-blue-dark {
+    background-color: var(--eos-blue-dark);
+  }
+  
+  .bg-eos-orange {
+    background-color: var(--eos-orange);
+  }
+  
+  .bg-eos-orange-hover {
+    background-color: var(--eos-orange-hover);
+  }
+  
+  .text-eos-orange {
+    color: var(--eos-orange);
+  }
+  
+  .text-eos-blue-dark {
+    color: var(--eos-blue-dark);
+  }
+  
+  .border-eos-orange {
+    border-color: var(--eos-orange);
+  }
+  
+  .bg-agronoya-primary {
+    background-color: var(--agronoya-primary);
+  }
+  
+  .bg-agronoya-primary-light {
+    background-color: var(--agronoya-primary-light);
+  }
+  
+  .bg-agronoya-primary-dark {
+    background-color: var(--agronoya-primary-dark);
+  }
+  
+  .text-agronoya-primary {
+    color: var(--agronoya-primary);
+  }
+  
+  .text-agronoya-primary-dark {
+    color: var(--agronoya-primary-dark);
+  }
+  
+  .border-agronoya-primary {
+    border-color: var(--agronoya-primary);
+  }
+  
+  .bg-agronoya-blue-dark {
+    background-color: var(--agronoya-blue-dark);
+  }
+  
+  .text-agronoya-blue-dark {
+    color: var(--agronoya-blue-dark);
+  }
+  
+  /* Boutons EOS Style */
+  .btn-eos-primary {
+    background-color: var(--eos-orange);
+    color: white;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+  
+  .btn-eos-primary:hover {
+    background-color: var(--eos-orange-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 107, 53, 0.4);
+  }
+  
+  .btn-eos-secondary {
+    background-color: transparent;
+    color: var(--eos-orange);
+    border: 2px solid var(--eos-orange);
+    padding: 10px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-eos-secondary:hover {
+    background-color: var(--eos-orange);
+    color: white;
+  }
+  
+  .gradient-beige-gray {
+    background: linear-gradient(135deg, var(--agronoya-beige) 0%, var(--agronoya-gray-light) 50%, var(--agronoya-gray) 100%);
+  }
+  
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--agronoya-primary-light) 0%, var(--agronoya-primary) 50%, var(--agronoya-primary-dark) 100%);
+  }
+  
+  .gradient-beige-gray-vertical {
+    background: linear-gradient(180deg, var(--agronoya-beige) 0%, var(--agronoya-gray-light) 50%, var(--agronoya-gray) 100%);
+  }
+  
+  .text-agronoya-green {
+    color: var(--agronoya-green);
+  }
+  
+  .bg-agronoya-green {
+    background-color: var(--agronoya-green);
+  }
+  
+  .bg-agronoya-green-dark {
+    background-color: var(--agronoya-green-dark);
+  }
+  
+  .bg-agronoya-beige {
+    background-color: var(--agronoya-beige);
+  }
+  
+  .bg-agronoya-gray {
+    background-color: var(--agronoya-gray);
+  }
+  
+  .text-agronoya-gray-dark {
+    color: var(--agronoya-gray-dark);
+  }
+  
+  .border-agronoya-green {
+    border-color: var(--agronoya-green);
+  }
+  
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Styles pour les popups */
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  animation: popupScale 0.3s ease-out;
+}
+
+@keyframes popupScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Styles pour la marketplace */
+.marketplace-card {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.marketplace-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.marketplace-card:hover::before {
+  left: 100%;
+}
+
+.marketplace-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Dark mode improvements */
+.dark {
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #1a1a1a;
+  color: #e5e5e5;
+}
+
+.dark .text-agronoya-gray-darker {
+  color: #e5e5e5 !important;
+}
+
+.dark .text-agronoya-gray {
+  color: #b3b3b3 !important;
+}
+
+.dark .text-agronoya-gray-dark {
+  color: #d1d1d1 !important;
+}
+
+.dark .bg-white {
+  background-color: #2a2a2a !important;
+}
+
+.dark .border-gray-200 {
+  border-color: #404040 !important;
+}
+
+.dark .bg-white\/90 {
+  background-color: rgba(42, 42, 42, 0.9) !important;
+}
+
+.dark .shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Ensure good contrast for all text elements */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+  color: #0DA82F !important;
+}
+
+.dark p {
+  color: #d1d1d1;
+}
+
+.dark .bg-agronoya-primary\/10 {
+  background-color: rgba(168, 170, 101, 0.2) !important;
+}
+
+
+/* Nouvelles classes utilitaires pour le thème #a8aa65 */
+.bg-agronoya-text {
+  background-color: var(--agronoya-text);
+}
+
+.text-agronoya-text {
+  color: var(--agronoya-text);
+}
+
+.bg-agronoya-bg {
+  background-color: var(--agronoya-bg);
+}
+
+.bg-agronoya-bg-secondary {
+  background-color: var(--agronoya-bg-secondary);
+}
+
+/* Mise à jour des classes existantes avec les nouvelles couleurs */
+.bg-agronoya-primary\/5 {
+  background-color: rgba(168, 170, 101, 0.05);
+}
+
+/* Amélioration du mode sombre avec les nouvelles couleurs */
+.dark .bg-agronoya-bg {
+  background-color: #1a1a1a !important;
+}
+
+.dark .bg-agronoya-bg-secondary {
+  background-color: #2a2a2a !important;
+}
+
+.dark .text-agronoya-text {
+  color: #bbc278 !important;
+}
+
+/* Styles pour les phrases avec la nouvelle couleur */
+.phrase-text {
+  color: var(--agronoya-text);
+  font-weight: 500;
+}
+
+.dark .phrase-text {
+  color: #bbc278;
+}
+
+
+
+/* ===== OPTIMISATIONS RESPONSIVE MOBILE-FIRST ===== */
+
+/* Mobile First - Base styles pour mobile */
+@media (max-width: 768px) {
+  /* Navigation mobile optimisée */
+  .mobile-nav {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+  
+  .mobile-nav-item {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Hero section mobile */
+  .hero-mobile {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+  
+  .hero-title-mobile {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-stats-mobile {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  /* Cards mobile */
+  .card-mobile {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  /* Marketplace mobile */
+  .marketplace-grid-mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  
+  /* Technologies mobile */
+  .tech-circle-mobile {
+    width: 280px;
+    height: 280px;
+  }
+  
+  .tech-cards-mobile {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+/* Tablet optimisé */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .tablet-hero {
+    padding: 3rem 2rem;
+  }
+  
+  .tech-circle-tablet {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+/* Desktop optimisé */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .desktop-hero {
+    padding: 4rem 2rem;
+  }
+}
+
+/* ===== AMÉLIORATIONS ACCESSIBILITÉ WCAG 2.1 ===== */
+
+/* Focus states améliorés */
+*:focus {
+  outline: 2px solid #cfb989;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #cfb989;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(207, 185, 137, 0.2);
+}
+
+/* Contrastes améliorés */
+.high-contrast-text {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.accessible-button {
+  background: linear-gradient(135deg, #cfb989, #b8a578);
+  color: #000000;
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.accessible-button:hover {
+  background: linear-gradient(135deg, #b8a578, #cfb989);
+  border-color: #cfb989;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(207, 185, 137, 0.3);
+}
+
+/* Navigation clavier améliorée */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #cfb989;
+  color: #000000;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* ===== OPTIMISATIONS PERFORMANCE ===== */
+
+/* Lazy loading optimisé */
+.lazy-image {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image.loaded {
+  opacity: 1;
+}
+
+/* Animations optimisées */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ===== AMÉLIORATIONS UX ===== */
+
+/* Hover states améliorés */
+.enhanced-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Micro-interactions */
+.micro-bounce {
+  animation: micro-bounce 0.6s ease-in-out;
+}
+
+@keyframes micro-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Error states */
+.error-state {
+  border: 2px solid #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+}
+
+.success-state {
+  border: 2px solid #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+/* ===== OPTIMISATIONS PANIER ===== */
+
+.cart-animation {
+  animation: cart-bounce 0.5s ease-in-out;
+}
+
+@keyframes cart-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  a {
+    text-decoration: underline;
+  }
+  
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+}
+
+
+
+/* Animations personnalisées pour la section Hero moderne */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-12deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-12deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(87, 213, 59, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(87, 213, 59, 0.6);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-shine {
+  animation: shine 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Transitions personnalisées pour les images */
+.transition-all-3000 {
+  transition: all 3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de parallaxe pour les images de fond */
+.parallax-bg {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Amélioration de la lisibilité du texte */
+.text-shadow-soft {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-strong {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Effets de hover pour les boutons */
+.btn-hover-lift {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design amélioré */
+@media (max-width: 768px) {
+  .hero-title-mobile {
+    font-size: 2.5rem;
+    line-height: 1.2;
+  }
+  
+  .hero-description-mobile {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+}
+
+/* Optimisation pour les écrans haute résolution */
+@media (min-width: 1920px) {
+  .hero-container-xl {
+    max-width: 1600px;
+  }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-shine,
+  .animate-float,
+  .animate-pulse-glow {
+    animation: none;
+  }
+  
+  .transition-all-3000 {
+    transition: none;
+  }
+}
+
+/* Mode sombre optimisé */
+.dark .hero-bg-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 24, 39, 0.9) 0%,
+    rgba(17, 24, 39, 0.7) 50%,
+    rgba(17, 24, 39, 0.9) 100%
+  );
+}
+
+/* Effets de focus pour l'accessibilité */
+.focus-ring:focus {
+  outline: 2px solid #57D53B;
+  outline-offset: 2px;
+}
+
+/* Optimisation des performances */
+.gpu-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
