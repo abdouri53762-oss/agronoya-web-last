@@ -1,13 +1,111 @@
-import React, { useState, useEffect } from 'react';
-import { Star, Send, MessageCircle, Users, TrendingUp, CheckCircle, Quote, ChevronLeft, ChevronRight, Heart, Award, Sparkles } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useRef, useState } from 'react';
+import {
+  Star,
+  Send,
+  MessageCircle,
+  Users,
+  TrendingUp,
+  CheckCircle,
+  Quote,
+  ChevronLeft,
+  ChevronRight,
+  Heart,
+  Sparkles,
+  ArrowRight
+} from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
+const SERVICES = [
+  { id: 'agrosol', name: 'AgroSol - Analyse du Sol', icon: '🌱' },
+  {
+    id: 'irrigation',
+    name: 'AgroIrrigation - Irrigation Intelligente',
+    icon: '💧'
+  },
+  { id: 'noyagpt', name: 'Noya GPT - Assistant IA', icon: '🤖' },
+  { id: 'agrosat', name: 'AgroSat - Surveillance Satellite', icon: '🛰️' },
+  { id: 'agrodrone', name: 'AgroDrone - Surveillance Aérienne', icon: '🚁' },
+  { id: 'agrostore', name: 'AgroStore - Marché Digital', icon: '🛒' },
+  { id: 'dashboard', name: 'AgroDashboard - Tableau de Bord', icon: '📊' }
+];
+
+const TESTIMONIALS = [
+  {
+    id: 1,
+    name: 'Ahmed Ben Salem',
+    company: 'Ferme Olivia',
+    location: 'Kairouan, Tunisie',
+    service: 'AgroSol',
+    rating: 5,
+    comment:
+      "AgroNoya nous a aidés à mieux comprendre l’état de nos sols et à ajuster nos décisions plus rapidement. Nous avons gagné en visibilité et en précision sur des choix qui étaient auparavant beaucoup plus empiriques.",
+    impact: 'Meilleure précision agronomique',
+    initials: 'AB',
+    date: 'Utilisateur récent',
+    verified: true
+  },
+  {
+    id: 2,
+    name: 'Fatma Trabelsi',
+    company: 'Exploitation Bio Sfax',
+    location: 'Sfax, Tunisie',
+    service: 'AgroIrrigation',
+    rating: 5,
+    comment:
+      "La logique de pilotage de l’irrigation nous a permis de mieux répartir l’eau et d’éviter plusieurs décisions approximatives. La plateforme apporte surtout plus de confiance dans le suivi quotidien.",
+    impact: 'Pilotage hydrique amélioré',
+    initials: 'FT',
+    date: 'Cas client',
+    verified: true
+  },
+  {
+    id: 3,
+    name: 'Mohamed Gharbi',
+    company: 'Domaine Gharbi',
+    location: 'Monastir, Tunisie',
+    service: 'Noya GPT',
+    rating: 5,
+    comment:
+      "L’assistant IA rend les informations beaucoup plus accessibles. Il nous fait gagner du temps, simplifie les analyses et nous aide à poser les bonnes questions au bon moment.",
+    impact: 'Décision plus rapide',
+    initials: 'MG',
+    date: 'Utilisateur actif',
+    verified: true
+  }
+];
+
+const STATS = [
+  {
+    icon: Users,
+    value: '2 500+',
+    label: 'Exploitations accompagnées',
+    color: 'text-blue-400'
+  },
+  {
+    icon: Star,
+    value: '4.9/5',
+    label: 'Satisfaction moyenne',
+    color: 'text-yellow-400'
+  },
+  {
+    icon: TrendingUp,
+    value: 'Jusqu’à 35%',
+    label: 'd’amélioration du pilotage',
+    color: 'text-emerald-400'
+  }
+];
 
 const FeedbackSection = () => {
-  const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState('feedback');
+  const navigate = useNavigate();
+  const sectionRef = useRef(null);
+
+  const [activeTab, setActiveTab] = useState('testimonials');
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [submitted, setSubmitted] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isCarouselPaused, setIsCarouselPaused] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -16,258 +114,390 @@ const FeedbackSection = () => {
     comment: '',
     rating: 0
   });
-  const [submitted, setSubmitted] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
 
-  // Animation d'apparition au scroll
   useEffect(() => {
+    const element = sectionRef.current;
+    if (!element) return undefined;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('feedback-section');
-    if (element) observer.observe(element);
-
+    observer.observe(element);
     return () => observer.disconnect();
   }, []);
 
-  // Auto-rotation des témoignages
   useEffect(() => {
+    if (isCarouselPaused || activeTab !== 'testimonials') return undefined;
+
     const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+      setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
+    }, 6000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [isCarouselPaused, activeTab]);
 
-  const services = [
-    { id: 'agrosol', name: 'AgroSol - Analyse du Sol', icon: '🌱' },
-    { id: 'irrigation', name: 'AgroIrrigation - Irrigation Intelligente', icon: '💧' },
-    { id: 'noyagpt', name: 'Noya GPT - Assistant IA', icon: '🤖' },
-    { id: 'agrosat', name: 'AgroSat - Surveillance Satellite', icon: '🛰️' },
-    { id: 'agrodrone', name: 'AgroDrone - Surveillance Aérienne', icon: '🚁' },
-    { id: 'agrostore', name: 'AgroStore - Marché Digital', icon: '🛒' },
-    { id: 'dashboard', name: 'AgroDashboard - Tableau de Bord', icon: '📊' }
-  ];
-
-  const testimonials = [
-    {
-      id: 1,
-      name: "Ahmed Ben Salem",
-      company: "Ferme Olivia",
-      location: "Kairouan, Tunisie",
-      service: "AgroSol",
-      rating: 5,
-      comment: "AgroNoya a révolutionné ma compréhension du sol. Mes rendements ont augmenté de 25% dès la première année grâce à l'analyse précise des nutriments !",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
-      date: "Il y a 2 jours",
-      verified: true
-    },
-    {
-      id: 2,
-      name: "Fatma Trabelsi",
-      company: "Exploitation Bio Sfax",
-      location: "Sfax, Tunisie",
-      service: "AgroIrrigation",
-      rating: 5,
-      comment: "L'irrigation intelligente m'a fait économiser 40% d'eau tout en améliorant la qualité de mes légumes. Un investissement rentabilisé en 6 mois !",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
-      date: "Il y a 5 jours",
-      verified: true
-    },
-    {
-      id: 3,
-      name: "Mohamed Gharbi",
-      company: "Domaine Gharbi",
-      location: "Monastir, Tunisie",
-      service: "Noya GPT",
-      rating: 5,
-      comment: "L'assistant IA répond à toutes mes questions agricoles avec une précision impressionnante. C'est comme avoir un agronome expert disponible 24h/24 !",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
-      date: "Il y a 1 semaine",
-      verified: true
-    },
-    {
-      id: 4,
-      name: "Leila Mansouri",
-      company: "Coopérative Agricole du Nord",
-      location: "Bizerte, Tunisie",
-      service: "AgroSat",
-      rating: 5,
-      comment: "La surveillance satellite nous permet de détecter les problèmes avant qu'ils ne deviennent critiques. Nos pertes ont diminué de 60% !",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
-      date: "Il y a 2 semaines",
-      verified: true
-    }
-  ];
-
-  const stats = [
-    { icon: Users, value: "2,500+", label: "Agriculteurs Satisfaits", color: "text-blue-600" },
-    { icon: Star, value: "4.9/5", label: "Note Moyenne", color: "text-yellow-500" },
-    { icon: TrendingUp, value: "+35%", label: "Augmentation Rendement", color: "text-green-600" },
-    { icon: Award, value: "98%", label: "Taux de Satisfaction", color: "text-purple-600" }
-  ];
+  const handleInputChange = (field, value) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.name && formData.comment && rating > 0) {
-      setSubmitted(true);
-      setTimeout(() => {
-        setSubmitted(false);
-        setFormData({ name: '', company: '', email: '', service: '', comment: '', rating: 0 });
-        setRating(0);
-      }, 3000);
-    }
+
+    if (!formData.name || !formData.comment || rating === 0) return;
+
+    setSubmitted(true);
+
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormData({
+        name: '',
+        company: '',
+        email: '',
+        service: '',
+        comment: '',
+        rating: 0
+      });
+      setRating(0);
+      setHoveredRating(0);
+    }, 2500);
   };
 
   const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    setCurrentTestimonial((prev) => (prev + 1) % TESTIMONIALS.length);
   };
 
   const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentTestimonial(
+      (prev) => (prev - 1 + TESTIMONIALS.length) % TESTIMONIALS.length
+    );
   };
 
-  return (
-    <section 
-      id="feedback-section"
-      className={`py-20 bg-gradient-to-br from-[rgb(var(--bg-primary-rgb))] via-[rgb(var(--bg-secondary-rgb))] to-[rgb(var(--bg-primary-rgb))] relative overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
-    >
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(var(--agronoya-primary-rgb)/0.05)] via-transparent to-[rgb(var(--agronoya-primary-rgb)/0.05)]"></div>
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-[rgb(var(--agronoya-primary-rgb)/0.1)] rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+  const featured = TESTIMONIALS[currentTestimonial];
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-[rgb(var(--agronoya-primary-rgb)/0.1)] text-[rgb(var(--agronoya-primary-rgb))] px-4 py-2 rounded-full text-sm font-medium mb-6">
-            <Sparkles className="w-4 h-4" />
-            Votre Avis Compte Pour Nous
+  return (
+    <section
+      id="feedback-section"
+      ref={sectionRef}
+      className={`relative overflow-hidden bg-[rgb(var(--bg-primary-rgb))] py-20 text-[rgb(var(--text-primary-rgb))] transition-all duration-1000 md:py-24 lg:py-28 ${
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+      }`}
+    >
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute left-1/4 top-0 h-96 w-96 rounded-full bg-[rgb(var(--agronoya-primary-rgb)/0.10)] blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute left-16 top-24 h-2 w-2 animate-pulse rounded-full bg-primary/30" />
+        <div className="absolute right-20 top-36 h-3 w-3 animate-pulse rounded-full bg-emerald-400/30 delay-300" />
+        <div className="absolute bottom-16 left-1/3 h-2 w-2 animate-pulse rounded-full bg-blue-400/30 delay-700" />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
+        <div className="mx-auto mb-16 max-w-4xl text-center md:mb-20">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-[rgb(var(--agronoya-primary-rgb)/0.10)] px-5 py-2.5 text-sm font-semibold text-[rgb(var(--agronoya-primary-rgb))] shadow-lg backdrop-blur-sm">
+            <Sparkles className="h-4 w-4" />
+            Ils font confiance à AgroNoya
           </div>
-          <h2 className="text-4xl lg:text-5xl font-bold text-[rgb(var(--text-primary-rgb))] mb-6">
-            Partagez Votre Expérience
-            <span className="block text-[rgb(var(--agronoya-primary-rgb))] mt-2">AgroNoya</span>
+
+          <h2 className="mb-6 text-4xl font-black leading-tight text-foreground sm:text-5xl lg:text-6xl">
+            Ce que nos utilisateurs
+            <span className="block text-[rgb(var(--agronoya-primary-rgb))]">
+              disent d’AgroNoya
+            </span>
           </h2>
-          <p className="text-xl text-[rgb(var(--text-secondary-rgb))] max-w-3xl mx-auto leading-relaxed">
-            Rejoignez notre communauté d'agriculteurs innovants et partagez votre expérience avec nos solutions. 
-            Votre feedback nous aide à améliorer continuellement nos services.
+
+          <p className="mx-auto max-w-3xl text-lg leading-relaxed text-text-secondary md:text-xl">
+            Des retours concrets d’exploitations et d’acteurs agricoles qui
+            utilisent AgroNoya pour mieux piloter, mieux anticiper et prendre
+            des décisions plus fiables sur le terrain.
           </p>
         </div>
 
-        {/* Statistics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {stats.map((stat, index) => (
-            <div 
-              key={index}
-              className="bg-[rgb(var(--bg-primary-rgb))] rounded-2xl p-6 text-center shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[rgb(var(--border-light-rgb))]"
+        <div className="mx-auto mb-14 grid max-w-5xl gap-6 md:grid-cols-3">
+          {STATS.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[26px] border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))]/90 p-6 text-center shadow-[0_20px_50px_-30px_rgba(0,0,0,0.35)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
-              <stat.icon className={`w-8 h-8 ${stat.color} mx-auto mb-3`} />
-              <div className="text-2xl font-bold text-[rgb(var(--text-primary-rgb))] mb-1">{stat.value}</div>
-              <div className="text-sm text-[rgb(var(--text-secondary-rgb))]">{stat.label}</div>
+              <stat.icon className={`mx-auto mb-4 h-8 w-8 ${stat.color}`} />
+              <div className="mb-1 text-3xl font-black text-foreground">
+                {stat.value}
+              </div>
+              <div className="text-sm text-text-secondary">{stat.label}</div>
             </div>
           ))}
         </div>
 
-        {/* Tabs */}
-        <div className="flex justify-center mb-12">
-          <div className="bg-[rgb(var(--bg-primary-rgb))] rounded-2xl p-2 shadow-lg border border-[rgb(var(--border-light-rgb))]">
+        <div className="mb-12 flex justify-center">
+          <div className="rounded-2xl border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))]/90 p-2 shadow-lg backdrop-blur-sm">
             <button
-              onClick={() => setActiveTab('feedback')}
-              className={`px-8 py-3 rounded-xl font-medium transition-all duration-300 ${
-                activeTab === 'feedback'
-                  ? 'bg-[rgb(var(--agronoya-primary-rgb))] text-white shadow-lg'
-                  : 'text-[rgb(var(--text-secondary-rgb))] hover:text-[rgb(var(--agronoya-primary-rgb))]'
-              }`}
-            >
-              <MessageCircle className="w-5 h-5 inline-block mr-2" />
-              Laisser un Avis
-            </button>
-            <button
+              type="button"
               onClick={() => setActiveTab('testimonials')}
-              className={`px-8 py-3 rounded-xl font-medium transition-all duration-300 ${
+              className={`rounded-xl px-6 py-3 font-medium transition-all duration-300 ${
                 activeTab === 'testimonials'
                   ? 'bg-[rgb(var(--agronoya-primary-rgb))] text-white shadow-lg'
-                  : 'text-[rgb(var(--text-secondary-rgb))] hover:text-[rgb(var(--agronoya-primary-rgb))]'
+                  : 'text-text-secondary hover:text-[rgb(var(--agronoya-primary-rgb))]'
               }`}
             >
-              <Quote className="w-5 h-5 inline-block mr-2" />
+              <Quote className="mr-2 inline-block h-5 w-5" />
               Témoignages
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setActiveTab('feedback')}
+              className={`rounded-xl px-6 py-3 font-medium transition-all duration-300 ${
+                activeTab === 'feedback'
+                  ? 'bg-[rgb(var(--agronoya-primary-rgb))] text-white shadow-lg'
+                  : 'text-text-secondary hover:text-[rgb(var(--agronoya-primary-rgb))]'
+              }`}
+            >
+              <MessageCircle className="mr-2 inline-block h-5 w-5" />
+              Laisser un avis
             </button>
           </div>
         </div>
 
-        {/* Content */}
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto max-w-6xl">
+          {activeTab === 'testimonials' && (
+            <div className="space-y-8">
+              <div
+                className="relative overflow-hidden rounded-[34px] border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))]/95 p-8 shadow-2xl backdrop-blur-xl md:p-12"
+                onMouseEnter={() => setIsCarouselPaused(true)}
+                onMouseLeave={() => setIsCarouselPaused(false)}
+              >
+                <div className="absolute right-6 top-6">
+                  <Quote className="h-14 w-14 text-[rgb(var(--agronoya-primary-rgb)/0.16)]" />
+                </div>
+
+                <div className="grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+                  <div>
+                    <div className="mb-5 flex items-center gap-2">
+                      {Array.from({ length: featured.rating }).map((_, i) => (
+                        <Star
+                          key={i}
+                          className="h-5 w-5 fill-current text-yellow-400"
+                        />
+                      ))}
+                    </div>
+
+                    <blockquote className="mb-8 text-xl font-medium leading-relaxed text-foreground md:text-2xl">
+                      “{featured.comment}”
+                    </blockquote>
+
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-16 w-16 items-center justify-center rounded-full border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-[rgb(var(--agronoya-primary-rgb)/0.10)] text-lg font-bold text-[rgb(var(--agronoya-primary-rgb))]">
+                        {featured.initials}
+                      </div>
+
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <div className="text-lg font-semibold text-foreground">
+                            {featured.name}
+                          </div>
+                          {featured.verified && (
+                            <CheckCircle className="h-5 w-5 text-blue-500" />
+                          )}
+                        </div>
+                        <div className="text-sm text-text-secondary">
+                          {featured.company}
+                        </div>
+                        <div className="text-xs text-text-secondary/80">
+                          {featured.location} • {featured.date}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="rounded-[28px] border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-primary-rgb))]/70 p-6 shadow-lg">
+                    <div className="mb-4 inline-flex rounded-full border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-[rgb(var(--agronoya-primary-rgb)/0.10)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--agronoya-primary-rgb))]">
+                      Impact observé
+                    </div>
+
+                    <h3 className="mb-3 text-2xl font-bold text-foreground">
+                      {featured.impact}
+                    </h3>
+
+                    <p className="mb-6 text-sm leading-7 text-text-secondary md:text-base">
+                      Retour d’expérience lié à l’usage de{' '}
+                      <span className="font-semibold text-foreground">
+                        {featured.service}
+                      </span>
+                      , dans un contexte réel d’exploitation agricole.
+                    </p>
+
+                    <div className="flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={prevTestimonial}
+                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))] text-[rgb(var(--agronoya-primary-rgb))] transition-all duration-300 hover:bg-[rgb(var(--agronoya-primary-rgb))] hover:text-white"
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                      </button>
+
+                      <div className="flex gap-2">
+                        {TESTIMONIALS.map((_, index) => (
+                          <button
+                            key={index}
+                            type="button"
+                            onClick={() => setCurrentTestimonial(index)}
+                            className={`h-3 rounded-full transition-all duration-300 ${
+                              index === currentTestimonial
+                                ? 'w-8 bg-[rgb(var(--agronoya-primary-rgb))]'
+                                : 'w-3 bg-[rgb(var(--border-medium-rgb))]'
+                            }`}
+                          />
+                        ))}
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={nextTestimonial}
+                        className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))] text-[rgb(var(--agronoya-primary-rgb))] transition-all duration-300 hover:bg-[rgb(var(--agronoya-primary-rgb))] hover:text-white"
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-3">
+                {TESTIMONIALS.map((testimonial) => (
+                  <div
+                    key={testimonial.id}
+                    className="rounded-[26px] border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))]/90 p-6 shadow-lg backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-[rgb(var(--agronoya-primary-rgb)/0.10)] font-bold text-[rgb(var(--agronoya-primary-rgb))]">
+                        {testimonial.initials}
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <h4 className="font-semibold text-foreground">
+                            {testimonial.name}
+                          </h4>
+                          {testimonial.verified && (
+                            <CheckCircle className="h-4 w-4 text-blue-500" />
+                          )}
+                        </div>
+                        <p className="text-sm text-text-secondary">
+                          {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="mb-3 flex">
+                      {Array.from({ length: testimonial.rating }).map(
+                        (_, i) => (
+                          <Star
+                            key={i}
+                            className="h-4 w-4 fill-current text-yellow-400"
+                          />
+                        )
+                      )}
+                    </div>
+
+                    <p className="mb-4 line-clamp-4 text-sm leading-7 text-text-secondary">
+                      “{testimonial.comment}”
+                    </p>
+
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="rounded-full bg-[rgb(var(--agronoya-primary-rgb)/0.10)] px-3 py-1 text-xs font-medium text-[rgb(var(--agronoya-primary-rgb))]">
+                        {testimonial.service}
+                      </span>
+                      <span className="text-xs text-text-secondary/80">
+                        {testimonial.location}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {activeTab === 'feedback' && (
-            <div className="bg-[rgb(var(--bg-primary-rgb))] rounded-3xl shadow-2xl p-8 md:p-12 border border-[rgb(var(--border-light-rgb))]">
+            <div className="rounded-[34px] border border-[rgb(var(--border-light-rgb))] bg-[rgb(var(--bg-secondary-rgb))]/95 p-8 shadow-2xl backdrop-blur-xl md:p-12">
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="space-y-8">
-                  <div className="text-center mb-8">
-                    <h3 className="text-2xl font-bold text-[rgb(var(--text-primary-rgb))] mb-4">
-                      Partagez Votre Expérience
+                  <div className="mb-8 text-center">
+                    <h3 className="mb-4 text-2xl font-bold text-foreground">
+                      Partagez votre retour d’expérience
                     </h3>
-                    <p className="text-[rgb(var(--text-secondary-rgb))]">
-                      Votre avis nous aide à améliorer nos services et aide d'autres agriculteurs à faire le bon choix
+                    <p className="mx-auto max-w-2xl text-text-secondary">
+                      Votre avis nous aide à améliorer la plateforme et à mieux
+                      répondre aux besoins des agriculteurs et des acteurs du
+                      secteur.
                     </p>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
+                      <label className="mb-2 block text-sm font-medium text-foreground">
                         Nom complet *
                       </label>
                       <input
                         type="text"
                         value={formData.name}
-                        onChange={(e) => setFormData({...formData, name: e.target.value})}
-                        className="w-full px-4 py-3 border border-[rgb(var(--border-default-rgb))] rounded-lg bg-[rgb(var(--bg-primary-rgb))] text-[rgb(var(--text-primary-rgb))] focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))] focus:border-transparent transition-all duration-300"
+                        onChange={(e) =>
+                          handleInputChange('name', e.target.value)
+                        }
+                        className="w-full rounded-xl border border-[rgb(var(--border-default-rgb))] bg-[rgb(var(--bg-primary-rgb))] px-4 py-3 text-foreground transition-all duration-300 focus:border-transparent focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))]"
                         placeholder="Votre nom"
                         required
                       />
                     </div>
+
                     <div>
-                      <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
-                        Entreprise/Exploitation
+                      <label className="mb-2 block text-sm font-medium text-foreground">
+                        Exploitation / entreprise
                       </label>
                       <input
                         type="text"
                         value={formData.company}
-                        onChange={(e) => setFormData({...formData, company: e.target.value})}
-                        className="w-full px-4 py-3 border border-[rgb(var(--border-default-rgb))] rounded-lg bg-[rgb(var(--bg-primary-rgb))] text-[rgb(var(--text-primary-rgb))] focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))] focus:border-transparent transition-all duration-300"
-                        placeholder="Nom de votre exploitation"
+                        onChange={(e) =>
+                          handleInputChange('company', e.target.value)
+                        }
+                        className="w-full rounded-xl border border-[rgb(var(--border-default-rgb))] bg-[rgb(var(--bg-primary-rgb))] px-4 py-3 text-foreground transition-all duration-300 focus:border-transparent focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))]"
+                        placeholder="Nom de votre structure"
                       />
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid gap-6 md:grid-cols-2">
                     <div>
-                      <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
+                      <label className="mb-2 block text-sm font-medium text-foreground">
                         Email
                       </label>
                       <input
                         type="email"
                         value={formData.email}
-                        onChange={(e) => setFormData({...formData, email: e.target.value})}
-                        className="w-full px-4 py-3 border border-[rgb(var(--border-default-rgb))] rounded-lg bg-[rgb(var(--bg-primary-rgb))] text-[rgb(var(--text-primary-rgb))] focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))] focus:border-transparent transition-all duration-300"
+                        onChange={(e) =>
+                          handleInputChange('email', e.target.value)
+                        }
+                        className="w-full rounded-xl border border-[rgb(var(--border-default-rgb))] bg-[rgb(var(--bg-primary-rgb))] px-4 py-3 text-foreground transition-all duration-300 focus:border-transparent focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))]"
                         placeholder="votre@email.com"
                       />
                     </div>
+
                     <div>
-                      <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
-                        Service utilisé
+                      <label className="mb-2 block text-sm font-medium text-foreground">
+                        Solution utilisée
                       </label>
                       <select
                         value={formData.service}
-                        onChange={(e) => setFormData({...formData, service: e.target.value})}
-                        className="w-full px-4 py-3 border border-[rgb(var(--border-default-rgb))] rounded-lg bg-[rgb(var(--bg-primary-rgb))] text-[rgb(var(--text-primary-rgb))] focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))] focus:border-transparent transition-all duration-300"
+                        onChange={(e) =>
+                          handleInputChange('service', e.target.value)
+                        }
+                        className="w-full rounded-xl border border-[rgb(var(--border-default-rgb))] bg-[rgb(var(--bg-primary-rgb))] px-4 py-3 text-foreground transition-all duration-300 focus:border-transparent focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))]"
                       >
-                        <option value="">Sélectionnez un service</option>
-                        {services.map((service) => (
+                        <option value="">Sélectionnez une solution</option>
+                        {SERVICES.map((service) => (
                           <option key={service.id} value={service.id}>
                             {service.icon} {service.name}
                           </option>
@@ -277,47 +507,51 @@ const FeedbackSection = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
-                      Évaluation *
+                    <label className="mb-2 block text-sm font-medium text-foreground">
+                      Votre évaluation *
                     </label>
-                    <div className="flex items-center gap-2 mb-4">
+
+                    <div className="mb-2 flex items-center gap-2">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
                           type="button"
                           onClick={() => {
                             setRating(star);
-                            setFormData({...formData, rating: star});
+                            handleInputChange('rating', star);
                           }}
                           onMouseEnter={() => setHoveredRating(star)}
                           onMouseLeave={() => setHoveredRating(0)}
                           className="transition-all duration-200 hover:scale-110"
                         >
                           <Star
-                            className={`w-8 h-8 ${
+                            className={`h-8 w-8 ${
                               star <= (hoveredRating || rating)
-                                ? 'text-yellow-400 fill-current'
+                                ? 'fill-current text-yellow-400'
                                 : 'text-[rgb(var(--border-medium-rgb))]'
                             }`}
                           />
                         </button>
                       ))}
-                      <span className="ml-2 text-[rgb(var(--text-secondary-rgb))]">
-                        {rating > 0 && `${rating}/5 étoiles`}
+
+                      <span className="ml-2 text-sm text-text-secondary">
+                        {rating > 0 ? `${rating}/5 étoiles` : 'Choisissez une note'}
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-[rgb(var(--text-primary-rgb))] mb-2">
+                    <label className="mb-2 block text-sm font-medium text-foreground">
                       Votre commentaire *
                     </label>
                     <textarea
                       value={formData.comment}
-                      onChange={(e) => setFormData({...formData, comment: e.target.value})}
+                      onChange={(e) =>
+                        handleInputChange('comment', e.target.value)
+                      }
                       rows={5}
-                      className="w-full px-4 py-3 border border-[rgb(var(--border-default-rgb))] rounded-lg bg-[rgb(var(--bg-primary-rgb))] text-[rgb(var(--text-primary-rgb))] focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))] focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Partagez votre expérience avec AgroNoya..."
+                      className="w-full resize-none rounded-xl border border-[rgb(var(--border-default-rgb))] bg-[rgb(var(--bg-primary-rgb))] px-4 py-3 text-foreground transition-all duration-300 focus:border-transparent focus:ring-2 focus:ring-[rgb(var(--agronoya-primary-rgb))]"
+                      placeholder="Expliquez ce que la plateforme vous a apporté, ce que vous appréciez, ou ce qui pourrait être encore amélioré."
                       required
                     />
                   </div>
@@ -325,181 +559,65 @@ const FeedbackSection = () => {
                   <div className="text-center">
                     <button
                       type="submit"
-                      className="bg-[rgb(var(--agronoya-primary-rgb))] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[rgb(var(--agronoya-primary-hover-rgb))] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 inline-flex items-center gap-2"
+                      className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[rgb(var(--agronoya-primary-rgb))] to-[rgb(var(--agronoya-primary-hover-rgb))] px-8 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
-                      <Send className="w-5 h-5" />
+                      <Send className="h-5 w-5" />
                       Publier mon avis
                     </button>
                   </div>
                 </form>
               ) : (
-                <div className="text-center py-12">
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle className="w-10 h-10 text-green-600" />
+                <div className="py-12 text-center">
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
+                    <CheckCircle className="h-10 w-10 text-green-600" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[rgb(var(--text-primary-rgb))] mb-4">
-                    Merci pour votre avis !
+
+                  <h3 className="mb-4 text-2xl font-bold text-foreground">
+                    Merci pour votre retour
                   </h3>
-                  <p className="text-[rgb(var(--text-secondary-rgb))] mb-6">
-                    Votre témoignage a été soumis avec succès. Il sera publié après modération.
+
+                  <p className="mb-6 text-text-secondary">
+                    Votre témoignage a bien été pris en compte et sera relu
+                    avant publication.
                   </p>
+
                   <div className="flex justify-center">
-                    <Heart className="w-6 h-6 text-red-500 animate-pulse" />
+                    <Heart className="h-6 w-6 animate-pulse text-red-500" />
                   </div>
                 </div>
               )}
             </div>
           )}
-
-          {activeTab === 'testimonials' && (
-            <div className="space-y-8">
-              {/* Testimonial Carousel */}
-              <div className="relative bg-[rgb(var(--bg-primary-rgb))] rounded-3xl shadow-2xl p-8 md:p-12 border border-[rgb(var(--border-light-rgb))] overflow-hidden">
-                <div className="absolute top-6 right-6">
-                  <Quote className="w-12 h-12 text-[rgb(var(--agronoya-primary-rgb)/0.2)]" />
-                </div>
-                
-                <div className="relative">
-                  <div className="flex items-center justify-between mb-8">
-                    <button
-                      onClick={prevTestimonial}
-                      className="w-12 h-12 bg-[rgb(var(--bg-secondary-rgb))] rounded-full flex items-center justify-center text-[rgb(var(--agronoya-primary-rgb))] hover:bg-[rgb(var(--agronoya-primary-rgb))] hover:text-white transition-all duration-300 shadow-lg"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    
-                    <div className="flex-1 mx-8">
-                      <div className="text-center">
-                        <div className="flex justify-center mb-4">
-                          {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                            <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                          ))}
-                        </div>
-                        <blockquote className="text-xl md:text-2xl text-[rgb(var(--text-primary-rgb))] leading-relaxed mb-8 font-medium">
-                          "{testimonials[currentTestimonial].comment}"
-                        </blockquote>
-                        <div className="flex items-center justify-center gap-4">
-                          <img
-                            src={testimonials[currentTestimonial].avatar}
-                            alt={testimonials[currentTestimonial].name}
-                            className="w-16 h-16 rounded-full object-cover border-4 border-[rgb(var(--agronoya-primary-rgb))]"
-                          />
-                          <div className="text-left">
-                            <div className="flex items-center gap-2">
-                              <div className="font-semibold text-[rgb(var(--text-primary-rgb))] text-lg">
-                                {testimonials[currentTestimonial].name}
-                              </div>
-                              {testimonials[currentTestimonial].verified && (
-                                <CheckCircle className="w-5 h-5 text-blue-500" />
-                              )}
-                            </div>
-                            <div className="text-[rgb(var(--text-secondary-rgb))] text-sm">
-                              {testimonials[currentTestimonial].company}
-                            </div>
-                            <div className="text-[rgb(var(--text-tertiary-rgb))] text-xs">
-                              {testimonials[currentTestimonial].location} • {testimonials[currentTestimonial].date}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <button
-                      onClick={nextTestimonial}
-                      className="w-12 h-12 bg-[rgb(var(--bg-secondary-rgb))] rounded-full flex items-center justify-center text-[rgb(var(--agronoya-primary-rgb))] hover:bg-[rgb(var(--agronoya-primary-rgb))] hover:text-white transition-all duration-300 shadow-lg"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </div>
-                  
-                  {/* Dots indicator */}
-                  <div className="flex justify-center gap-2">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => setCurrentTestimonial(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                          index === currentTestimonial
-                            ? 'bg-[rgb(var(--agronoya-primary-rgb))] w-8'
-                            : 'bg-[rgb(var(--border-medium-rgb))]'
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              {/* All Testimonials Grid */}
-              <div className="grid md:grid-cols-2 gap-6">
-                {testimonials.map((testimonial) => (
-                  <div
-                    key={testimonial.id}
-                    className="bg-[rgb(var(--bg-primary-rgb))] rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-[rgb(var(--border-light-rgb))]"
-                  >
-                    <div className="flex items-center gap-3 mb-4">
-                      <img
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                        className="w-12 h-12 rounded-full object-cover"
-                      />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2">
-                          <h4 className="font-semibold text-[rgb(var(--text-primary-rgb))]">
-                            {testimonial.name}
-                          </h4>
-                          {testimonial.verified && (
-                            <CheckCircle className="w-4 h-4 text-blue-500" />
-                          )}
-                        </div>
-                        <p className="text-sm text-[rgb(var(--text-secondary-rgb))]">
-                          {testimonial.company}
-                        </p>
-                      </div>
-                      <div className="text-xs text-[rgb(var(--text-tertiary-rgb))]">
-                        {testimonial.date}
-                      </div>
-                    </div>
-                    
-                    <div className="flex mb-3">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                      ))}
-                    </div>
-                    
-                    <p className="text-[rgb(var(--text-primary-rgb))] leading-relaxed mb-3">
-                      "{testimonial.comment}"
-                    </p>
-                    
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs bg-[rgb(var(--agronoya-primary-rgb)/0.1)] text-[rgb(var(--agronoya-primary-rgb))] px-2 py-1 rounded-full">
-                        {testimonial.service}
-                      </span>
-                      <span className="text-xs text-[rgb(var(--text-tertiary-rgb))]">
-                        {testimonial.location}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-r from-[rgb(var(--agronoya-primary-rgb))] to-[rgb(var(--agronoya-primary-hover-rgb))] rounded-3xl p-8 md:p-12 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Prêt à Transformer Votre Agriculture ?
+        <div className="mt-16 text-center md:mt-20">
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-[34px] border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-gradient-to-r from-[rgb(var(--agronoya-primary-rgb))] to-[rgb(var(--agronoya-primary-hover-rgb))] p-8 text-white shadow-2xl md:p-12">
+            <h3 className="mb-4 text-2xl font-bold md:text-3xl lg:text-4xl">
+              Découvrez pourquoi les exploitations font confiance à AgroNoya
             </h3>
-            <p className="text-lg mb-8 opacity-90">
-              Rejoignez plus de 2,500 agriculteurs qui ont déjà révolutionné leur exploitation avec AgroNoya
+
+            <p className="mx-auto mb-8 max-w-3xl text-base leading-relaxed text-white/90 md:text-lg">
+              Passez d’une agriculture réactive à une agriculture mieux pilotée,
+              plus précise et plus rentable grâce à une plateforme pensée pour
+              le terrain.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[rgb(var(--agronoya-primary-rgb))] px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl">
-                Demander une Démo
+
+            <div className="flex flex-col justify-center gap-4 sm:flex-row">
+              <button
+                type="button"
+                onClick={() => navigate('/contact')}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 font-bold text-[rgb(var(--agronoya-primary-rgb))] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 hover:shadow-2xl"
+              >
+                Demander une démo
               </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-[rgb(var(--agronoya-primary-rgb))] transition-all duration-300">
-                Voir Nos Solutions
+
+              <button
+                type="button"
+                onClick={() => navigate('/solutions')}
+                className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[rgb(var(--agronoya-primary-rgb))]"
+              >
+                Voir nos solutions
+                <ArrowRight className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -510,4 +628,3 @@ const FeedbackSection = () => {
 };
 
 export default FeedbackSection;
-

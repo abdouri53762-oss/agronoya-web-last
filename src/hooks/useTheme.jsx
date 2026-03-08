@@ -1,37 +1,33 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const ThemeContext = createContext();
+const ThemeContext = createContext(null);
+const THEME_STORAGE_KEY = 'agronoya-theme';
+const FORCED_THEME = 'dark';
 
 export const useTheme = () => {
   const context = useContext(ThemeContext);
+
   if (!context) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
+
   return context;
 };
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState(() => {
-    // Récupérer le thème depuis localStorage ou utiliser 'light' par défaut
-    const savedTheme = localStorage.getItem('agronoya-theme');
-    return savedTheme || 'light';
-  });
+  const [theme, setTheme] = useState(FORCED_THEME);
 
   useEffect(() => {
-    // Appliquer le thème au document
     const root = document.documentElement;
-    if (theme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-    
-    // Sauvegarder dans localStorage
-    localStorage.setItem('agronoya-theme', theme);
-  }, [theme]);
+
+    root.classList.remove('light', 'dark');
+    root.classList.add(FORCED_THEME);
+
+    window.localStorage.setItem(THEME_STORAGE_KEY, FORCED_THEME);
+  }, []);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
   const value = {
@@ -41,10 +37,5 @@ export const ThemeProvider = ({ children }) => {
     isDark: theme === 'dark'
   };
 
-  return (
-    <ThemeContext.Provider value={value}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
-
