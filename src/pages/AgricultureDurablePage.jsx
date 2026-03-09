@@ -71,10 +71,10 @@ const AgricultureDurablePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900">
+    <div className="min-h-screen bg-dark dark:bg-slate-900">
       {/* Section Héro */}
       <motion.section 
-        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-slate-900 pt-20"
+        className="relative min-h-screen flex items-center justify-center overflow-hidden bg-dark dark:bg-slate-900 pt-20"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
@@ -132,7 +132,7 @@ const AgricultureDurablePage = () => {
           </motion.div>
 
           <motion.button 
-            className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-12 py-6 rounded-2xl text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 mx-auto"
+            className="bg-gradient-to-r from-emerald-500 to-gray-600 hover:from-emerald-600 hover:to-blue-700 text-white px-12 py-6 rounded-2xl text-xl font-semibold shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 mx-auto"
             variants={itemVariants}
           >
             Démarrer ma Transformation Agricole
@@ -222,7 +222,7 @@ const AgricultureDurablePage = () => {
 
       {/* Section 2: Écosystème de Précision */}
       <motion.section 
-        className="py-24 bg-white dark:bg-slate-900"
+        className="py-24 bg-dark dark:bg-slate-900"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -246,7 +246,7 @@ const AgricultureDurablePage = () => {
           >
             <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:bg-slate-800/50 dark:backdrop-blur-xl rounded-3xl p-8 border border-blue-200 dark:border-slate-700 hover:shadow-xl dark:hover:bg-slate-800/70 transition-all duration-300 text-center">
               <div className="w-20 h-20 bg-blue-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Satellite className="w-10 h-10 text-white" />
+                <Satellite className="w-10 h-10 text-dark" />
               </div>
               <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">Collecte</h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">Capteurs IoT + Imagerie Satellite temps réel</p>
@@ -259,7 +259,7 @@ const AgricultureDurablePage = () => {
 
             <div className="bg-gradient-to-br from-green-50 to-green-100 dark:bg-slate-800/50 dark:backdrop-blur-xl rounded-3xl p-8 border border-green-200 dark:border-slate-700 hover:shadow-xl dark:hover:bg-slate-800/70 transition-all duration-300 text-center">
               <div className="w-20 h-20 bg-emerald-500 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Brain className="w-10 h-10 text-white" />
+                <Brain className="w-10 h-10 text-dark" />
               </div>
               <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">Analyse</h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">Moteurs IA spécialisés par domaine</p>

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from './hooks/useTheme';
 import './App.css';
 
@@ -53,6 +53,10 @@ const AgroNoyaStorePage = lazy(() => import('./pages/technologies/AgroNoyaStoreP
 const CarbonTrackPage = lazy(() => import('./pages/technologies/CarbonTrackPage'));
 const ImpactDeveloppementPage = lazy(() => import('./pages/technologies/ImpactDeveloppementPage'));
 
+const SuiviDePerformancePage = lazy(() => import('./components/features/Technologies/SuiviDePerformancePage'));
+const ValorisationDurablePage = lazy(() => import('./components/features/Technologies/ValorisationDurablePage'));
+const ServicesEcosystemePage = lazy(() => import('./components/features/Technologies/ServicesEcosystemePage'));
+
 const AgroSolPage = lazy(() => import('./pages/solutions/AgroSolPage'));
 const AgroSatPage = lazy(() => import('./pages/solutions/AgroSatPage'));
 const DroneMultispectralPage = lazy(() => import('./pages/solutions/DroneMultispectralPage'));
@@ -85,11 +89,7 @@ const AgroStoreDetailPage = lazy(() => import('./pages/services-details/AgroStor
 const ProductDetailPage = lazy(() => import('./pages/marketplace/ProductDetailPage'));
 
 function PageLoader() {
-  return (
-    <div className="page-loader animate-fade-in">
-      Chargement...
-    </div>
-  );
+  return <div className="page-loader animate-fade-in">Chargement...</div>;
 }
 
 function App() {
@@ -162,6 +162,10 @@ function App() {
               <Route path="technologies/agronoya-store" element={<AgroNoyaStorePage />} />
               <Route path="technologies/carbontrack" element={<CarbonTrackPage />} />
               <Route path="technologies/impact-developpement" element={<ImpactDeveloppementPage />} />
+
+              <Route path="technologies/suivi-de-performance" element={<SuiviDePerformancePage />} />
+<Route path="technologies/valorisation-durable" element={<ValorisationDurablePage />} />
+<Route path="technologies/services-ecosysteme" element={<ServicesEcosystemePage />} />
 
               <Route path="services/strategic-consultation" element={<StrategicConsultationPage />} />
               <Route path="services/iot-installation" element={<IoTInstallationPage />} />

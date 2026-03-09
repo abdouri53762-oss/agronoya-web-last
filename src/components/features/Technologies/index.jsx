@@ -1,46 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { 
-  Eye, 
-  Brain, 
-  Target, 
-  Zap, 
-  TrendingUp, 
-  ArrowRight, 
-  Play,
+import {
+  Eye,
+  Brain,
+  Target,
+  Zap,
+  TrendingUp,
+  ArrowRight,
   Satellite,
-  Cpu,
-  Activity,
-  Plane,
-  Leaf,
-  Shield,
-  Globe,
-  Battery,
   Smartphone,
   Database,
-  Cloud,
-  Wifi,
-  Camera,
-  BarChart3,
-  Settings,
-  Lock,
-  Layers,
   CheckCircle,
   Star,
-  Lightbulb,
-  Gauge,
-  Microscope,
-  Radar,
-  Thermometer,
-  Droplets,
-  Sun,
-  Wind,
-  Sprout
+  Cpu,
 } from 'lucide-react';
 
 const Technologies = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(true);
@@ -49,379 +24,421 @@ const Technologies = () => {
   const cycleSteps = [
     {
       id: 1,
-      title: "Écouter",
-      subtitle: "Collecte de données multisource",
-      description: "AgroNoya s'alimente en continu via capteurs IoT, imagerie satellite, drones DJI Mavic 3 Multispectral et feedback terrain.",
+      title: 'Acquérir',
+      subtitle: 'Collecte de données multisource',
+      description:
+        'AgroNoya collecte en continu des données issues des capteurs terrain, de l’imagerie satellite, des drones multispectraux et des observations opérationnelles.',
       icon: <Eye className="w-12 h-12" />,
-      color: "from-blue-500 to-cyan-500",
+      color: 'from-blue-500 to-cyan-500',
       details: [
-        "Capteurs IoT : NPK, pH, humidité, température, salinité",
-        "Imagerie satellite : NDVI, NDWI, SAVI et thermiques",
-        "DJI Mavic 3 Multispectral : cartographie précise",
-        "Feedback terrain : signalements agriculteurs"
+        'Capteurs IoT : humidité, température, pH, salinité, NPK',
+        'Imagerie satellite : NDVI, NDWI, SAVI et couches thermiques selon disponibilité',
+        'Drones multispectraux : cartographie haute résolution',
+        'Feedback terrain : remontées agriculteurs et techniciens',
       ],
-      image: "/src/assets/satellite_analysis.jpg"
+      image: '/src/assets/satellite_analysis.jpg',
     },
     {
       id: 2,
-      title: "Comprendre", 
-      subtitle: "Moteur de filtration avec Supabase",
-      description: "Notre processus garantit une fiabilité maximale : validation instantanée, nettoyage temps réel, préparation pour l'IA.",
+      title: 'Valider',
+      subtitle: 'Filtration et structuration des flux',
+      description:
+        'Les données entrantes sont validées, nettoyées et normalisées afin de garantir une base exploitable par les moteurs analytiques.',
       icon: <Brain className="w-12 h-12" />,
-      color: "from-purple-500 to-pink-500",
+      color: 'from-purple-500 to-pink-500',
       details: [
-        "Validation instantanée des données capteurs",
-        "Nettoyage temps réel des fluctuations",
-        "Structuration optimisée pour l'IA",
-        "Qualité maximale avant décision"
+        'Contrôle de cohérence des valeurs capteurs',
+        'Détection des anomalies et mesures aberrantes',
+        'Nettoyage temps réel des fluctuations non représentatives',
+        'Préparation standardisée pour les modèles IA',
       ],
-      image: "/src/assets/ai_chatbot.jpg"
+      image: '/src/assets/ai_chatbot.jpg',
     },
     {
       id: 3,
-      title: "Dialoguer",
-      subtitle: "IA traduit science en sagesse pratique", 
-      description: "Nos moteurs d'analyse (NoyaSol, NoyaDiag, NoyaSat) et de dialogue (NoyaIrrigation, NoyaGPT) travaillent ensemble.",
+      title: 'Analyser',
+      subtitle: 'Moteurs d’inférence agronomique',
+      description:
+        'Les modèles propriétaires exploitent les données nettoyées pour produire des diagnostics techniques sur le sol, la culture et l’état physiologique des parcelles.',
       icon: <Target className="w-12 h-12" />,
-      color: "from-green-500 to-emerald-500",
+      color: 'from-green-500 to-emerald-500',
       details: [
-        "NoyaSol : analyse chimie du sol",
-        "NoyaDiag : détection maladies/ravageurs",
-        "NoyaIrrigation : ingénieur agronome spécialisé eau",
-        "NoyaGPT : conseiller agricole personnel"
+        'NoyaSol : analyse du sol et des équilibres nutritifs',
+        'NoyaDiag : détection de stress, maladies et ravageurs',
+        'NoyaSat : interprétation d’images satellites et anomalies spatiales',
+        'Croisement des données terrain, météo et imagerie',
       ],
-      image: "/src/assets/dashboard_agronoya.png"
+      image: '/src/assets/dashboard_agronoya.png',
     },
     {
       id: 4,
-      title: "Agir",
-      subtitle: "Du conseil à l'intervention terrain",
-      description: "Modèle IA prend décisions d'arrosage ultra-précises et drone Agras exécute traitements chirurgicaux.",
+      title: 'Recommander',
+      subtitle: 'Restitution décisionnelle contextualisée',
+      description:
+        'La couche décisionnelle transforme les résultats d’analyse en recommandations actionnables adaptées au contexte agronomique local.',
       icon: <Zap className="w-12 h-12" />,
-      color: "from-orange-500 to-red-500", 
+      color: 'from-orange-500 to-red-500',
       details: [
-        "Décisions arrosage automatiques intelligentes",
-        "Drone Agras : application contrôlée précise",
-        "Pilotage technicien expert supervisé",
-        "Exécution parfaite et sécurisée"
+        'Priorisation des alertes selon criticité',
+        'Recommandations irrigation, suivi et intervention',
+        'Synthèse compréhensible pour profils techniques et opérationnels',
+        'Support conversationnel via NoyaGPT',
       ],
-      image: "/src/assets/drone_scanning.jpg"
+      image: '/src/assets/drone_scanning.jpg',
     },
     {
       id: 5,
-      title: "Piloter",
-      subtitle: "Écosystème intégré AgroNoya",
-      description: "Dashboards web et applications mobiles offrent contrôle total : mode automatique intelligent ou manuel assisté.",
+      title: 'Piloter',
+      subtitle: 'Supervision web et mobile',
+      description:
+        'Les tableaux de bord et applications mobiles permettent de superviser les indicateurs, suivre les alertes et exécuter les actions recommandées.',
       icon: <Smartphone className="w-12 h-12" />,
-      color: "from-indigo-500 to-purple-500",
+      color: 'from-indigo-500 to-purple-500',
       details: [
-        "Dashboard principal : vision 360°",
-        "Dashboard irrigation : poste pilotage eau",
-        "Applications mobiles : puissance terrain",
-        "Mode auto intelligent ou manuel assisté"
+        'Dashboard principal : vision consolidée de l’exploitation',
+        'Dashboard irrigation : support métier dédié à la gestion hydrique',
+        'Applications mobiles : continuité bureau/terrain',
+        'Modes automatique et manuel assisté',
       ],
-      image: "/src/assets/smart_farming_1.jpg"
+      image: '/src/assets/smart_farming_1.jpg',
     },
     {
       id: 6,
-      title: "Prospérer",
-      subtitle: "Écosystème développement durable",
-      description: "AgroNoya Store et CarbonTrack transforment efficacité en valeur économique et environnementale.",
+      title: 'Optimiser',
+      subtitle: 'Performance et amélioration continue',
+      description:
+        'Les données historisées servent à mesurer les performances techniques, améliorer les modèles et préparer des usages avancés de valorisation durable.',
       icon: <TrendingUp className="w-12 h-12" />,
-      color: "from-yellow-500 to-orange-500",
+      color: 'from-yellow-500 to-orange-500',
       details: [
-        "AgroNoya Store : marketplace agricole intelligente",
-        "CarbonTrack : monétisation agriculture durable",
-        "Crédits carbone valorisables",
-        "Moteur développement économique"
+        'Suivi des indicateurs de performance agronomique',
+        'Mesure des gains hydriques et opérationnels',
+        'Historisation des décisions et des interventions',
+        'Ouverture vers carbone, ESG et services connectés',
       ],
-      image: "/src/assets/smart_farming_2.jpg"
-    }
+      image: '/src/assets/smart_farming_2.jpg',
+    },
   ];
 
   const technologies = [
     {
       id: 1,
-      title: "Collecte de Données Multisource",
-      subtitle: "Écouter la Terre",
-      description: "AgroNoya transforme votre exploitation en écosystème connecté où chaque élément communique en temps réel.",
+      title: 'Collecte de Données Multisource',
+      subtitle: 'Infrastructure d’acquisition terrain et distante',
+      description:
+        'Cette couche assure la remontée continue de données agronomiques depuis les capteurs embarqués, les satellites et les drones.',
       icon: <Satellite className="w-8 h-8" />,
-      color: "from-blue-500 to-cyan-500",
-      image: "/src/assets/drone_analysis.mp4",
-      isVideo: true,
+      color: 'from-blue-500 to-cyan-500',
+      image: '/src/assets/satellite_analysis.jpg',
       details: {
-        overview: "Notre technologie donne à votre terre une voix numérique pour traduire ses besoins en actions justes.",
+        overview:
+          'La qualité d’un système d’aide à la décision dépend de la diversité, de la fréquence et de la fiabilité des signaux collectés. AgroNoya combine plusieurs sources de mesure pour couvrir le sol, la culture et l’environnement.',
         components: [
           {
-            name: "Capteurs IoT",
-            description: "Transmission sécurisée ESP32 + GSM/LoRa vers Supabase",
+            name: 'Capteurs IoT',
+            description:
+              'Instrumentation terrain pour acquisition continue des paramètres critiques.',
             specs: [
-              "NPK, pH, humidité, température du sol",
-              "Salinité, pluviométrie, vent",
-              "Transmission temps réel sécurisée",
-              "Alimentation solaire autonome"
-            ]
+              'Mesures : humidité, température, pH, salinité, NPK',
+              'Transmission via ESP32, GSM ou LoRa selon le scénario de déploiement',
+              'Fréquence d’échantillonnage configurable',
+              'Intégration dans une logique de supervision continue',
+            ],
           },
           {
-            name: "Imagerie Satellite",
-            description: "Vision macroscopique des parcelles",
+            name: 'Imagerie Satellite',
+            description:
+              'Observation périodique des parcelles à l’échelle macroscopique.',
             specs: [
-              "Indices NDVI, NDWI, SAVI et thermiques",
-              "Sentinel-2, Sentinel-3, PlanetScope, Landsat",
-              "Surveillance continue non-invasive",
-              "Détection précoce stress hydrique"
-            ]
+              'Indices : NDVI, NDWI, SAVI et thermique selon disponibilité',
+              'Sources exploitables : Sentinel, Landsat, PlanetScope',
+              'Détection des variations intra-parcellaires',
+              'Suivi des stress hydriques et anomalies de développement',
+            ],
           },
           {
-            name: "DJI Mavic 3 Multispectral",
-            description: "Drone cartographie compact et robuste",
+            name: 'Drones Multispectraux',
+            description:
+              'Acquisition haute résolution pour analyse localisée et cartographie de précision.',
             specs: [
-              "Capteurs RGB (20 MP) et multispectraux (4×5 MP)",
-              "Technologie compensation solaire",
-              "Données NDVI précises long terme",
-              "Cartographie centimétrique"
-            ]
-          }
+              'Capture RGB et multispectrale',
+              'Résolution centimétrique selon altitude de vol',
+              'Diagnostic précis sur zones ciblées',
+              'Complément opérationnel aux observations satellites',
+            ],
+          },
         ],
-        impact: "Transformation de votre exploitation en système intelligent qui anticipe les besoins avant qu'ils ne deviennent critiques."
-      }
+        impact:
+          'Cette couche améliore la couverture de mesure, réduit les angles morts et fournit une base robuste aux modules analytiques.',
+      },
     },
     {
       id: 2,
-      title: "Moteur de Filtration de Données",
-      subtitle: "Comprendre avec Supabase",
-      description: "Notre moteur de filtration garantit une fiabilité maximale : la qualité avant la décision. Nous transformons les données brutes en intelligence de haute qualité.",
+      title: 'Moteur de Filtration de Données',
+      subtitle: 'Validation, nettoyage et normalisation',
+      description:
+        'Les flux bruts sont contrôlés et structurés avant toute exploitation analytique afin de garantir une entrée cohérente pour les modèles.',
       icon: <Database className="w-8 h-8" />,
-      color: "from-cyan-500 to-blue-500",
-      image: "/src/assets/satellite_analysis.jpg",
+      color: 'from-cyan-500 to-blue-500',
+      image: '/src/assets/satellite_analysis.jpg',
       details: {
-        overview: "Chez Noya AI models, une décision intelligente commence par une donnée parfaite. Supabase agit comme un filtre intelligent pour traiter chaque information avant qu'elle n'atteigne notre IA.",
+        overview:
+          'Cette couche intermédiaire isole les erreurs de mesure, réduit le bruit et homogénéise les formats. Elle joue un rôle clé dans la stabilité des diagnostics et la fiabilité des recommandations.',
         components: [
           {
-            name: "Validation Instantanée",
-            description: "Rejet automatique données erronées ou anormales",
+            name: 'Validation Instantanée',
+            description:
+              'Détection automatique des mesures impossibles, absentes ou hors plage.',
             specs: [
-              "Filtrage valeurs impossibles capteurs",
-              "Détection erreurs de format automatique",
-              "Conservation mesures crédibles uniquement",
-              "Sécurisation flux données temps réel"
-            ]
+              'Contrôle de cohérence sur les valeurs capteurs',
+              'Détection des formats incomplets ou erronés',
+              'Rejet des valeurs non crédibles',
+              'Qualification des données dès l’ingestion',
+            ],
           },
           {
-            name: "Nettoyage Temps Réel",
-            description: "Algorithmes lissage élimination bruit",
+            name: 'Nettoyage Temps Réel',
+            description:
+              'Réduction des fluctuations non représentatives avant interprétation.',
             specs: [
-              "Suppression fluctuations sans importance",
-              "Révélation tendances réelles cultures",
-              "Optimisation signal/bruit données",
-              "Préparation flux structuré pour IA"
-            ]
+              'Lissage des séries temporelles',
+              'Suppression des pics aberrants',
+              'Stabilisation du signal',
+              'Préservation des variations réellement agronomiques',
+            ],
           },
           {
-            name: "Préparation pour l'IA",
-            description: "Structuration informations nettoyées",
+            name: 'Préparation pour l’IA',
+            description:
+              'Structuration des données pour exploitation par les moteurs d’analyse.',
             specs: [
-              "Flux données optimisé pour analyse",
-              "Format standardisé pour modèles IA",
-              "Garantie qualité maximale entrée",
-              "Assurance recommandations fiables"
-            ]
+              'Normalisation des formats d’entrée',
+              'Historisation cohérente des flux',
+              'Préparation des jeux de données pour inférence',
+              'Interopérabilité avec dashboards et modules métier',
+            ],
           },
           {
-            name: "Architecture Supabase Sécurisée",
-            description: "Sécurité au repos et en transit",
+            name: 'Architecture Sécurisée',
+            description:
+              'Encadrement des flux de données en transit et au repos.',
             specs: [
-              "Chiffrement SSL/TLS obligatoire",
-              "Données chiffrées sur serveurs",
-              "Gestion sécurisée des secrets",
-              "Sauvegardes automatiques PITR"
-            ]
-          }
+              'Chiffrement SSL/TLS des échanges',
+              'Protection des secrets et accès techniques',
+              'Sauvegarde et restauration des données',
+              'Traçabilité des événements critiques',
+            ],
+          },
         ],
-        impact: "Nous ne nous contentons pas de collecter des données ; nous les transformons en intelligence de haute qualité, assurant que chaque décision d'irrigation est basée sur une certitude absolue."
-      }
+        impact:
+          'Cette couche réduit les faux signaux, améliore la qualité des analyses et sécurise l’exploitation des données à l’échelle de la plateforme.',
+      },
     },
     {
       id: 3,
-      title: "Intelligence Artificielle Propriétaire",
-      subtitle: "Le Cerveau de l'Écosystème",
-      description: "Nos modèles Noya transforment la complexité des données en sagesse pratique accessible à tous.",
-      icon: <Brain className="w-8 h-8" />,
-      color: "from-purple-500 to-pink-500",
-      image: "/src/assets/ai_vortex.gif",
+      title: 'Intelligence Artificielle Propriétaire',
+      subtitle: 'Moteurs d’analyse et d’assistance décisionnelle',
+      description:
+        'Les modèles spécialisés transforment les flux agronomiques en diagnostics, alertes et recommandations contextualisées.',
+      icon: <Cpu className="w-8 h-8" />,
+      color: 'from-purple-500 to-pink-500',
+      image: '/src/assets/ai_vortex.gif',
       isGif: true,
       details: {
-        overview: "Deux niveaux d'IA complémentaires : les scientifiques analysent, les conseillers traduisent en actions concrètes.",
+        overview:
+          'L’architecture IA s’appuie sur des moteurs spécialisés par fonction agronomique, complétés par une couche conversationnelle destinée à la restitution métier.',
         components: [
           {
-            name: "Moteurs d'Analyse (Scientifiques)",
-            description: "Spécialistes du diagnostic technique",
+            name: 'Moteurs d’Analyse',
+            description:
+              'Blocs spécialisés dans le traitement technique des signaux agronomiques.',
             specs: [
-              "NoyaSol : analyse chimie sol et carences nutriments",
-              "NoyaDiag : détection signatures visuelles maladies",
-              "NoyaSat : traitement images satellites stress/anomalies",
-              "Rapports techniques haute précision"
-            ]
+              'NoyaSol : lecture des paramètres du sol et déséquilibres nutritifs',
+              'NoyaDiag : détection de stress, maladies et ravageurs',
+              'NoyaSat : interprétation d’images satellites et d’anomalies spatiales',
+              'Fusion multi-source pour enrichissement du diagnostic',
+            ],
           },
           {
-            name: "Moteurs de Dialogue (Conseillers)",
-            description: "Maîtres simplification et contextualisation",
+            name: 'Moteurs de Dialogue',
+            description:
+              'Couche de restitution conçue pour traduire les analyses en actions compréhensibles.',
             specs: [
-              "NoyaIrrigation : ingénieur agronome spécialisé eau",
-              "Synthèse multi-factorielle intelligente",
-              "Technologie RAG avec recherche tunisienne",
-              "Recommandations simples et actionnables"
-            ]
+              'Synthèse multi-factorielle contextualisée',
+              'Priorisation des alertes selon criticité',
+              'Recommandations orientées action',
+              'Réduction de la complexité technique côté utilisateur final',
+            ],
           },
           {
-            name: "NoyaGPT",
-            description: "Conseiller agricole personnel universel",
+            name: 'NoyaGPT',
+            description:
+              'Interface conversationnelle d’accès aux moteurs de la plateforme.',
             specs: [
-              "Interface dialogue principale",
-              "Interrogation tous modèles simultanée",
-              "Réponses claires, concises, actionnables",
-              "Support dialecte tunisien"
-            ]
-          }
+              'Point d’entrée pour interroger les modules AgroNoya',
+              'Synthèse des sorties de plusieurs moteurs',
+              'Réponses claires, courtes et exploitables',
+              'Adaptation linguistique au contexte d’usage',
+            ],
+          },
         ],
-        impact: "Démocratisation de l'expertise agronomique : chaque agriculteur dispose d'un conseil de niveau ingénieur."
-      }
+        impact:
+          'Cette couche réduit le temps d’interprétation, améliore la réactivité opérationnelle et rend l’expertise agronomique plus accessible.',
+      },
     },
     {
       id: 4,
-      title: "Écosystème de Pilotage Intégré",
-      subtitle: "Contrôle Total",
-      description: "Toute la puissance du web dans votre poche : dashboards et applications mobiles miroirs pour un contrôle sans rupture.",
+      title: 'Écosystème de Pilotage Intégré',
+      subtitle: 'Supervision centralisée et continuité terrain',
+      description:
+        'Les interfaces web et mobiles centralisent la visualisation, l’analyse et l’exécution des actions recommandées.',
       icon: <Smartphone className="w-8 h-8" />,
-      color: "from-green-500 to-emerald-500",
-      image: "/src/assets/dashboard_agronoya.png",
+      color: 'from-green-500 to-emerald-500',
+      image: '/src/assets/dashboard_agronoya.png',
       details: {
-        overview: "Philosophie 'miroir' entre web et mobile : 100% des fonctionnalités disponibles partout, tout le temps.",
+        overview:
+          'La couche de pilotage permet de passer rapidement de l’observation à l’action via des interfaces synchronisées conçues pour les usages bureau et terrain.',
         components: [
           {
-            name: "Dashboard Principal AgroNoya",
-            description: "Hub contrôle analytique - Vision 360°",
+            name: 'Dashboard Principal AgroNoya',
+            description:
+              'Vue consolidée des parcelles, alertes, indicateurs et états techniques.',
             specs: [
-              "Agrégation toutes informations exploitation",
-              "Planification stratégique et performances",
-              "Gestion globale opérations agricoles",
-              "Interface gestionnaire confortable"
-            ]
+              'Vision centralisée des exploitations suivies',
+              'Synthèse de l’état des cultures et des signaux clés',
+              'Historique des événements et observations',
+              'Support à la planification des actions',
+            ],
           },
           {
-            name: "Dashboard Irrigation Unifié",
-            description: "Poste pilotage eau - Double modalité",
+            name: 'Dashboard Irrigation Unifié',
+            description:
+              'Interface métier dédiée à l’aide au pilotage hydrique.',
             specs: [
-              "Mode Automatique : guidage intelligent IA",
-              "Mode Manuel : contrôle assisté utilisateur",
-              "Centralisation analyses irrigation temps réel",
-              "Commande vannes/pompes directe"
-            ]
+              'Visualisation des besoins et niveaux de criticité',
+              'Mode automatique et mode manuel assisté',
+              'Support à la décision d’irrigation',
+              'Traçabilité des actions exécutées',
+            ],
           },
           {
-            name: "Applications Mobiles",
-            description: "Miroirs fidèles optimisés terrain",
+            name: 'Applications Mobiles',
+            description:
+              'Accès terrain aux fonctions essentielles de supervision et d’intervention.',
             specs: [
-              "Application AgroNoya : bureau mobile complet",
-              "Application Irrigation : télécommande totale",
-              "Même niveau information bureau/terrain",
-              "Réactivité immédiate alertes critiques"
-            ]
-          }
+              'Consultation rapide des alertes et états de parcelle',
+              'Saisie d’observations et retours terrain',
+              'Continuité bureau/terrain',
+              'Réactivité renforcée pour les équipes opérationnelles',
+            ],
+          },
         ],
-        impact: "Expérience sans rupture : chaque utilisateur dispose de 100% des capacités, quel que soit son rôle ou sa localisation."
-      }
+        impact:
+          'Cette couche réduit la fragmentation des outils et améliore la coordination entre supervision, décision et exécution.',
+      },
     },
     {
       id: 5,
-      title: "Automatisation Intelligente",
-      subtitle: "De la Décision à l'Action",
-      description: "L'IA orchestre l'arrosage comme un cerveau central, garantissant que chaque goutte d'eau est utilisée efficacement.",
+      title: 'Automatisation Intelligente',
+      subtitle: 'Passage de la recommandation à l’action',
+      description:
+        'Les modules d’automatisation organisent l’exécution opérationnelle des décisions avec contrôle humain et traçabilité.',
       icon: <Zap className="w-8 h-8" />,
-      color: "from-orange-500 to-red-500",
-      image: "/src/assets/drone_scanning.jpg",
+      color: 'from-orange-500 to-red-500',
+      image: '/src/assets/drone_scanning.jpg',
       details: {
-        overview: "Processus décisionnel en boucle intelligente : analyse temps réel + enrichissement IA + action automatique.",
+        overview:
+          'Le système ne s’arrête pas à l’analyse. Il structure aussi le passage à l’action, notamment pour l’irrigation et les interventions terrain assistées.',
         components: [
           {
-            name: "Analyse Données Temps Réel",
-            description: "Collecte continue multi-sources",
+            name: 'Analyse Données Temps Réel',
+            description:
+              'Exploitation continue des signaux agronomiques pour ajuster les décisions opérationnelles.',
             specs: [
-              "Capteurs IoT : humidité, température, salinité sol",
-              "Images satellites : santé cultures (NDVI), évaporation",
-              "Données météo : prévisions locales intégrées",
-              "Fusion intelligente toutes sources"
-            ]
+              'Lecture continue des capteurs et variables météo',
+              'Croisement avec l’état végétatif issu de l’imagerie',
+              'Détection des écarts par rapport aux seuils attendus',
+              'Mise à jour des priorités d’intervention',
+            ],
           },
           {
-            name: "Enrichissement IA (RAG)",
-            description: "Consultation base connaissances locale",
+            name: 'Enrichissement IA (RAG)',
+            description:
+              'Appui des modèles par une base de connaissance contextualisée.',
             specs: [
-              "Recherche tunisienne sols région Kairouan",
-              "Variétés locales (oliviers Chemlali, maraîchères)",
-              "Seuils stress hydrique critiques contextualisés",
-              "Agronome expert virtuel permanent"
-            ]
+              'Recherche de références adaptées au contexte agronomique',
+              'Prise en compte des conditions locales et des variétés',
+              'Support à l’explication des recommandations',
+              'Amélioration de la pertinence métier des sorties',
+            ],
           },
           {
-            name: "Drone Agras - Exécution Précise",
-            description: "Application contrôlée par technicien pilote",
+            name: 'Drone Agras - Exécution Précise',
+            description:
+              'Support aux opérations ciblées nécessitant une application contrôlée.',
             specs: [
-              "Import carte prescription radiocommande",
-              "Préparation mélange concentration exacte",
-              "Pilotage supervisé précision centimétrique",
-              "Expertise humaine + précision technologique"
-            ]
-          }
+              'Import de cartes de prescription ou zones d’intervention',
+              'Préparation encadrée des opérations',
+              'Exécution sous supervision humaine',
+              'Traçabilité des paramètres et missions réalisées',
+            ],
+          },
         ],
-        impact: "Arrosage de haute précision sans intervention : le système anticipe, décide et agit de manière optimale."
-      }
+        impact:
+          'Cette couche améliore la rapidité d’exécution, réduit les approximations et permet une intervention plus ciblée.',
+      },
     },
     {
       id: 6,
-      title: "Écosystème Économique Durable",
-      subtitle: "Prospérer Ensemble",
-      description: "AgroNoya transcende l'analyse pour devenir moteur de développement économique, environnemental et social.",
+      title: 'Écosystème Économique Durable',
+      subtitle: 'Mesure de performance et valorisation',
+      description:
+        'La plateforme consolide des indicateurs utiles à l’optimisation économique, environnementale et au déploiement de services complémentaires.',
       icon: <TrendingUp className="w-8 h-8" />,
-      color: "from-yellow-500 to-orange-500",
-      image: "/src/assets/smart_farming_2.jpg",
+      color: 'from-yellow-500 to-orange-500',
+      image: '/src/assets/smart_farming_2.jpg',
       details: {
-        overview: "Transformation de l'efficacité agricole en valeur économique tangible et impact environnemental positif.",
+        overview:
+          'Les données consolidées peuvent être utilisées pour suivre l’efficacité des pratiques, démontrer des gains et préparer des usages avancés de valorisation durable.',
         components: [
           {
-            name: "AgroNoya Store",
-            description: "Marketplace agricole intelligente",
+            name: 'Suivi de Performance',
+            description:
+              'Mesure continue des indicateurs techniques et opérationnels.',
             specs: [
-              "Monde virtuel agricole complet B2B/B2C",
-              "Achat/vente/services centralisés",
-              "Connexion intelligente aux diagnostics",
-              "Court-circuitage intermédiaires"
-            ]
+              'Suivi des consommations et fréquences d’intervention',
+              'Comparaison temporelle des états agronomiques',
+              'Historique des recommandations et actions',
+              'Base d’amélioration continue des modèles',
+            ],
           },
           {
-            name: "CarbonTrack",
-            description: "Monétisation agriculture durable",
+            name: 'Valorisation Durable',
+            description:
+              'Structuration de données utiles aux démarches environnementales.',
             specs: [
-              "Mesure Google Earth Engine multi-années",
-              "Certification économies eau/réduction intrants",
-              "Quantification séquestration carbone",
-              "Génération crédits carbone vendables"
-            ]
+              'Mesure d’indicateurs liés à l’efficience hydrique',
+              'Préparation des données pour reporting technique',
+              'Support potentiel à des démarches carbone ou ESG',
+              'Consolidation progressive de la valeur environnementale',
+            ],
           },
           {
-            name: "Impact Développement",
-            description: "Moteur économie locale",
+            name: 'Services Écosystème',
+            description:
+              'Connexion à des briques complémentaires de la plateforme.',
             specs: [
-              "Dynamisation économie locale",
-              "Circuits courts favorisés",
-              "Autonomie et pouvoir négociation renforcés",
-              "Revenus supplémentaires durabilité"
-            ]
-          }
+              'Marketplace et services agricoles connectables',
+              'Lien avec diagnostics et recommandations',
+              'Architecture produit modulaire',
+              'Extension progressive des cas d’usage',
+            ],
+          },
         ],
-        impact: "Positionnement agriculteurs comme acteurs clés lutte changement climatique avec accès nouveaux financements."
-      }
-    }
+        impact:
+          'Cette couche transforme l’historique d’exploitation en levier d’optimisation continue et de valorisation future.',
+      },
+    },
   ];
 
   useEffect(() => {
@@ -432,6 +449,25 @@ const Technologies = () => {
       return () => clearInterval(interval);
     }
   }, [isAnimating, cycleSteps.length]);
+
+  const buildComponentSlug = (componentName) => {
+    if (componentName === 'Analyse Données Temps Réel') {
+      return 'analyse-donnees-temps-reel';
+    }
+    if (componentName === 'Enrichissement IA (RAG)') {
+      return 'enrichissement-ia-rag';
+    }
+    if (componentName === 'Drone Agras - Exécution Précise') {
+      return 'drone-agras-execution-precise';
+    }
+
+    return componentName
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  };
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900">
@@ -444,13 +480,13 @@ const Technologies = () => {
               Notre <span className="text-blue-500 dark:text-blue-400">Technologie</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-              Réconcilier l'Héritage et l'Avenir
+              Une architecture agricole intelligente, modulaire et orientée décision
             </p>
             <div className="mt-8 max-w-5xl mx-auto">
-              <p className="text-lg text-gray-600 dark:text-gray-500 dark:text-gray-500 dark:text-gray-500 dark:text-gray-500 dark:text-slate-400 leading-relaxed">
-                Bien plus qu'une terre, votre exploitation est un héritage. Un savoir transmis, une patience cultivée, 
-                une relation intime avec un sol qui a sa propre histoire. Notre technologie n'a pas été conçue pour 
-                remplacer cette sagesse, mais pour l'amplifier.
+              <p className="text-lg text-gray-600 dark:text-slate-400 leading-relaxed">
+                AgroNoya combine acquisition de données terrain, imagerie satellite, intelligence artificielle,
+                automatisation et interfaces de pilotage pour transformer des signaux agronomiques complexes
+                en décisions opérationnelles exploitables.
               </p>
             </div>
           </div>
@@ -462,17 +498,11 @@ const Technologies = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-              Notre Écosystème de Souveraineté
+              Notre Chaîne Technologique
             </h2>
             <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Écouter → Comprendre → Dialoguer → Agir → Piloter → Prospérer
+              Acquérir → Valider → Analyser → Recommander → Piloter → Optimiser
             </p>
-                      {/* Titre et description */}
-            <div className="text-center mb-12">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-50 mb-4">
-                Écouter → Comprendre → Dialoguer → Agir → Piloter → Prospérer
-              </h3>
-            </div>
           </div>
 
           {/* Process Steps */}
@@ -482,19 +512,22 @@ const Technologies = () => {
                 key={step.id}
                 className={`relative p-8 rounded-2xl border transition-all duration-500 cursor-pointer ${
                   currentStep === index
-                    ? 'bg-white dark:bg-white dark:bg-slate-800 border-2 border-[#57D53B] scale-105 shadow-2xl'
-                    : 'bg-white dark:bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700'
+                    ? 'bg-white dark:bg-slate-800 border-2 border-[#57D53B] scale-105 shadow-2xl'
+                    : 'bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700'
                 }`}
-                onClick={() => setCurrentStep(index)}
+                onClick={() => {
+                  setCurrentStep(index);
+                  setIsAnimating(false);
+                }}
               >
-                <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${step.color} mb-6`}>
+                <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${step.color} mb-6 text-white`}>
                   {step.icon}
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-50 mb-2">{step.title}</h3>
                 <p className="text-blue-500 dark:text-blue-400 font-medium mb-4">{step.subtitle}</p>
                 <p className="text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">{step.description}</p>
-                
+
                 <ul className="space-y-2">
                   {step.details.map((detail, idx) => (
                     <li key={idx} className="flex items-start gap-3 text-sm text-gray-500 dark:text-slate-400">
@@ -507,7 +540,7 @@ const Technologies = () => {
                 {currentStep === index && (
                   <div className="absolute -top-2 -right-2">
                     <div className="w-6 h-6 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
-                      <Star className="w-3 h-3 text-gray-900 dark:text-slate-50" />
+                      <Star className="w-3 h-3 text-white" />
                     </div>
                   </div>
                 )}
@@ -525,7 +558,7 @@ const Technologies = () => {
               Technologies de Pointe
             </h2>
             <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl mx-auto">
-              Découvrez en détail les technologies qui donnent à votre terre une voix numérique
+              Découvrez les couches techniques qui structurent la plateforme AgroNoya
             </p>
           </div>
 
@@ -538,49 +571,48 @@ const Technologies = () => {
                 }`}
                 onClick={() => setSelectedTech(selectedTech === tech.id ? null : tech.id)}
               >
-                <div className="bg-white dark:bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 overflow-hidden">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl border border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700 overflow-hidden">
                   {/* Media Section */}
                   <div className="relative h-64 overflow-hidden">
                     {tech.isVideo ? (
-                      <video 
-                        className="w-full h-full object-cover" 
-                        autoPlay 
-                        loop 
+                      <video
+                        className="w-full h-full object-cover"
+                        autoPlay
+                        loop
                         muted
                         playsInline
                       >
                         <source src={tech.image} type="video/mp4" />
                       </video>
-                    ) : tech.isGif ? (
-                      <img 
-                        src={tech.image} 
-                        alt={tech.title}
-                        className="w-full h-full object-cover"
-                      />
                     ) : (
-                      <img 
-                        src={tech.image} 
+                      <img
+                        src={tech.image}
                         alt={tech.title}
                         className="w-full h-full object-cover"
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
                   </div>
-                  
+
                   <div className="p-8">
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${tech.color} mb-6`}>
+                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-r ${tech.color} mb-6 text-white`}>
                       {tech.icon}
                     </div>
-                    
+
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-slate-50 mb-2">{tech.title}</h3>
                     <p className="text-blue-500 dark:text-blue-400 font-medium mb-4">{tech.subtitle}</p>
                     <p className="text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">{tech.description}</p>
-                    
-                    <button className="flex items-center gap-2 text-blue-500 dark:text-blue-400 hover:text-blue-300 font-medium">
+
+                    <button
+                      type="button"
+                      className="flex items-center gap-2 text-blue-500 dark:text-blue-400 hover:text-blue-300 font-medium"
+                    >
                       {selectedTech === tech.id ? 'Masquer les détails' : 'Voir les détails'}
-                      <ArrowRight className={`w-4 h-4 transition-transform ${
-                        selectedTech === tech.id ? 'rotate-90' : ''
-                      }`} />
+                      <ArrowRight
+                        className={`w-4 h-4 transition-transform ${
+                          selectedTech === tech.id ? 'rotate-90' : ''
+                        }`}
+                      />
                     </button>
                   </div>
 
@@ -588,34 +620,23 @@ const Technologies = () => {
                     <div className="px-8 pb-8 border-t border-gray-200 dark:border-slate-700">
                       <div className="pt-6">
                         <p className="text-gray-600 dark:text-slate-300 mb-6 leading-relaxed">{tech.details.overview}</p>
-                        
+
                         <div className="space-y-6">
                           {tech.details.components.map((component, idx) => (
-                            <div key={idx} className="bg-white dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl p-6">
-                              <div className="flex justify-between items-start mb-2">
+                            <div
+                              key={idx}
+                              className="bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-xl p-6"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <div className="flex justify-between items-start mb-2 gap-4">
                                 <h4 className="text-lg font-semibold text-gray-900 dark:text-slate-50">{component.name}</h4>
                                 <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    let componentSlug = "";
-                                    
-                                    // Corrections spécifiques pour les sous-composants
-                                    if (component.name === "Analyse Données Temps Réel") {
-                                      componentSlug = "analyse-donnees-temps-reel";
-                                    } else if (component.name === "Enrichissement IA (RAG)") {
-                                      componentSlug = "enrichissement-ia-rag";
-                                    } else if (component.name === "Drone Agras - Exécution Précise") {
-                                      componentSlug = "drone-agras-execution-precise";
-                                    } else {
-                                      // Logique par défaut pour les autres composants
-                                      componentSlug = component.name.toLowerCase()
-                                        .replace(/\s+/g, '-')
-                                        .replace(/[^a-z0-9-]/g, '');
-                                    }
-                                    
+                                  type="button"
+                                  onClick={() => {
+                                    const componentSlug = buildComponentSlug(component.name);
                                     navigate(`/technologies/${componentSlug}`);
                                   }}
-                                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900 dark:text-slate-50 text-sm font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                                  className="px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2 shrink-0"
                                 >
                                   Voir plus
                                   <ArrowRight className="w-4 h-4" />
@@ -633,8 +654,8 @@ const Technologies = () => {
                             </div>
                           ))}
                         </div>
-                        
-                        <div className="mt-6 p-6 bg-blue-50 dark:bg-white dark:bg-slate-800 rounded-xl border border-blue-200 dark:border-gray-200 dark:border-slate-700">
+
+                        <div className="mt-6 p-6 bg-blue-50 dark:bg-slate-800 rounded-xl border border-blue-200 dark:border-slate-700">
                           <h4 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-2">Impact</h4>
                           <p className="text-gray-600 dark:text-slate-300">{tech.details.impact}</p>
                         </div>
@@ -652,16 +673,24 @@ const Technologies = () => {
       <div className="py-20 bg-gray-50 dark:bg-slate-900">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-            Prêt à Transformer Votre Agriculture ?
+            Prêt à Explorer l’Architecture AgroNoya ?
           </h2>
           <p className="text-xl text-gray-600 dark:text-slate-300 mb-8">
-            Rejoignez la révolution agricole intelligente avec AgroNoya
+            Découvrez comment nos briques technologiques s’articulent pour soutenir la décision agronomique.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-gray-900 dark:text-slate-50 font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105">
+            <button
+              type="button"
+              onClick={() => navigate('/solutions')}
+              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+            >
               Découvrir nos Solutions
             </button>
-            <button className="px-8 py-4 border border-white text-gray-900 dark:text-slate-50 font-semibold rounded-xl hover:bg-white transition-all duration-300">
+            <button
+              type="button"
+              onClick={() => navigate('/contact')}
+              className="px-8 py-4 border border-gray-300 dark:border-slate-600 text-gray-900 dark:text-slate-50 font-semibold rounded-xl hover:bg-white dark:hover:bg-slate-800 transition-all duration-300"
+            >
               Contacter nos Experts
             </button>
           </div>
@@ -672,4 +701,3 @@ const Technologies = () => {
 };
 
 export default Technologies;
-
