@@ -8,17 +8,14 @@ import {
   ArrowRight,
   Globe,
   Zap,
-  User,
   Sparkles,
-  BarChart3,
   CheckCircle,
   Target,
-  Clock3, 
-  Layers3, 
-  Rocket, 
-  Wallet
+  Clock3,
+  Layers3,
+  Rocket,
+  Wallet,
 } from 'lucide-react';
-
 
 import malekImg from '../assets/malek_abbassi.jpg';
 import abdelhakImg from '../assets/abdelhak_abbassi.jpg';
@@ -27,6 +24,20 @@ import saifImg from '../assets/saif_rahmani.jpg';
 import emmaImg from '../assets/emma_ouej.jpg';
 import mohamedImg from '../assets/mohamed_abbassi.jpg';
 import ghofranImg from '../assets/ghofran_nasri.jpg';
+
+const sectionDark =
+  'relative overflow-hidden py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950';
+const sectionDarker =
+  'relative overflow-hidden py-24 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-950/80';
+
+const glowTop =
+  "absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(40,167,69,0.10),transparent_40%)]";
+const glowCenter =
+  "absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(87,213,59,0.07),transparent_40%)]";
+const glowRight =
+  "absolute inset-0 bg-[radial-gradient(circle_at_right,rgba(87,213,59,0.08),transparent_35%)]";
+const glowBottom =
+  "absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(40,167,69,0.08),transparent_35%)]";
 
 const InvestisseursPage = () => {
   const [formData, setFormData] = useState({
@@ -106,151 +117,153 @@ const InvestisseursPage = () => {
       icon: Droplets,
       value: '2.5M L',
       label: 'Eau économisée par mois',
-      color: 'text-blue-500',
-      bg: 'bg-blue-50 dark:bg-blue-500/10',
+      color: 'text-blue-400',
+      bg: 'bg-blue-500/10',
     },
     {
       icon: Leaf,
       value: '-30%',
       label: 'Réduction des intrants chimiques',
-      color: 'text-green-500',
-      bg: 'bg-green-50 dark:bg-green-500/10',
+      color: 'text-green-400',
+      bg: 'bg-green-500/10',
     },
     {
       icon: Shield,
       value: '-25%',
       label: 'Réduction empreinte carbone',
-      color: 'text-purple-500',
-      bg: 'bg-purple-50 dark:bg-purple-500/10',
+      color: 'text-purple-400',
+      bg: 'bg-purple-500/10',
     },
   ];
 
   const team = [
-  {
-    name: 'Malek Abbassi',
-    role: 'Co-fondateur & Président-Directeur Général',
-    desc: 'Machine Learning Researcher',
-    image: malekImg,
-  },
-  {
-    name: 'Abdelhak Abbassi',
-    role: 'Co-fondateur & Head of Sales',
-    desc: 'Développement commercial & partenariats',
-    image: abdelhakImg,
-  },
-  {
-    name: 'Khawla Khamassi',
-    role: 'Responsable Infrastructure & Développement B2B',
-    desc: 'Ingénieure en informatique',
-    image: khawlaImg,
-  },
-  {
-    name: 'Saif Eddine Rahmani',
-    role: 'Responsable Financier',
-    desc: 'Expert financier, Master de Recherche en Finance',
-    image: saifImg,
-  },
-  {
-    name: 'Emma Ouej',
-    role: 'AI Engineer & Développement Web',
-    desc: 'Ingénieure IA - Solutions intelligentes et applications web',
-    image: emmaImg,
-  },
-  {
-    name: 'Mohamed Abbassi',
-    role: 'Responsable Opérations Terrain',
-    desc: 'Technicien agronome',
-    image: mohamedImg,
-  },
-  {
-    name: 'Ghofran Nasri',
-    role: 'Chargée de Développement Agronomique',
-    desc: 'Partenariats communautaires & développement terrain',
-    image: ghofranImg,
-  },
-];
-const whyNowPoints = [
-  {
-    title: 'Stress hydrique critique',
-    description:
-      "La pression sur l’eau rend l’optimisation de l’irrigation non plus optionnelle, mais stratégique pour la survie et la compétitivité des exploitations.",
-  },
-  {
-    title: 'Digitalisation encore sous-équipée',
-    description:
-      "Le marché agricole régional reste largement sous-digitalisé, ce qui crée une fenêtre d’opportunité forte pour des solutions intégrées et simples à déployer.",
-  },
-  {
-    title: 'Pression sur les rendements et les marges',
-    description:
-      "Les producteurs ont besoin d’outils qui réduisent les pertes, améliorent les décisions et augmentent la rentabilité sans complexifier l’exploitation.",
-  },
-  {
-    title: 'Traçabilité & ESG',
-    description:
-      "Les exigences croissantes en matière d’empreinte environnementale, de traçabilité et de performance durable favorisent les plateformes capables de mesurer et piloter.",
-  },
-];
+    {
+      name: 'Malek Abbassi',
+      role: 'Co-fondateur & Président-Directeur Général',
+      desc: 'Machine Learning Researcher',
+      image: malekImg,
+    },
+    {
+      name: 'Abdelhak Abbassi',
+      role: 'Co-fondateur & Head of Sales',
+      desc: 'Développement commercial & partenariats',
+      image: abdelhakImg,
+    },
+    {
+      name: 'Khawla Khamassi',
+      role: 'Responsable Infrastructure & Développement B2B',
+      desc: 'Ingénieure en informatique',
+      image: khawlaImg,
+    },
+    {
+      name: 'Saif Eddine Rahmani',
+      role: 'Responsable Financier',
+      desc: 'Expert financier, Master de Recherche en Finance',
+      image: saifImg,
+    },
+    {
+      name: 'Emma Ouej',
+      role: 'AI Engineer & Développement Web',
+      desc: 'Ingénieure IA - Solutions intelligentes et applications web',
+      image: emmaImg,
+    },
+    {
+      name: 'Mohamed Abbassi',
+      role: 'Responsable Opérations Terrain',
+      desc: 'Technicien agronome',
+      image: mohamedImg,
+    },
+    {
+      name: 'Ghofran Nasri',
+      role: 'Chargée de Développement Agronomique',
+      desc: 'Partenariats communautaires & développement terrain',
+      image: ghofranImg,
+    },
+  ];
 
-const businessModel = [
-  {
-    title: 'Hardware',
-    description:
-      "Vente de systèmes connectés : capteurs, modules d’irrigation intelligente et équipements associés.",
-  },
-  {
-    title: 'SaaS',
-    description:
-      "Abonnement à la plateforme AgroNoya pour l’analyse, les recommandations, le monitoring et le pilotage.",
-  },
-  {
-    title: 'Services',
-    description:
-      "Services terrain à forte valeur : déploiement, support, drone, accompagnement technique et agronomique.",
-  },
-  {
-    title: 'Expansion & upsell',
-    description:
-      "Montée en gamme par modules additionnels, utilisateurs supplémentaires, extensions hardware et services premium.",
-  },
-];
+  const whyNowPoints = [
+    {
+      title: 'Stress hydrique critique',
+      description:
+        "La pression sur l’eau rend l’optimisation de l’irrigation non plus optionnelle, mais stratégique pour la survie et la compétitivité des exploitations.",
+    },
+    {
+      title: 'Digitalisation encore sous-équipée',
+      description:
+        "Le marché agricole régional reste largement sous-digitalisé, ce qui crée une fenêtre d’opportunité forte pour des solutions intégrées et simples à déployer.",
+    },
+    {
+      title: 'Pression sur les rendements et les marges',
+      description:
+        "Les producteurs ont besoin d’outils qui réduisent les pertes, améliorent les décisions et augmentent la rentabilité sans complexifier l’exploitation.",
+    },
+    {
+      title: 'Traçabilité & ESG',
+      description:
+        "Les exigences croissantes en matière d’empreinte environnementale, de traçabilité et de performance durable favorisent les plateformes capables de mesurer et piloter.",
+    },
+  ];
 
-const tractionMetrics = [
-  { value: '2,500+', label: 'hectares monitorés' },
-  { value: '2,000+', label: 'exploitations accompagnées' },
-  { value: '-50%', label: "jusqu'à d’eau consommée" },
-  { value: '+10-15%', label: 'gain de rendement observé' },
-];
+  const businessModel = [
+    {
+      title: 'Hardware',
+      description:
+        "Vente de systèmes connectés : capteurs, modules d’irrigation intelligente et équipements associés.",
+    },
+    {
+      title: 'SaaS',
+      description:
+        "Abonnement à la plateforme AgroNoya pour l’analyse, les recommandations, le monitoring et le pilotage.",
+    },
+    {
+      title: 'Services',
+      description:
+        "Services terrain à forte valeur : déploiement, support, drone, accompagnement technique et agronomique.",
+    },
+    {
+      title: 'Expansion & upsell',
+      description:
+        "Montée en gamme par modules additionnels, utilisateurs supplémentaires, extensions hardware et services premium.",
+    },
+  ];
 
-const askItems = [
-  'Accélérer le développement produit et les briques IA propriétaires',
-  'Renforcer le déploiement commercial en Tunisie',
-  'Structurer l’expansion régionale MENA',
-  'Consolider les opérations terrain et la capacité d’exécution',
-];
+  const tractionMetrics = [
+    { value: '2,500+', label: 'hectares monitorés' },
+    { value: '2,000+', label: 'exploitations accompagnées' },
+    { value: '-50%', label: "jusqu'à d’eau consommée" },
+    { value: '+10-15%', label: 'gain de rendement observé' },
+  ];
 
-const roadmap = [
-  {
-    year: '2025',
-    title: 'Tunisie',
-    description:
-      "Consolider la présence nationale, renforcer la traction commerciale et standardiser les déploiements produit.",
-  },
-  {
-    year: '2026',
-    title: 'Scale MENA',
-    description:
-      "Étendre le modèle AgroNoya à des marchés régionaux prioritaires avec une approche adaptée aux réalités locales.",
-  },
-  {
-    year: '2027',
-    title: 'Plateforme régionale',
-    description:
-      "Positionner AgroNoya comme une plateforme agri-tech régionale intégrée, mêlant données, IA, opérations et services.",
-  },
-];
+  const askItems = [
+    'Accélérer le développement produit et les briques IA propriétaires',
+    'Renforcer le déploiement commercial en Tunisie',
+    'Structurer l’expansion régionale MENA',
+    'Consolider les opérations terrain et la capacité d’exécution',
+  ];
+
+  const roadmap = [
+    {
+      year: '2025',
+      title: 'Tunisie',
+      description:
+        "Consolider la présence nationale, renforcer la traction commerciale et standardiser les déploiements produit.",
+    },
+    {
+      year: '2026',
+      title: 'Scale MENA',
+      description:
+        "Étendre le modèle AgroNoya à des marchés régionaux prioritaires avec une approche adaptée aux réalités locales.",
+    },
+    {
+      year: '2027',
+      title: 'Plateforme régionale',
+      description:
+        "Positionner AgroNoya comme une plateforme agri-tech régionale intégrée, mêlant données, IA, opérations et services.",
+    },
+  ];
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0A0B0D]">
+    <div className="min-h-screen bg-slate-950">
       {/* HERO */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-emerald-950" />
@@ -318,19 +331,20 @@ const roadmap = [
       </section>
 
       {/* PROBLEM */}
-      <section className="py-24 bg-white dark:bg-[#0A0B0D]">
-        <div className="container mx-auto px-4">
+      <section className={sectionDark}>
+        <div className={glowTop}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-emerald-200 dark:border-emerald-400/20">
+            <div className="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-300 px-4 py-2 rounded-full text-sm font-medium mb-6 border border-emerald-400/20">
               <Target className="w-4 h-4" />
               Investment thesis
             </div>
 
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-8">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-8">
               Les défis de l’agriculture moderne
             </h2>
 
-            <p className="text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
+            <p className="text-xl text-slate-300 leading-relaxed">
               L’agriculture tunisienne fait face à des défis majeurs : stress hydrique croissant
               avec moins de 450 m³ d’eau par habitant, pertes de rendement dues aux pratiques
               traditionnelles, et fragmentation des données agricoles entre multiples sources non
@@ -342,13 +356,14 @@ const roadmap = [
       </section>
 
       {/* SOLUTION */}
-      <section className="py-24 bg-gray-50 dark:bg-[#101215]">
-        <div className="container mx-auto px-4">
+      <section className={sectionDarker}>
+        <div className={glowRight}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               L’écosystème <span className="text-[#28a745]">AgroNoya</span>
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Une plateforme intégrée qui révolutionne l’agriculture grâce à l’IA, l’IoT et
               l’analyse satellite.
             </p>
@@ -358,7 +373,7 @@ const roadmap = [
             {solutionCards.map((card, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-900 rounded-3xl p-7 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+                className="bg-white/95 dark:bg-slate-900 rounded-3xl p-7 border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-16 h-16 bg-[#28a745]/10 rounded-2xl flex items-center justify-center mb-5">
                   <card.icon className="w-8 h-8 text-[#28a745]" />
@@ -376,13 +391,14 @@ const roadmap = [
       </section>
 
       {/* MARKET */}
-      <section className="py-24 bg-white dark:bg-[#0A0B0D]">
-        <div className="container mx-auto px-4">
+      <section className={sectionDark}>
+        <div className={glowCenter}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
               Opportunité de marché
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Un marché en forte croissance avec des besoins technologiques urgents.
             </p>
           </div>
@@ -391,156 +407,165 @@ const roadmap = [
             {marketStats.map((item, index) => (
               <div key={index} className="text-center">
                 <div className="text-5xl font-bold text-[#28a745] mb-4">{item.value}</div>
-                <div className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                  {item.label}
-                </div>
-                <div className="text-gray-700 dark:text-gray-300">{item.desc}</div>
+                <div className="text-xl font-semibold text-white mb-2">{item.label}</div>
+                <div className="text-slate-300">{item.desc}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section className="py-24 bg-gray-50 dark:bg-[#101215]">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-        Why now
-      </h2>
-      <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-        Le momentum de marché rend l’adoption d’une plateforme comme AgroNoya particulièrement pertinente aujourd’hui.
-      </p>
-    </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-      {whyNowPoints.map((item, index) => (
-        <div
-          key={index}
-          className="bg-white dark:bg-slate-900 rounded-3xl p-8 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
-        >
-          <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center mb-5">
-            <Clock3 className="w-7 h-7 text-[#28a745]" />
+      {/* WHY NOW */}
+      <section className={sectionDarker}>
+        <div className={glowTop}></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
+              Why now
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Le momentum de marché rend l’adoption d’une plateforme comme AgroNoya particulièrement pertinente aujourd’hui.
+            </p>
           </div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {item.title}
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {item.description}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-<section className="py-24 bg-white dark:bg-[#0A0B0D]">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-        Business model
-      </h2>
-      <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-        Un modèle hybride combinant revenus récurrents, ventes d’équipements et services à forte valeur.
-      </p>
-    </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-      {businessModel.map((item, index) => (
-        <div
-          key={index}
-          className="bg-gray-50 dark:bg-slate-900 rounded-3xl p-7 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
-        >
-          <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center mb-5">
-            <Wallet className="w-7 h-7 text-[#28a745]" />
-          </div>
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
-            {item.title}
-          </h3>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {item.description}
-          </p>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-<section className="py-24 bg-gray-50 dark:bg-[#101215]">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-        Traction
-      </h2>
-      <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-        Des indicateurs qui montrent l’adéquation entre besoin marché, usage terrain et impact opérationnel.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
-      {tractionMetrics.map((item, index) => (
-        <div
-          key={index}
-          className="bg-white dark:bg-slate-900 rounded-3xl p-8 text-center border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300"
-        >
-          <div className="text-4xl font-bold text-[#28a745] mb-3">{item.value}</div>
-          <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {item.label}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {whyNowPoints.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/95 dark:bg-slate-900 rounded-3xl p-8 border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center mb-5">
+                  <Clock3 className="w-7 h-7 text-[#28a745]" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      {/* BUSINESS MODEL */}
+      <section className={sectionDark}>
+        <div className={glowBottom}></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
+              Business model
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Un modèle hybride combinant revenus récurrents, ventes d’équipements et services à forte valeur.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {businessModel.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/95 dark:bg-slate-900 rounded-3xl p-7 border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center mb-5">
+                  <Wallet className="w-7 h-7 text-[#28a745]" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TRACTION */}
+      <section className={sectionDarker}>
+        <div className={glowCenter}></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
+              Traction
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Des indicateurs qui montrent l’adéquation entre besoin marché, usage terrain et impact opérationnel.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {tractionMetrics.map((item, index) => (
+              <div
+                key={index}
+                className="bg-white/95 dark:bg-slate-900 rounded-3xl p-8 text-center border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300"
+              >
+                <div className="text-4xl font-bold text-[#28a745] mb-3">{item.value}</div>
+                <div className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {item.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* TEAM */}
-      <section className="py-24 bg-gray-50 dark:bg-[#101215]">
-  <div className="container mx-auto px-4">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
-        Notre équipe
-      </h2>
-      <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-        Une équipe fondatrice et opérationnelle qui combine vision produit,
-        exécution terrain, intelligence artificielle et développement commercial.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-      {team.map((member, index) => (
-        <div
-          key={index}
-          className="text-center bg-white dark:bg-slate-900 rounded-3xl p-7 border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-        >
-          <div className="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden border-4 border-gray-100 dark:border-slate-800 shadow-md">
-            <img
-              src={member.image}
-              alt={member.name}
-              className="w-full h-full object-cover"
-            />
+      <section className={sectionDarker}>
+        <div className={glowTop}></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
+              Notre équipe
+            </h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Une équipe fondatrice et opérationnelle qui combine vision produit,
+              exécution terrain, intelligence artificielle et développement commercial.
+            </p>
           </div>
 
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-            {member.name}
-          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {team.map((member, index) => (
+              <div
+                key={index}
+                className="text-center bg-white/95 dark:bg-slate-900 rounded-3xl p-7 border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="w-32 h-32 mx-auto mb-5 rounded-full overflow-hidden border-4 border-gray-100 dark:border-slate-800 shadow-md">
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-          <div className="text-[#28a745] font-semibold mb-3 min-h-[56px] flex items-center justify-center">
-            {member.role}
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                  {member.name}
+                </h3>
+
+                <div className="text-[#28a745] font-semibold mb-3 min-h-[56px] flex items-center justify-center">
+                  {member.role}
+                </div>
+
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                  {member.desc}
+                </p>
+              </div>
+            ))}
           </div>
-
-          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-            {member.desc}
-          </p>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* ESG */}
-      <section className="py-24 bg-white dark:bg-[#0A0B0D]">
-        <div className="container mx-auto px-4">
+      <section className={sectionDark}>
+        <div className={glowBottom}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
               Impact & ESG
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Notre engagement pour une agriculture durable et responsable.
             </p>
           </div>
@@ -549,7 +574,7 @@ const roadmap = [
             {esgStats.map((item, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-900 rounded-3xl p-8 text-center border border-gray-200 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300"
+                className="bg-white/95 dark:bg-slate-900 rounded-3xl p-8 text-center border border-white/10 dark:border-slate-700 shadow-sm hover:shadow-lg transition-all duration-300"
               >
                 <div className={`w-16 h-16 ${item.bg} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
                   <item.icon className={`w-8 h-8 ${item.color}`} />
@@ -563,93 +588,95 @@ const roadmap = [
           </div>
         </div>
       </section>
-      <section className="py-24 bg-white dark:bg-[#0A0B0D]">
-  <div className="container mx-auto px-4">
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 max-w-7xl mx-auto">
-      {/* Ask */}
-      <div className="bg-gray-50 dark:bg-slate-900 rounded-[2rem] p-8 border border-gray-200 dark:border-slate-700 shadow-sm">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center">
-            <Rocket className="w-7 h-7 text-[#28a745]" />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-[#57D53B]">
-              Ask
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Ce que nous cherchons à financer
-            </p>
-          </div>
-        </div>
 
-        <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-          Nous cherchons des partenaires capables d’accompagner AgroNoya dans sa prochaine phase de croissance produit, commerciale et régionale.
-        </p>
+      {/* ASK + ROADMAP */}
+      <section className={sectionDark}>
+        <div className={glowCenter}></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10 max-w-7xl mx-auto">
+            <div className="bg-white/95 dark:bg-slate-900 rounded-[2rem] p-8 border border-white/10 dark:border-slate-700 shadow-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-[#28a745]/10 rounded-2xl flex items-center justify-center">
+                  <Rocket className="w-7 h-7 text-[#28a745]" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-[#57D53B]">
+                    Ask
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Ce que nous cherchons à financer
+                  </p>
+                </div>
+              </div>
 
-        <div className="space-y-4">
-          {askItems.map((item, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <CheckCircle className="w-5 h-5 text-[#28a745] mt-1 flex-shrink-0" />
-              <span className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {item}
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Roadmap */}
-      <div className="bg-gray-50 dark:bg-slate-900 rounded-[2rem] p-8 border border-gray-200 dark:border-slate-700 shadow-sm">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-14 h-14 bg-[#76CC93]/10 rounded-2xl flex items-center justify-center">
-            <Layers3 className="w-7 h-7 text-[#76CC93]" />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-[#76CC93]">
-              Roadmap
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400">
-              Cap directionnel 2026–2028
-            </p>
-          </div>
-        </div>
-
-        <div className="space-y-5">
-          {roadmap.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white dark:bg-slate-800 rounded-2xl p-5 border border-gray-200 dark:border-slate-700"
-            >
-              <div className="text-[#28a745] font-bold text-lg mb-1">{item.year}</div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                {item.title}
-              </h3>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                {item.description}
+              <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+                Nous cherchons des partenaires capables d’accompagner AgroNoya dans sa prochaine phase de croissance produit, commerciale et régionale.
               </p>
+
+              <div className="space-y-4">
+                {askItems.map((item, index) => (
+                  <div key={index} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-[#28a745] mt-1 flex-shrink-0" />
+                    <span className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          ))}
+
+            <div className="bg-white/95 dark:bg-slate-900 rounded-[2rem] p-8 border border-white/10 dark:border-slate-700 shadow-sm">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-14 h-14 bg-[#76CC93]/10 rounded-2xl flex items-center justify-center">
+                  <Layers3 className="w-7 h-7 text-[#76CC93]" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-[#76CC93]">
+                    Roadmap
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Cap directionnel 2025–2027
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-5">
+                {roadmap.map((item, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-5 border border-gray-200 dark:border-slate-700"
+                  >
+                    <div className="text-[#28a745] font-bold text-lg mb-1">{item.year}</div>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* FORM */}
-      <section id="investir" className="py-24 bg-gray-50 dark:bg-[#101215]">
-        <div className="container mx-auto px-4">
+      <section id="investir" className={sectionDarker}>
+        <div className={glowTop}></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-[#57D53B] mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-[#57D53B] mb-6">
                 Rejoignez l’aventure
               </h2>
-              <p className="text-xl text-gray-700 dark:text-gray-300">
+              <p className="text-xl text-slate-300">
                 Demandez notre deck investisseur et découvrez comment participer à la
                 révolution agricole.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-slate-900 rounded-[2rem] p-8 lg:p-12 border border-gray-200 dark:border-slate-700 shadow-2xl">
+            <div className="bg-white/95 dark:bg-slate-900 rounded-[2rem] p-8 lg:p-12 border border-white/10 dark:border-slate-700 shadow-2xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
