@@ -427,7 +427,7 @@ const FeedbackSection = () => {
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div className="mb-8 text-center">
                     <h3 className="mb-4 text-2xl font-bold text-foreground">
-                      Partagez votre retour d’expérience
+                      {t('shareYourFeedback')}
                     </h3>
                     <p className="mx-auto max-w-2xl text-text-secondary">
                       Votre avis nous aide à améliorer la plateforme et à mieux
@@ -562,7 +562,7 @@ const FeedbackSection = () => {
                       className="inline-flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[rgb(var(--agronoya-primary-rgb))] to-[rgb(var(--agronoya-primary-hover-rgb))] px-8 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
                     >
                       <Send className="h-5 w-5" />
-                      Publier mon avis
+                      {t('publishMyReview')}
                     </button>
                   </div>
                 </form>
@@ -573,7 +573,7 @@ const FeedbackSection = () => {
                   </div>
 
                   <h3 className="mb-4 text-2xl font-bold text-foreground">
-                    Merci pour votre retour
+                    {t('thankYouFeedback')}
                   </h3>
 
                   <p className="mb-6 text-text-secondary">
@@ -608,7 +608,7 @@ const FeedbackSection = () => {
                 onClick={() => navigate('/contact')}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-8 py-4 font-bold text-[rgb(var(--agronoya-primary-rgb))] shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-gray-100 hover:shadow-2xl"
               >
-                Demander une démo
+                {t('demanderDemo')}
               </button>
 
               <button
@@ -616,7 +616,7 @@ const FeedbackSection = () => {
                 onClick={() => navigate('/solutions')}
                 className="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white px-8 py-4 font-bold text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-[rgb(var(--agronoya-primary-rgb))]"
               >
-                Voir nos solutions
+                {t('voirSolutions')}
                 <ArrowRight className="h-5 w-5" />
               </button>
             </div>

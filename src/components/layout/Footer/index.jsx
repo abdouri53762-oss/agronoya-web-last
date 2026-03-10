@@ -102,7 +102,7 @@ const Footer = () => {
                 onClick={() => navigate('/contact')}
                 className="group inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 px-6 py-4 font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl"
               >
-                <span>Demander une démo</span>
+                <span>{t('demanderDemo')}</span>
                 <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
               </button>
 
@@ -111,7 +111,7 @@ const Footer = () => {
                 onClick={() => navigate('/solutions')}
                 className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-4 font-semibold text-slate-800 transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400 hover:text-emerald-600 hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:border-emerald-400 dark:hover:text-emerald-400"
               >
-                Voir les solutions
+                {t('voirSolutions')}
               </button>
             </div>
           </div>
@@ -126,8 +126,7 @@ const Footer = () => {
             />
 
             <p className="max-w-sm text-sm leading-7 text-slate-600 dark:text-slate-300">
-              Solutions AgriTech conçues pour aider les acteurs agricoles à mieux
-              observer, mieux anticiper et mieux décider sur le terrain.
+              {t('footerAbout')}
             </p>
 
             <div className="mt-6 flex items-center gap-3">
@@ -148,7 +147,7 @@ const Footer = () => {
 
           <div>
             <h3 className="mb-4 text-base font-semibold tracking-[0.02em] text-slate-950 dark:text-white">
-              Navigation
+              {t('footerNavigation')}
             </h3>
 
             <ul className="space-y-3">
@@ -167,7 +166,7 @@ const Footer = () => {
 
           <div>
             <h3 className="mb-4 text-base font-semibold tracking-[0.02em] text-slate-950 dark:text-white">
-              Solutions
+              {t('footerSolutions')}
             </h3>
 
             <ul className="space-y-3">
@@ -186,7 +185,7 @@ const Footer = () => {
 
           <div>
             <h3 className="mb-4 text-base font-semibold tracking-[0.02em] text-slate-950 dark:text-white">
-              Contact
+              {t('footerContact')}
             </h3>
 
             <div className="space-y-4">
@@ -214,7 +213,7 @@ const Footer = () => {
                 <span className="mt-0.5 rounded-full bg-emerald-500/10 p-2 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
                   <MapPin className="h-4 w-4" />
                 </span>
-                <span className="leading-6">Kairouan, Tunisie</span>
+                <span className="leading-6">{t('footerLocation')}</span>
               </div>
             </div>
           </div>
@@ -223,7 +222,7 @@ const Footer = () => {
         <div className="mt-12 border-t border-slate-200/80 pt-6 dark:border-white/10">
           <div className="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <p className="text-sm text-slate-500 dark:text-slate-400">
-              © {new Date().getFullYear()} AgroNoya. Tous droits réservés.
+              {t('footerCopyright', { year: new Date().getFullYear() })}
             </p>
 
             <div className="flex flex-col gap-2 text-sm md:flex-row md:gap-6">
@@ -231,13 +230,13 @@ const Footer = () => {
                 href="/privacy-policy"
                 className="text-slate-500 transition-colors duration-300 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400"
               >
-                Politique de confidentialité
+                {t('footerPrivacy')}
               </a>
               <a
                 href="/terms-of-use"
                 className="text-slate-500 transition-colors duration-300 hover:text-emerald-600 dark:text-slate-400 dark:hover:text-emerald-400"
               >
-                Conditions d’utilisation
+                {t('footerTerms')}
               </a>
             </div>
           </div>

@@ -1219,5 +1219,16 @@
   "agroIrrigation": "AgroIrrigation",
   "agrosat": "AgroSat",
   "noyaGpt": "Noya GPT",
-  "agroDashboard": "AgroDashboard"
+  "agroDashboard": "AgroDashboard",
+  "shareYourFeedback": "Partagez votre retour d'expérience",
+  "publishMyReview": "Publier mon avis",
+  "thankYouFeedback": "Merci pour votre retour",
+  "footerNavigation": "Navigation",
+  "footerSolutions": "Solutions",
+  "footerContact": "Contact",
+  "footerAbout": "Solutions AgriTech conçues pour aider les acteurs agricoles à mieux observer, mieux anticiper et mieux décider sur le terrain.",
+  "footerCopyright": "© {year} AgroNoya. Tous droits réservés.",
+  "footerPrivacy": "Politique de confidentialité",
+  "footerTerms": "Conditions d'utilisation",
+  "footerLocation": "Kairouan, Tunisie"
 }
