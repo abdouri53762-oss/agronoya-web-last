@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   Cpu, 
@@ -22,10 +21,8 @@ import {
 } from 'lucide-react';
 
 const Services = () => {
-  const { t } = useTranslation();
-  const [activeService, setActiveService] = useState(0);
   const [isVisible, setIsVisible] = useState({});
-  const [roiCalculator, setRoiCalculator] = useState({ hectares: 10, currentCost: 5000 });
+  const [roiCalculator, setRoiCalculator] = useState({ hectares: 10, currentCost: 5000 }); // hectares currently unused in calculation
   const sectionRefs = useRef([]);
 
   // Animation d'apparition au scroll
@@ -312,7 +309,7 @@ const Services = () => {
 
   // Calculateur ROI
   const calculateROI = () => {
-    const { hectares, currentCost } = roiCalculator;
+    const { currentCost } = roiCalculator; // hectares unused for now
     const avgSavings = currentCost * 0.25; // 25% d'économies moyennes
     const avgIncrease = currentCost * 0.15; // 15% d'augmentation revenus
     const totalBenefit = avgSavings + avgIncrease;

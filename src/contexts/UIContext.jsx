@@ -87,7 +87,7 @@ const uiReducer = (state, action) => {
         }
       };
 
-    case UI_ACTIONS.SET_VIEWPORT_SIZE:
+    case UI_ACTIONS.SET_VIEWPORT_SIZE: {
       const { width, height } = action.payload;
       return {
         ...state,
@@ -99,6 +99,7 @@ const uiReducer = (state, action) => {
           isDesktop: width >= 1024
         }
       };
+    }
 
     case UI_ACTIONS.SET_SCROLL_POSITION:
       return {

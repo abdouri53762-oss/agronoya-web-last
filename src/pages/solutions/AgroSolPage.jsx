@@ -1,10 +1,8 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Cpu, Wifi, BarChart3, Zap, Target, TrendingUp, Shield, Clock } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const AgroSolPage = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0A0B0D]">

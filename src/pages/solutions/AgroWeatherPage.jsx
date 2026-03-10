@@ -1,10 +1,8 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, CloudRain, Thermometer, Wind, Sun, Target, Globe, Clock, Zap } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const AgroWeatherPage = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#0A0B0D]">

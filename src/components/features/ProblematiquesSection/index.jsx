@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   Sparkles,
   Droplets,
@@ -11,85 +11,75 @@ import {
   CheckCircle2
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-
-const PROBLEMATIQUES = [
-  {
-    id: 1,
-    icon: Droplets,
-    title: "Gestion inefficace de l’eau",
-    short:
-      "Le stress hydrique et l’absence de pilotage précis de l’irrigation fragilisent durablement la performance des exploitations.",
-    content:
-      "En Tunisie, la rareté de l’eau impose une gestion beaucoup plus fine des ressources. Pourtant, l’absence de capteurs de sol, de supervision à distance et de détection précoce des anomalies d’irrigation favorise le gaspillage, les pannes non détectées et les décisions d’arrosage peu adaptées aux besoins réels des cultures.",
-    accent: 'from-cyan-500/20 to-blue-500/10',
-    iconColor: 'text-cyan-400',
-    border: 'border-cyan-400/20'
-  },
-  {
-    id: 2,
-    icon: Eye,
-    title: 'Surveillance terrain limitée',
-    short:
-      "Le suivi continu des parcelles reste difficile, coûteux et souvent insuffisant pour agir au bon moment.",
-    content:
-      "Qu’il s’agisse de grandes surfaces ou d’exploitations dispersées, les moyens de surveillance restent souvent manuels, ponctuels et peu réactifs. Les anomalies localisées, les premiers signes de stress ou les défauts d’irrigation sont donc repérés tardivement, ce qui réduit l’efficacité des interventions et augmente les pertes potentielles.",
-    accent: 'from-blue-500/20 to-indigo-500/10',
-    iconColor: 'text-blue-400',
-    border: 'border-blue-400/20'
-  },
-  {
-    id: 3,
-    icon: Thermometer,
-    title: 'Pression climatique croissante',
-    short:
-      "Sécheresse, chaleur extrême et microclimats locaux rendent les décisions agricoles plus complexes et plus risquées.",
-    content:
-      "Les prévisions météorologiques générales restent souvent trop larges pour refléter les réalités locales. Dans un pays marqué par une forte diversité climatique, cette limite réduit la capacité des agriculteurs à anticiper correctement l’irrigation, les traitements, les récoltes et l’ensemble des décisions sensibles aux conditions du terrain.",
-    accent: 'from-orange-500/20 to-red-500/10',
-    iconColor: 'text-orange-400',
-    border: 'border-orange-400/20'
-  },
-  {
-    id: 4,
-    icon: Database,
-    title: 'Données dispersées et sous-exploitées',
-    short:
-      "Les données agricoles existent, mais elles restent fragmentées entre plusieurs outils, fichiers et observations isolées.",
-    content:
-      "Analyses de sol, météo, observations manuelles, tableaux Excel et applications diverses ne communiquent pas entre eux. Cette fragmentation empêche une vision globale de l’exploitation, limite les corrélations utiles entre les données et réduit fortement leur impact sur la qualité des décisions agronomiques et opérationnelles.",
-    accent: 'from-violet-500/20 to-purple-500/10',
-    iconColor: 'text-violet-400',
-    border: 'border-violet-400/20'
-  },
-  {
-    id: 5,
-    icon: TrendingUp,
-    title: 'Décisions encore peu pilotées par la donnée',
-    short:
-      "Fertilisation, irrigation, prévention des risques et interventions terrain reposent encore trop souvent sur l’intuition.",
-    content:
-      "Le manque de données continues, localisées et directement exploitables empêche de transformer l’information en recommandations simples et actionnables. Les exploitations peinent ainsi à prioriser les bonnes actions, à intervenir avec précision et à optimiser leurs ressources dans un contexte économique de plus en plus exigeant.",
-    accent: 'from-emerald-500/20 to-green-500/10',
-    iconColor: 'text-emerald-400',
-    border: 'border-emerald-400/20'
-  },
-  {
-    id: 6,
-    icon: Leaf,
-    title: 'Faible valorisation de la durabilité',
-    short:
-      "Les efforts agricoles durables restent peu reconnus, peu tracés et insuffisamment valorisés économiquement.",
-    content:
-      "Réduction des intrants, meilleure gestion de l’eau, pratiques agroécologiques ou contribution à la séquestration du carbone demeurent difficilement mesurables et peu rémunérées. À cela s’ajoutent des circuits de commercialisation souvent longs et peu transparents, qui limitent la marge des producteurs et freinent l’investissement durable.",
-    accent: 'from-lime-500/20 to-emerald-500/10',
-    iconColor: 'text-lime-400',
-    border: 'border-lime-400/20'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 const ProblematiquesSection = () => {
+  const { t } = useTranslation();
   const [openCard, setOpenCard] = useState(1);
   const navigate = useNavigate();
+
+  const PROBLEMATIQUES = useMemo(() => [
+    {
+      id: 1,
+      icon: Droplets,
+      title: t('problematiqueEauTitle'),
+      short: t('problematiqueEauShort'),
+      content: t('problematiqueEauContent'),
+      accent: 'from-cyan-500/20 to-blue-500/10',
+      iconColor: 'text-cyan-400',
+      border: 'border-cyan-400/20'
+    },
+    {
+      id: 2,
+      icon: Eye,
+      title: t('problematiqueSurveillanceTitle'),
+      short: t('problematiqueSurveillanceShort'),
+      content: t('problematiqueSurveillanceContent'),
+      accent: 'from-blue-500/20 to-indigo-500/10',
+      iconColor: 'text-blue-400',
+      border: 'border-blue-400/20'
+    },
+    {
+      id: 3,
+      icon: Thermometer,
+      title: t('problematiqueClimatiqueTitle'),
+      short: t('problematiqueClimatiqueShort'),
+      content: t('problematiqueClimatiqueContent'),
+      accent: 'from-orange-500/20 to-red-500/10',
+      iconColor: 'text-orange-400',
+      border: 'border-orange-400/20'
+    },
+    {
+      id: 4,
+      icon: Database,
+      title: t('problematiqueDonneesTitle'),
+      short: t('problematiqueDonneesShort'),
+      content: t('problematiqueDonneesContent'),
+      accent: 'from-violet-500/20 to-purple-500/10',
+      iconColor: 'text-violet-400',
+      border: 'border-violet-400/20'
+    },
+    {
+      id: 5,
+      icon: TrendingUp,
+      title: t('problematiqueDecisionsTitle'),
+      short: t('problematiqueDecisionsShort'),
+      content: t('problematiqueDecisionsContent'),
+      accent: 'from-emerald-500/20 to-green-500/10',
+      iconColor: 'text-emerald-400',
+      border: 'border-emerald-400/20'
+    },
+    {
+      id: 6,
+      icon: Leaf,
+      title: t('problematiqueDurabiliteTitle'),
+      short: t('problematiqueDurabiliteShort'),
+      content: t('problematiqueDurabiliteContent'),
+      accent: 'from-lime-500/20 to-emerald-500/10',
+      iconColor: 'text-lime-400',
+      border: 'border-lime-400/20'
+    }
+  ], [t]);
 
   const toggleCard = (id) => {
     setOpenCard((prev) => (prev === id ? null : id));
@@ -110,24 +100,19 @@ const ProblematiquesSection = () => {
         <div className="mx-auto mb-16 max-w-4xl text-center md:mb-20">
           <div className="mb-8 inline-flex items-center rounded-full border border-[#57D53B]/20 bg-gradient-to-r from-[#57D53B]/10 to-emerald-500/10 px-6 py-3 text-sm font-semibold text-[#57D53B] shadow-lg backdrop-blur-sm">
             <Sparkles className="mr-2 h-5 w-5" />
-            Réalités du terrain tunisien
+            {t('realitesTerrain')}
           </div>
 
           <h2 className="mb-6 text-4xl font-black leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            <span className="text-[#57D53B]">Les grands défis</span>
-            <span> de l’agriculture</span>
+            <span className="text-[#57D53B]">{t('grandsDefis')}</span>
+            <span> {t('agricultureTunisie')}</span>
             <br />
             <span>en </span>
             <span className="text-[#57D53B]">Tunisie</span>
           </h2>
 
           <p className="mx-auto max-w-4xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            Pilier stratégique de l’économie nationale, l’agriculture tunisienne
-            fait face à une pression croissante : rareté de l’eau, instabilité
-            climatique, fragmentation des données et faible digitalisation des
-            pratiques. Pour rester performantes et résilientes, les
-            exploitations ont besoin d’outils plus intelligents pour mieux
-            observer, mieux anticiper et mieux décider.
+            {t('pilierStrategique')}
           </p>
         </div>
 
@@ -173,9 +158,7 @@ const ProblematiquesSection = () => {
                       <div className="flex items-start gap-3 rounded-2xl border border-primary/10 bg-primary/5 p-4">
                         <CheckCircle2 className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                         <p className="text-sm leading-6 text-text-secondary">
-                          Ce défi peut être mieux piloté avec une approche
-                          fondée sur la donnée, l’observation terrain et
-                          l’automatisation intelligente.
+                          {t('defiPilote')}
                         </p>
                       </div>
                     </div>
@@ -186,7 +169,7 @@ const ProblematiquesSection = () => {
                     onClick={() => toggleCard(item.id)}
                     className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#57D53B] to-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"
                   >
-                    <span>{isOpen ? 'Voir moins' : 'Voir plus'}</span>
+                    <span>{isOpen ? t('voirMoins') : t('voirPlus')}</span>
                     <ArrowRight
                       className={`h-4 w-4 transition-transform duration-300 ${
                         isOpen ? 'rotate-90' : ''

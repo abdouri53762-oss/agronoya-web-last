@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import smartFarming1 from '../assets/smart_farming_1.jpg';
 import smartFarming7 from '../assets/smart_farming_7.png';
-import smartFarming8 from '../assets/smart_farming_8.png';
 
 const DashboardPage = () => {
   const { t } = useTranslation();

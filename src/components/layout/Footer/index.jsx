@@ -9,6 +9,7 @@ import {
   Sparkles
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import logo from '/src/assets/agronoya_logo.png';
 
 const TikTokIcon = () => (
@@ -46,24 +47,25 @@ const socialLinks = [
   }
 ];
 
-const quickLinks = [
-  { label: 'Accueil', href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Technologies', href: '/#technologies' },
-  { label: 'À propos', href: '/#apropos' },
-  { label: 'Contact', href: '/contact' }
-];
-
-const solutionLinks = [
-  { label: 'AgroSol', href: '/solutions#agrosol' },
-  { label: 'AgroIrrigation', href: '/solutions#irrigation' },
-  { label: 'AgroSat', href: '/solutions#agrosat' },
-  { label: 'Noya GPT', href: '/solutions#noyagpt' },
-  { label: 'AgroDashboard', href: '/solutions#dashboard' }
-];
-
 const Footer = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  const quickLinks = [
+    { label: t('accueil'), href: '/' },
+    { label: t('solutions'), href: '/solutions' },
+    { label: t('technologies'), href: '/#technologies' },
+    { label: t('aPropos'), href: '/#apropos' },
+    { label: t('contact'), href: '/contact' }
+  ];
+
+  const solutionLinks = [
+    { label: t('agrosol'), href: '/solutions#agrosol' },
+    { label: t('agroIrrigation'), href: '/solutions#irrigation' },
+    { label: t('agrosat'), href: '/solutions#agrosat' },
+    { label: t('noyaGpt'), href: '/solutions#noyagpt' },
+    { label: t('agroDashboard'), href: '/solutions#dashboard' }
+  ];
 
   return (
     <footer className="relative mt-20 overflow-hidden border-t border-slate-200/70 bg-[#fbfdfb] text-slate-900 dark:border-white/10 dark:bg-[#081420] dark:text-white">
@@ -79,21 +81,18 @@ const Footer = () => {
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-700 dark:text-emerald-300">
                 <Sparkles className="h-4 w-4" />
-                Agriculture pilotée par la donnée
+                {t('agricultureDonnee')}
               </div>
 
               <h3 className="mb-4 text-2xl font-bold leading-tight text-slate-950 dark:text-white md:text-3xl">
-                Passez à une agriculture plus précise,
+                {t('passezAgriculture')}
                 <span className="text-emerald-600 dark:text-emerald-400">
-                  {' '}plus durable et mieux pilotée
+                  {' '}{t('plusDurable')}
                 </span>
               </h3>
 
               <p className="max-w-2xl text-sm leading-7 text-slate-600 dark:text-slate-300 md:text-base">
-                AgroNoya accompagne les exploitations agricoles avec des solutions
-                d’IA, d’observation terrain, d’imagerie satellite et de pilotage
-                intelligent pour améliorer les décisions, optimiser les ressources
-                et renforcer la performance durable.
+                {t('agronoyaAccompagne')}
               </p>
             </div>
 

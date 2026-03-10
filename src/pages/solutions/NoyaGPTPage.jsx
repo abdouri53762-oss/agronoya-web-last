@@ -1,10 +1,8 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, MessageSquare, Brain, Smartphone, Zap, Users, Globe, Clock, Bot } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const NoyaGPTPage = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#0A0B0D]">

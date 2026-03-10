@@ -1,10 +1,8 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Droplets, Wifi, Smartphone, Zap, Target, TrendingDown, Clock, Activity } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const AgroIrrigationPage = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#0A0B0D]">

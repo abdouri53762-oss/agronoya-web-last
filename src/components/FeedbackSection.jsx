@@ -14,6 +14,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const SERVICES = [
   { id: 'agrosol', name: 'AgroSol - Analyse du Sol', icon: '🌱' },
@@ -96,6 +97,7 @@ const STATS = [
 ];
 
 const FeedbackSection = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const sectionRef = useRef(null);
 
@@ -201,20 +203,18 @@ const FeedbackSection = () => {
         <div className="mx-auto mb-16 max-w-4xl text-center md:mb-20">
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[rgb(var(--agronoya-primary-rgb)/0.18)] bg-[rgb(var(--agronoya-primary-rgb)/0.10)] px-5 py-2.5 text-sm font-semibold text-[rgb(var(--agronoya-primary-rgb))] shadow-lg backdrop-blur-sm">
             <Sparkles className="h-4 w-4" />
-            Ils font confiance à AgroNoya
+            {t('ilsFontConfiance')}
           </div>
 
           <h2 className="mb-6 text-4xl font-black leading-tight text-foreground sm:text-5xl lg:text-6xl">
-            Ce que nos utilisateurs
+            {t('ceQueUtilisateurs')}
             <span className="block text-[rgb(var(--agronoya-primary-rgb))]">
-              disent d’AgroNoya
+              {t('disentAgroNoya')}
             </span>
           </h2>
 
           <p className="mx-auto max-w-3xl text-lg leading-relaxed text-text-secondary md:text-xl">
-            Des retours concrets d’exploitations et d’acteurs agricoles qui
-            utilisent AgroNoya pour mieux piloter, mieux anticiper et prendre
-            des décisions plus fiables sur le terrain.
+            {t('retoursConcrets')}
           </p>
         </div>
 
@@ -245,7 +245,7 @@ const FeedbackSection = () => {
               }`}
             >
               <Quote className="mr-2 inline-block h-5 w-5" />
-              Témoignages
+              {t('temoignages')}
             </button>
 
             <button

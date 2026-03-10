@@ -1,5 +1,4 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -23,7 +22,6 @@ import {
 } from 'lucide-react';
 
 const DashboardIrrigationUnifiePage = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const modes = [

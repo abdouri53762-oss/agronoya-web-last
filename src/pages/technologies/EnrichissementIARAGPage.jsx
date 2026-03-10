@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -34,7 +33,6 @@ import {
 } from 'lucide-react';
 
 const EnrichissementIARAGPage = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [activeKnowledgeBase, setActiveKnowledgeBase] = useState(0);
   const [aiThinking, setAiThinking] = useState(false);
@@ -214,7 +212,7 @@ const EnrichissementIARAGPage = () => {
             {knowledgeBases.map((base, index) => (
               <div
                 key={index}
-                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${base.color} p-1 cursor-pointer transform hover:scale-105 transition-all duration-300`}
+                className={`relative overflow-hidden rounded-2xl bg-gradient-to-br ${base.color} p-1 cursor-pointer transform hover:scale-105 transition-all duration-300 ${activeKnowledgeBase === index ? 'ring-4 ring-white' : ''}`}
                 onClick={() => setActiveKnowledgeBase(index)}
               >
                 <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 h-full">

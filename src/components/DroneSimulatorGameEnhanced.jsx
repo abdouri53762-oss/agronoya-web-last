@@ -5,7 +5,7 @@ const DroneSimulatorGameEnhanced = () => {
   const [selectedMode, setSelectedMode] = useState('NDVI');
   const [isFlying, setIsFlying] = useState(false);
   const [dronePosition, setDronePosition] = useState({ x: 10, y: 50 });
-  const [coverage, setCoverage] = useState(0);
+  // removed unused coverage state
   const [showSpectralImage, setShowSpectralImage] = useState(false);
   const [analysisComplete, setAnalysisComplete] = useState(false);
   const [analysisResults, setAnalysisResults] = useState(null);
@@ -14,7 +14,8 @@ const DroneSimulatorGameEnhanced = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const gameAreaRef = useRef(null);
-  const animationRef = useRef(null);
+  // animationRef was never used, so removed
+
 
   // Générer des données spectrales réalistes avec patterns agricoles
   const generateSpectralData = (mode) => {
@@ -59,7 +60,7 @@ const DroneSimulatorGameEnhanced = () => {
   }, [selectedMode]);
 
   // Gestion du mouvement du drone avec contraintes horizontales
-  const updateDronePosition = useCallback((clientX, clientY) => {
+  const updateDronePosition = useCallback((clientX) => {
     if (!gameAreaRef.current) return;
     
     const rect = gameAreaRef.current.getBoundingClientRect();
@@ -87,22 +88,18 @@ const DroneSimulatorGameEnhanced = () => {
       }
       return newGrid;
     });
-    
-    // Calculer le pourcentage total de couverture
-    const totalCoverage = gridCoverage.reduce((sum, cell) => sum + (cell > 30 ? 1 : 0), 0) / 400 * 100;
-    setCoverage(Math.round(totalCoverage));
   }, [gridCoverage]);
 
   // Gestion des événements de souris
   const handleMouseDown = (e) => {
     if (!isFlying) return;
     setIsDragging(true);
-    updateDronePosition(e.clientX, e.clientY);
+    updateDronePosition(e.clientX);
   };
 
   const handleMouseMove = (e) => {
     if (!isDragging || !isFlying) return;
-    updateDronePosition(e.clientX, e.clientY);
+    updateDronePosition(e.clientX);
   };
 
   const handleMouseUp = () => {
@@ -156,7 +153,6 @@ const DroneSimulatorGameEnhanced = () => {
     setAnalysisComplete(false);
     setAnalysisResults(null);
     setIsAnalyzing(false);
-    setCoverage(0);
     setScanProgress(0);
     setGridCoverage(Array(400).fill(0));
     setDronePosition({ x: 10, y: 50 });

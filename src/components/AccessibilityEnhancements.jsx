@@ -214,7 +214,7 @@ const AccessibilityEnhancements = () => {
 
       // Validation téléphone
       if (field.type === 'tel' && value) {
-        const phoneRegex = /^[\+]?[0-9\s\-\(\)]{10,}$/;
+        const phoneRegex = /^[+]?\d[0-9\s\-()]{9,}$/;
         if (!phoneRegex.test(value)) {
           isValid = false;
           errorMessage = 'Veuillez entrer un numéro de téléphone valide';

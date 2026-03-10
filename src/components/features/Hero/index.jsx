@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Play, Sparkles, Zap } from 'lucide-react';
 import { Heading, Text, Button } from '../../common';
 import styles from './Hero.module.css';
@@ -10,18 +11,19 @@ import hero4 from '../../../assets/hero/hero-4.jpg';
 import hero5 from '../../../assets/hero/hero-5.png';
 
 const Hero = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [startSlider, setStartSlider] = useState(false);
 
   const heroImages = useMemo(
     () => [
-      { src: hero1, alt: 'Agriculture intelligente AgroNoya' },
-      { src: hero2, alt: 'Analyse agricole par drone' },
-      { src: hero3, alt: 'Surveillance des cultures' },
-      { src: hero4, alt: 'Technologies agricoles connectées' },
-      { src: hero5, alt: 'Plateforme AgroNoya smart farming' },
+      { src: hero1, alt: t('agricultureIntelligente') },
+      { src: hero2, alt: t('analyseAgricoleDrone') },
+      { src: hero3, alt: t('surveillanceCultures') },
+      { src: hero4, alt: t('technologiesAgricolesConnectees') },
+      { src: hero5, alt: t('plateformeAgroNoya') },
     ],
-    []
+    [t]
   );
 
   useEffect(() => {
@@ -71,7 +73,7 @@ const Hero = () => {
               color="accent"
               className={styles.badgeText}
             >
-              Leader de l&apos;Innovation Agricole
+              {t('heroBadge')}
             </Text>
           </div>
 
@@ -96,7 +98,7 @@ const Hero = () => {
               spacing="default"
               className={styles.subtitle}
             >
-              L&apos;Agriculture de Demain
+              {t('heroSubtitle')}
             </Heading>
           </div>
 
@@ -108,7 +110,7 @@ const Hero = () => {
             spacing="loose"
             className={styles.description}
           >
-            Plateforme intelligente pour une agriculture connectée et durable
+            {t('heroDescription')}
           </Text>
 
           <div className={styles.stats}>
@@ -117,7 +119,7 @@ const Hero = () => {
                 500+
               </Text>
               <Text size="sm" weight="medium" color="muted" spacing="none">
-                Exploitations
+                {t('exploitations')}
               </Text>
             </div>
 
@@ -128,7 +130,7 @@ const Hero = () => {
                 98%
               </Text>
               <Text size="sm" weight="medium" color="muted" spacing="none">
-                Satisfaction
+                {t('satisfaction')}
               </Text>
             </div>
 
@@ -139,7 +141,7 @@ const Hero = () => {
                 24/7
               </Text>
               <Text size="sm" weight="medium" color="muted" spacing="none">
-                Support
+                {t('support')}
               </Text>
             </div>
           </div>
@@ -151,7 +153,7 @@ const Hero = () => {
               className={styles.primaryButton}
             >
               <Play className={styles.buttonIcon} />
-              Découvrir
+              {t('decouvrir')}
               <ArrowRight className={styles.buttonIcon} />
             </Button>
 
@@ -161,7 +163,7 @@ const Hero = () => {
               className={styles.secondaryButton}
             >
               <Zap className={styles.buttonIcon} />
-              Solutions
+              {t('solutions')}
             </Button>
           </div>
         </div>
@@ -176,7 +178,7 @@ const Hero = () => {
             className={`${styles.indicator} ${
               index === currentSlide ? styles.indicatorActive : ''
             }`}
-            aria-label={`Aller à l'image ${index + 1}`}
+            aria-label={`${t('allerImage')} ${index + 1}`}
           />
         ))}
       </div>

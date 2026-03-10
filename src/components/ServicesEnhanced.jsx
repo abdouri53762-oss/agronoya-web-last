@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
   Leaf, 
@@ -14,7 +13,6 @@ import {
 } from 'lucide-react';
 
 const ServicesEnhanced = () => {
-  const { t } = useTranslation();
   const [visibleServices, setVisibleServices] = useState([]);
 
   const services = [

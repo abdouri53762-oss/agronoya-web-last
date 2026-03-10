@@ -1,10 +1,8 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { ArrowLeft, Brain, CheckCircle, Zap, Target, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AIPage = () => {
-  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#1C191F] text-gray-900 dark:text-slate-50">

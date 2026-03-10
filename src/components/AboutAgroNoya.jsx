@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import {
   Sprout,
@@ -19,104 +20,93 @@ import {
   Leaf
 } from 'lucide-react';
 
-const CHALLENGES = [
-  {
-    icon: TrendingUp,
-    title: 'Baisse des rendements',
-    description:
-      'Des performances qui diminuent sous l’effet du climat, de la pression sur les sols et d’un manque de pilotage précis.',
-    accent: 'rgb(239 68 68)'
-  },
-  {
-    icon: Droplets,
-    title: 'Stress hydrique',
-    description:
-      'Chaque mauvaise décision d’irrigation coûte en eau, en rendement et en rentabilité.',
-    accent: 'rgb(59 130 246)'
-  },
-  {
-    icon: Bug,
-    title: 'Ravageurs et maladies',
-    description:
-      'Sans détection rapide, les pertes s’installent avant même d’être visibles à grande échelle.',
-    accent: 'rgb(249 115 22)'
-  },
-  {
-    icon: Thermometer,
-    title: 'Pression climatique',
-    description:
-      'Sécheresse, chaleur extrême et météo instable rendent les décisions agricoles plus sensibles et plus risquées.',
-    accent: 'rgb(168 85 247)'
-  },
-  {
-    icon: DollarSign,
-    title: 'Coûts croissants',
-    description:
-      'La hausse des intrants et des opérations impose plus de précision pour protéger la marge.',
-    accent: 'rgb(234 179 8)'
-  }
-];
-
-const SOLUTIONS = [
-  {
-    icon: Target,
-    title: 'Précision',
-    description:
-      'Intervenir au bon moment, au bon endroit et sur les priorités qui comptent vraiment.'
-  },
-  {
-    icon: Zap,
-    title: 'Efficacité',
-    description:
-      'Mieux utiliser l’eau, le temps et les intrants pour améliorer la performance globale.'
-  },
-  {
-    icon: Shield,
-    title: 'Prévention',
-    description:
-      'Détecter plus tôt les signaux faibles pour agir avant que les problèmes ne deviennent coûteux.'
-  },
-  {
-    icon: BarChart3,
-    title: 'Pilotage',
-    description:
-      'Transformer les données en décisions plus rapides, plus fiables et mieux contextualisées.'
-  }
-];
-
-const STATS = [
-  {
-    value: '2M+',
-    label: 'Hectares analysés',
-    description:
-      'Supervision de larges surfaces avec une lecture plus claire des parcelles et des cultures.',
-    icon: Globe
-  },
-  {
-    value: 'Jusqu’à 35%',
-    label: 'de gain potentiel',
-    description:
-      'Une meilleure qualité de décision pour améliorer les performances agronomiques.',
-    icon: TrendingUp
-  },
-  {
-    value: 'Jusqu’à 40%',
-    label: 'd’économie d’eau',
-    description:
-      'Une irrigation mieux pilotée pour optimiser l’usage de la ressource.',
-    icon: Droplets
-  },
-  {
-    value: 'Jusqu’à 60%',
-    label: 'de pertes évitées',
-    description:
-      'Une détection plus précoce des risques pour réduire leur impact sur la production.',
-    icon: Shield
-  }
-];
-
 const AboutAgroNoya = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
+
+  const CHALLENGES = useMemo(() => [
+    {
+      icon: TrendingUp,
+      title: t('challengeRendements'),
+      description: t('challengeRendementsDesc'),
+      accent: 'rgb(239 68 68)'
+    },
+    {
+      icon: Droplets,
+      title: t('challengeHydrique'),
+      description: t('challengeHydriqueDesc'),
+      accent: 'rgb(59 130 246)'
+    },
+    {
+      icon: Bug,
+      title: t('challengeRavageurs'),
+      description: t('challengeRavageursDesc'),
+      accent: 'rgb(249 115 22)'
+    },
+    {
+      icon: Thermometer,
+      title: t('challengeClimatique'),
+      description: t('challengeClimatiqueDesc'),
+      accent: 'rgb(168 85 247)'
+    },
+    {
+      icon: DollarSign,
+      title: t('challengeCouts'),
+      description: t('challengeCoutsDesc'),
+      accent: 'rgb(234 179 8)'
+    }
+  ], [t]);
+
+  const SOLUTIONS = useMemo(() => [
+    {
+      icon: Target,
+      title: t('solutionPrecision'),
+      description: t('solutionPrecisionDesc')
+    },
+    {
+      icon: Zap,
+      title: t('solutionEfficacite'),
+      description: t('solutionEfficaciteDesc')
+    },
+    {
+      icon: Shield,
+      title: t('solutionPrevention'),
+      description: t('solutionPreventionDesc')
+    },
+    {
+      icon: BarChart3,
+      title: t('solutionPilotage'),
+      description: t('solutionPilotageDesc')
+    }
+  ], [t]);
+
+  const STATS = useMemo(() => [
+    {
+      value: '2M+',
+      label: t('statsHectares'),
+      description: t('statsHectaresDesc'),
+      icon: Globe
+    },
+    {
+      value: t('statsGainValue'),
+      label: t('statsGainLabel'),
+      description: t('statsGainDesc'),
+      icon: TrendingUp
+    },
+    {
+      value: t('statsEauValue'),
+      label: t('statsEauLabel'),
+      description: t('statsEauDesc'),
+      icon: Droplets
+    },
+    {
+      value: t('statsPertesValue'),
+      label: t('statsPertesLabel'),
+      description: t('statsPertesDesc'),
+      icon: Shield
+    }
+  ], [t]);
+
   const sectionRef = useRef(null);
 
   const [isVisible, setIsVisible] = useState(false);
@@ -200,30 +190,26 @@ const AboutAgroNoya = () => {
             }}
           >
             <Lightbulb className="h-4 w-4" />
-            <span>Notre mission</span>
+            <span>{t('notreMission')}</span>
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary" />
           </div>
 
           <h2 className="mb-6 text-4xl font-black leading-[1.05] text-foreground sm:text-5xl lg:text-7xl">
             <span className="bg-gradient-to-r from-foreground via-text-secondary to-foreground bg-clip-text text-transparent">
-              AgroNoya,
+              {t('agronoyaPlatform')}
             </span>
             <br />
             <span className="relative inline-block bg-gradient-to-r from-primary via-primary-hover to-primary bg-clip-text text-transparent">
-              la plateforme qui aide
+              {t('platformHelps')}
               <span className="absolute -right-4 top-1 hidden h-3 w-3 rounded-full bg-primary opacity-80 blur-[1px] lg:block" />
             </span>
             <span className="mt-3 block text-2xl font-medium text-text-secondary lg:text-4xl">
-              les exploitations à produire mieux, économiser plus et décider
-              plus vite.
+              {t('farmsProduceBetter')}
             </span>
           </h2>
 
           <p className="mx-auto max-w-4xl text-lg leading-relaxed text-text-secondary md:text-xl lg:text-2xl">
-            AgroNoya aide les exploitations agricoles à surveiller leurs
-            parcelles, anticiper les risques, optimiser l’irrigation et
-            améliorer les rendements grâce à l’intelligence artificielle, aux
-            données terrain et à l’imagerie satellite.
+            {t('agronoyaHelps')}
           </p>
         </div>
 
@@ -238,18 +224,16 @@ const AboutAgroNoya = () => {
               }}
             >
               <Sprout className="h-4 w-4" />
-              Les enjeux du terrain
+              {t('enjeuxTerrain')}
             </div>
 
             <h3 className="mb-4 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-              Les défis qui pèsent sur une agriculture
-              <span className="text-primary"> plus exigeante</span>
+              {t('defisAgriculture')}
+              <span className="text-primary"> {t('plusExigeante')}</span>
             </h3>
 
             <p className="text-base leading-relaxed text-text-secondary md:text-lg lg:text-xl">
-              Entre pression climatique, hausse des coûts et manque de
-              visibilité terrain, les décisions agricoles doivent être plus
-              rapides, plus précises et plus rentables.
+              {t('pressionClimatique')}
             </p>
           </div>
 
@@ -343,7 +327,7 @@ const AboutAgroNoya = () => {
 
           <div className="mx-auto mt-8 max-w-3xl text-center">
             <p className="text-sm text-text-secondary md:text-base">
-              Défi actuellement mis en avant :
+              {t('defiMisEnAvant')}
               <span className="ml-2 font-semibold text-foreground">
                 {currentChallenge.title}
               </span>
@@ -363,22 +347,19 @@ const AboutAgroNoya = () => {
                 }}
               >
                 <Zap className="h-4 w-4" />
-                Notre approche
+                {t('notreApproche')}
               </div>
 
               <h3 className="mb-5 text-3xl font-bold text-foreground md:text-4xl lg:text-5xl">
-                Une plateforme conçue pour
+                {t('plateformeConcue')}
                 <span className="text-primary">
                   {' '}
-                  transformer l’observation en action
+                  {t('transformerObservation')}
                 </span>
               </h3>
 
               <p className="mb-8 max-w-2xl text-base leading-relaxed text-text-secondary md:text-lg lg:text-xl">
-                AgroNoya centralise l’IA, l’imagerie satellite et les données
-                terrain pour aider les exploitations à détecter plus tôt,
-                intervenir plus juste et piloter leurs opérations avec plus de
-                confiance.
+                {t('agronoyaCentralise')}
               </p>
 
               <div className="mb-8 grid gap-4 sm:grid-cols-2">
@@ -427,7 +408,7 @@ const AboutAgroNoya = () => {
                       'linear-gradient(135deg, rgb(var(--primary-rgb)), rgb(var(--primary-hover-rgb)))'
                   }}
                 >
-                  <span>Voir les solutions</span>
+                  <span>{t('voirSolutions')}</span>
                   <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                 </button>
 
@@ -440,7 +421,7 @@ const AboutAgroNoya = () => {
                     background: 'rgb(var(--primary-rgb) / 0.03)'
                   }}
                 >
-                  Demander une démo
+                  {t('demanderDemo')}
                 </button>
               </div>
             </div>
@@ -464,18 +445,17 @@ const AboutAgroNoya = () => {
                 <div className="relative z-10">
                   <div className="mb-5 text-center">
                     <h4 className="mb-2 text-2xl font-bold text-foreground">
-                      Plateforme unifiée AgroNoya
+                      {t('plateformeUnifiee')}
                     </h4>
                     <p className="text-sm text-text-secondary md:text-base">
-                      Supervision, analyse et décision agricole au sein d’un
-                      même écosystème.
+                      {t('supervisionAnalyse')}
                     </p>
                   </div>
 
                   <div className="relative overflow-hidden rounded-2xl border bg-background/60">
                     <img
                       src="/agronoyaeco-sys.gif"
-                      alt="Plateforme AgroNoya - supervision et décision agricole"
+                      alt={t('plateformeAgroNoyaSupervision')}
                       className="h-auto w-full rounded-2xl"
                       loading="lazy"
                     />
@@ -551,12 +531,12 @@ const AboutAgroNoya = () => {
           }}
         >
           <BarChart3 className="h-4 w-4" />
-          Résultats & impact
+          {t('resultatsImpact')}
         </div>
 
         <h3 className="mb-4 text-4xl font-extrabold tracking-tight text-foreground lg:text-5xl">
-          Des indicateurs qui parlent
-          <span className="text-primary"> terrain, rendement et durabilité</span>
+          {t('indicateursParlent')}
+          <span className="text-primary"> {t('terrainRendement')}</span>
         </h3>
 
         <p className="text-base leading-relaxed text-text-secondary md:text-lg">

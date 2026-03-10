@@ -75,6 +75,7 @@ export async function copyToClipboard(text) {
     await navigator.clipboard.writeText(text);
     return true;
   } catch (error) {
+      console.error("Clipboard write failed", error);
     // Fallback pour les navigateurs plus anciens
     const textArea = document.createElement('textarea');
     textArea.value = text;
@@ -90,6 +91,7 @@ export async function copyToClipboard(text) {
       document.body.removeChild(textArea);
       return success;
     } catch (err) {
+      console.error('Fallback copy failed', err);
       document.body.removeChild(textArea);
       return false;
     }
@@ -178,7 +180,7 @@ export function getScrollPosition() {
  * @param {number} threshold - Seuil de visibilité (0-1)
  * @returns {boolean} True si visible
  */
-export function isElementVisible(element, threshold = 0) {
+export function isElementVisible(element) {
   if (!element || typeof window === 'undefined') return false;
   
   const rect = element.getBoundingClientRect();

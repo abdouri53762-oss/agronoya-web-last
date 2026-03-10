@@ -66,17 +66,16 @@ const Gallery = () => {
         <div className="text-center mb-16 fade-in">
           <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#57D53B]/10 to-emerald-500/10 border border-[#57D53B]/20 text-[#57D53B] text-sm font-semibold mb-8">
             <ZoomIn className="w-5 h-5 mr-2" />
-            Galerie Technologique
+            {t('galerieTechnologique')}
           </div>
           
           <h2 className="text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-            <span className="text-[#57D53B]">Solutions</span>
-            <span className="text-gray-800"> en Action</span>
+            <span className="text-[#57D53B]">{t('solutionsEnAction')}</span>
           </h2>
           
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
-            Découvrez nos technologies innovantes à travers des images qui illustrent 
-            <span className="text-[#57D53B] font-semibold"> l'agriculture intelligente de demain</span>
+            {t('decouvrezTechnologies')}
+            <span className="text-[#57D53B] font-semibold"> {t('agricultureIntelligenteDemain')}</span>
           </p>
         </div>
 

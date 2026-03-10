@@ -121,7 +121,7 @@ export function validateUsername(username) {
   }
 
   if (trimmed.length > LIMITS.MAX_USERNAME_LENGTH) {
-    errors.push(`Le nom d\'utilisateur ne peut pas dépasser ${LIMITS.MAX_USERNAME_LENGTH} caractères`);
+      errors.push(`Le nom d'utilisateur ne peut pas dépasser ${LIMITS.MAX_USERNAME_LENGTH} caractères`);
   }
 
   // Caractères autorisés (lettres, chiffres, tirets, underscores)

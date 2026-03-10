@@ -143,7 +143,7 @@ const DroneSimulatorGame = () => {
     if (coverage >= 80 && !analysisComplete && !isAnalyzing) {
       completeAnalysis();
     }
-  }, [coverage, analysisComplete, isAnalyzing]);
+  }, [coverage, analysisComplete, isAnalyzing, completeAnalysis]);
 
   return (
     <div className="max-w-6xl mx-auto p-6 bg-gray-800/30 rounded-2xl border border-[#cfb989]/30">

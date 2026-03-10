@@ -75,17 +75,17 @@ export const useHeader = () => {
   // Configuration des éléments de navigation
   const navItems = [
     { path: '/', label: t('home') },
-    { path: '/solutions', label: 'Nos solutions' },
+    { path: '/solutions', label: t('nosSolutions') },
     { path: '/technologies', label: t('technologies') },
-    { path: '/agriculture-durable', label: 'Agriculture Durable' },
+    { path: '/agriculture-durable', label: t('agricultureDurable') },
     { path: '/pricing', label: t('pricing') },
     { path: '/about', label: t('about') },
-    { path: '/contact', label: 'Contact', hasDropdown: true }
+    { path: '/contact', label: t('contact'), hasDropdown: true }
   ];
 
   const contactItems = [
-    { path: '/contact', label: 'Agriculteur' },
-    { path: '/investisseurs', label: 'Investisseur' }
+    { path: '/contact', label: t('agriculteur') },
+    { path: '/investisseurs', label: t('investisseur') }
   ];
 
   return {

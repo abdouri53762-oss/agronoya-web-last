@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -39,7 +38,6 @@ import {
 } from 'lucide-react';
 
 const DroneAgrasPage = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const [activeDroneSystem, setActiveDroneSystem] = useState(0);
   const [missionStatus, setMissionStatus] = useState('ready'); // ready, flying, completed

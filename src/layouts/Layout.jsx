@@ -1,3 +1,4 @@
+/* global process */
 import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';

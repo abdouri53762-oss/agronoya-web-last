@@ -5,7 +5,7 @@ import { useTheme } from '../../../hooks/useTheme';
 import styles from './Header.module.css';
 
 const ThemeToggle = ({ className = '' }) => {
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
 
   return (
     <button

@@ -1,9 +1,7 @@
 import React from 'react';
 import { ArrowRight, Satellite, Target, Zap } from 'lucide-react';
-import { useTranslation } from 'react-i18next';
 
 const HeroFieldDetection = () => {
-  const { t } = useTranslation();
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
