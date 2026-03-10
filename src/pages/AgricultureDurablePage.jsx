@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+// motion is used in JSX elements below
+import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { useNavigate } from 'react-router-dom';
 import {
   Droplets,
