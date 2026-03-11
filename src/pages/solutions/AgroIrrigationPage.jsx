@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Droplets, Wifi, Smartphone, Zap, Target, TrendingDown, Clock, Activity } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const AgroIrrigationPage = () => {
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-[#0A0B0D]">
@@ -20,29 +22,28 @@ const AgroIrrigationPage = () => {
               <div className="text-white">
                 <div className="inline-flex items-center bg-blue-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
                   <Droplets className="w-5 h-5 text-blue-400 mr-3" />
-                  <span className="text-blue-400 font-medium">Irrigation Intelligente</span>
+                  <span className="text-blue-400 font-medium">{t('agroIrrigationHeroBadge')}</span>
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Agro Irrigation
+                  {t('agroIrrigation')}
                 </h1>
                 
                 <h2 className="text-2xl lg:text-3xl text-blue-400 mb-6 font-semibold">
-                  Gestion Intelligente de l'Eau
+                  {t('agroIrrigationHeroSubtitle')}
                 </h2>
                 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Optimisez votre consommation d'eau avec nos capteurs d'humidité connectés et l'IA NoyaIrrigation. 
-                  Irrigation de précision pour des économies d'eau jusqu'à 40%.
+                  {t('agroIrrigationHeroDesc')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-blue-500 hover:bg-blue-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center group transition-all duration-300">
-                    Démo Interactive
+                    {t('agroIrrigationDemo')}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                   <Link to="/contact" className="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-center transition-all duration-300">
-                    Calculer Économies
+                    {t('agroIrrigationCalculateSavings')}
                   </Link>
                 </div>
               </div>
@@ -66,10 +67,10 @@ const AgroIrrigationPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Économies Exceptionnelles
+              {t('agroIrrigationStatsTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              L'irrigation intelligente qui révolutionne votre gestion de l'eau
+              {t('agroIrrigationStatsSubtitle')}
             </p>
           </div>
 
@@ -77,27 +78,27 @@ const AgroIrrigationPage = () => {
             {[
               {
                 icon: <TrendingDown className="w-8 h-8" />,
-                metric: "-40%",
-                title: "Économie d'Eau",
-                description: "Réduction consommation garantie"
+                metric: t('agroIrrigationStats1Metric'),
+                title: t('agroIrrigationStats1Title'),
+                description: t('agroIrrigationStats1Desc')
               },
               {
                 icon: <Target className="w-8 h-8" />,
-                metric: "95%",
-                title: "Précision Arrosage",
-                description: "Irrigation au bon moment"
+                metric: t('agroIrrigationStats2Metric'),
+                title: t('agroIrrigationStats2Title'),
+                description: t('agroIrrigationStats2Desc')
               },
               {
                 icon: <Clock className="w-8 h-8" />,
-                metric: "24/7",
-                title: "Surveillance Continue",
-                description: "Monitoring automatique"
+                metric: t('agroIrrigationStats3Metric'),
+                title: t('agroIrrigationStats3Title'),
+                description: t('agroIrrigationStats3Desc')
               },
               {
                 icon: <Activity className="w-8 h-8" />,
-                metric: "+30%",
-                title: "Amélioration Rendement",
-                description: "Stress hydrique éliminé"
+                metric: t('agroIrrigationStats4Metric'),
+                title: t('agroIrrigationStats4Title'),
+                description: t('agroIrrigationStats4Desc')
               }
             ].map((fact, index) => (
               <div key={index} className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-blue-500/50 transition-all duration-300">
@@ -118,10 +119,10 @@ const AgroIrrigationPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Technologies d'Irrigation Avancées
+              {t('agroIrrigationTechTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Capteurs intelligents et IA pour une gestion optimale de l'eau
+              {t('agroIrrigationTechDesc')}
             </p>
           </div>
 
@@ -137,26 +138,26 @@ const AgroIrrigationPage = () => {
             {[
               {
                 icon: <Droplets className="w-8 h-8" />,
-                title: "Capteurs Humidité",
-                description: "Mesure précise du taux d'humidité du sol",
+                title: t('agroIrrigationTech1Title'),
+                description: t('agroIrrigationTech1Desc'),
                 image: "/src/assets/irrigation_sensors.jpg"
               },
               {
                 icon: <Wifi className="w-8 h-8" />,
-                title: "Connectivité IoT",
-                description: "Transmission temps réel des données",
+                title: t('agroIrrigationTech2Title'),
+                description: t('agroIrrigationTech2Desc'),
                 image: "/src/assets/smart_irrigation_system.jpg"
               },
               {
                 icon: <Smartphone className="w-8 h-8" />,
-                title: "App Mobile",
-                description: "Contrôle à distance de l'irrigation",
+                title: t('agroIrrigationTech3Title'),
+                description: t('agroIrrigationTech3Desc'),
                 image: "/src/assets/irrigation_sensors.jpg"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: "IA NoyaIrrigation",
-                description: "Optimisation automatique des cycles",
+                title: t('agroIrrigationTech4Title'),
+                description: t('agroIrrigationTech4Desc'),
                 image: "/src/assets/smart_irrigation_system.jpg"
               }
             ].map((tech, index) => (
@@ -186,12 +187,10 @@ const AgroIrrigationPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-white mb-6">
-                Irrigation de Précision Automatisée
+                {t('agroIrrigationFeatureTitle')}
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                Notre système analyse en continu l'humidité du sol, les conditions météo et les besoins 
-                spécifiques de vos cultures. L'IA NoyaIrrigation déclenche automatiquement l'arrosage 
-                au moment optimal avec la quantité d'eau exacte nécessaire.
+                {t('agroIrrigationFeatureDesc')}
               </p>
 
               <div className="space-y-4 mb-8">
@@ -212,10 +211,10 @@ const AgroIrrigationPage = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                  Voir Simulation
-                </button>
-                <button className="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                  Guide Installation
+                    {t('agroIrrigationSeeSimulation')}
+                  </button>
+                  <button className="border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
+                    {t('agroIrrigationInstallationGuide')}
                 </button>
               </div>
             </div>

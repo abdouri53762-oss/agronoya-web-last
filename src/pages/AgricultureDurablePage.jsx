@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 // motion is used in JSX elements below
 import { motion } from 'framer-motion'; // eslint-disable-line no-unused-vars
 import { useNavigate } from 'react-router-dom';
@@ -29,6 +30,7 @@ import agroSatImg from '../assets/agro_sat.png';
 
 const AgricultureDurablePage = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const [waterSavings, setWaterSavings] = useState(0);
   const [yieldIncrease, setYieldIncrease] = useState(0);
@@ -106,28 +108,23 @@ const AgricultureDurablePage = () => {
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-400/20 mb-8">
               <Recycle className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
-                Sustainable agriculture, elevated by intelligence
+                {t('agricultureDurableHeroBadge')}
               </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight text-slate-900 dark:text-white">
-              L’agriculture durable
+              {t('agricultureDurable')}
               <span className="block text-emerald-500 dark:text-emerald-400 mt-3">
-                devient une discipline de pilotage
+                {t('agricultureDurableHeroSubtitle')}
               </span>
             </h1>
 
             <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 font-light max-w-5xl mx-auto leading-relaxed">
-              AgroNoya transforme l’exploitation agricole en système piloté par
-              la donnée : plus sobre dans l’usage de l’eau, plus précis dans les
-              interventions, plus lisible dans la performance et plus robuste face
-              à l’incertitude climatique.
+              {t('agricultureDurableHeroDesc1')}
             </p>
 
             <p className="text-base md:text-lg text-slate-500 dark:text-slate-400 max-w-4xl mx-auto mb-14 leading-relaxed">
-              Notre ambition n’est pas d’ajouter une couche technologique de plus.
-              Elle est de rendre chaque décision agronomique plus fondée, plus
-              traçable et plus rentable dans le temps.
+              {t('agricultureDurableHeroDesc2')}
             </p>
           </motion.div>
 
@@ -145,7 +142,7 @@ const AgricultureDurablePage = () => {
                 {waterSavings}%
               </div>
               <div className="text-lg font-medium text-slate-700 dark:text-slate-300">
-                Jusqu’à d’optimisation hydrique
+                {t('agricultureDurableStatWaterLabel')}
               </div>
             </div>
 
@@ -159,7 +156,7 @@ const AgricultureDurablePage = () => {
                 +{yieldIncrease}%
               </div>
               <div className="text-lg font-medium text-slate-700 dark:text-slate-300">
-                Potentiel de performance agronomique
+                {t('agricultureDurableStatYieldLabel')}
               </div>
             </div>
 
@@ -173,7 +170,7 @@ const AgricultureDurablePage = () => {
                 -{chemicalReduction}%
               </div>
               <div className="text-lg font-medium text-slate-700 dark:text-slate-300">
-                Réduction ciblée des intrants
+                {t('agricultureDurableStatChemicalLabel')}
               </div>
             </div>
           </motion.div>
@@ -187,7 +184,7 @@ const AgricultureDurablePage = () => {
               onClick={() => navigate('/contact')}
               className="bg-gradient-to-r from-emerald-500 to-blue-600 hover:from-emerald-600 hover:to-blue-700 text-white px-10 py-5 rounded-2xl text-lg font-semibold shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
             >
-              Demander une étude d’impact
+              {t('agricultureDurableRequestImpactStudy')}
               <ArrowRight className="w-5 h-5" />
             </button>
 
@@ -196,7 +193,7 @@ const AgricultureDurablePage = () => {
               onClick={() => navigate('/solutions/module-esg')}
               className="border-2 border-emerald-500 dark:border-emerald-400 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500 dark:hover:bg-emerald-400 hover:text-white dark:hover:text-slate-900 px-10 py-5 rounded-2xl text-lg font-semibold transition-all duration-300 flex items-center gap-3"
             >
-              Explorer le module ESG
+              {t('agricultureDurableExploreESG')}
               <BarChart3 className="w-5 h-5" />
             </button>
           </motion.div>
@@ -214,11 +211,11 @@ const AgricultureDurablePage = () => {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-20" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              La durabilité n’est plus un discours
+              {t('agricultureDurableStrategicTitle')}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto mb-6"></div>
             <p className="text-2xl text-emerald-600 dark:text-emerald-400 font-semibold">
-              Elle devient une architecture de décision
+              {t('agricultureDurableStrategicSubtitle')}
             </p>
           </motion.div>
 
@@ -230,32 +227,32 @@ const AgricultureDurablePage = () => {
                     <div className="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center">
                       <span className="text-white font-bold text-sm">!</span>
                     </div>
-                    Le nouveau contexte agricole
+                    {t('agricultureDurableContextTitle')}
                   </h3>
 
                   <ul className="space-y-4 text-slate-700 dark:text-slate-300">
                     <li className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-lg">
-                        La rareté de l’eau redéfinit la performance des exploitations
+                        {t('agricultureDurableContextPoint1')}
                       </span>
                     </li>
                     <li className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-lg">
-                        Le climat augmente la variabilité et le coût de l’erreur
+                        {t('agricultureDurableContextPoint2')}
                       </span>
                     </li>
                     <li className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-lg">
-                        Les intrants mal ciblés détruisent de la marge et de la résilience
+                        {t('agricultureDurableContextPoint3')}
                       </span>
                     </li>
                     <li className="flex items-start gap-4">
                       <div className="w-3 h-3 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-lg">
-                        Les décisions intuitives atteignent leurs limites à grande échelle
+                        {t('agricultureDurableContextPoint4')}
                       </span>
                     </li>
                   </ul>
@@ -266,15 +263,11 @@ const AgricultureDurablePage = () => {
                     <div className="w-8 h-8 bg-emerald-500 rounded-lg flex items-center justify-center">
                       <CheckCircle className="w-5 h-5 text-white" />
                     </div>
-                    La thèse AgroNoya
+                    {t('agricultureDurableThesisTitle')}
                   </h3>
 
                   <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
-                    Une agriculture durable ne repose pas uniquement sur de
-                    bonnes intentions. Elle exige une meilleure lecture du terrain,
-                    une meilleure hiérarchisation des actions et une meilleure
-                    continuité entre mesure, analyse et exécution. C’est exactement
-                    ce que construit AgroNoya.
+                    {t('agricultureDurableThesisDesc')}
                   </p>
                 </div>
               </div>
@@ -285,13 +278,13 @@ const AgricultureDurablePage = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-3xl transform rotate-2"></div>
                 <img
                   src={smartFarmingImg}
-                  alt="Pilotage durable de l’exploitation agricole"
+                  alt={t('agricultureDurableSmartFarmingImgAlt')}
                   className="relative rounded-3xl shadow-2xl w-full transform -rotate-1 hover:rotate-0 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 to-transparent rounded-3xl"></div>
                 <div className="absolute bottom-6 left-6 right-6">
                   <p className="text-white font-semibold text-lg">
-                    Mieux piloter, c’est d’abord mieux observer
+                    {t('agricultureDurableSmartFarmingOverlay')}
                   </p>
                 </div>
               </div>
@@ -311,11 +304,11 @@ const AgricultureDurablePage = () => {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-20" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Un operating system pour l’agriculture durable
+              {t('agricultureDurableOperatingTitle')}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto mb-6"></div>
             <p className="text-2xl text-emerald-600 dark:text-emerald-400 font-semibold">
-              Observer → Modéliser → Exécuter
+              {t('agricultureDurableOperatingSubtitle')}
             </p>
           </motion.div>
 
@@ -328,16 +321,15 @@ const AgricultureDurablePage = () => {
                 <Satellite className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">
-                Observer
+                {t('agricultureDurableOperatingObserveTitle')}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                Capteurs, météo et imagerie forment une couche d’observation
-                continue du système sol-plante-climat.
+                {t('agricultureDurableOperatingObserveDesc')}
               </p>
               <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <div>• Paramètres terrain</div>
-                <div>• Indices végétatifs</div>
-                <div>• Variabilité intra-parcellaire</div>
+                <div>• {t('agricultureDurableOperatingObserveBullet1')}</div>
+                <div>• {t('agricultureDurableOperatingObserveBullet2')}</div>
+                <div>• {t('agricultureDurableOperatingObserveBullet3')}</div>
               </div>
             </div>
 
@@ -346,16 +338,15 @@ const AgricultureDurablePage = () => {
                 <Brain className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
-                Modéliser
+                {t('agricultureDurableOperatingModelTitle')}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                Les moteurs AgroNoya traduisent les signaux disponibles en
-                priorités métier et en recommandations plus fiables.
+                {t('agricultureDurableOperatingModelDesc')}
               </p>
               <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <div>• Analyse multi-source</div>
-                <div>• Lecture de criticité</div>
-                <div>• Recommandations contextualisées</div>
+                <div>• {t('agricultureDurableOperatingModelBullet1')}</div>
+                <div>• {t('agricultureDurableOperatingModelBullet2')}</div>
+                <div>• {t('agricultureDurableOperatingModelBullet3')}</div>
               </div>
             </div>
 
@@ -364,16 +355,15 @@ const AgricultureDurablePage = () => {
                 <Zap className="w-10 h-10 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-amber-600 dark:text-amber-400 mb-4">
-                Exécuter
+                {t('agricultureDurableOperatingExecuteTitle')}
               </h3>
               <p className="text-slate-700 dark:text-slate-300 mb-6">
-                La décision se prolonge dans le pilotage irrigation, le ciblage
-                des interventions et le suivi de la performance réelle.
+                {t('agricultureDurableOperatingExecuteDesc')}
               </p>
               <div className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
-                <div>• Aide à l’irrigation</div>
-                <div>• Réduction des actions inutiles</div>
-                <div>• Traçabilité des résultats</div>
+                <div>• {t('agricultureDurableOperatingExecuteBullet1')}</div>
+                <div>• {t('agricultureDurableOperatingExecuteBullet2')}</div>
+                <div>• {t('agricultureDurableOperatingExecuteBullet3')}</div>
               </div>
             </div>
           </motion.div>
@@ -391,11 +381,11 @@ const AgricultureDurablePage = () => {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-20" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Trois moteurs de valeur durable
+              {t('agricultureDurableCoreModulesTitle')}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-blue-500 mx-auto mb-6"></div>
             <p className="text-2xl text-emerald-600 dark:text-emerald-400 font-semibold">
-              Sol, eau et diagnostic spatial au cœur du modèle
+              {t('agricultureDurableCoreModulesSubtitle')}
             </p>
           </motion.div>
 
@@ -412,22 +402,20 @@ const AgricultureDurablePage = () => {
                     </div>
                     <div>
                       <span className="text-sm font-semibold text-amber-600 dark:text-amber-400 uppercase tracking-wider">
-                        AGROSOL
+                        {t('agricultureDurableAgroSolBadge')}
                       </span>
                       <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-                        Intelligence du sol
+                        {t('agricultureDurableAgroSolTitle')}
                       </h3>
                     </div>
                   </div>
 
                   <p className="text-xl text-amber-600 dark:text-amber-400 font-semibold mb-4">
-                    La qualité des décisions commence sous la surface
+                    {t('agricultureDurableAgroSolSubtitle')}
                   </p>
 
                   <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                    AgroSol fournit une lecture plus fine des paramètres critiques
-                    du sol afin d’aider à ajuster les apports, réduire les dérives
-                    de dosage et préserver la qualité productive du terrain.
+                    {t('agricultureDurableAgroSolDesc')}
                   </p>
 
                   <div className="grid grid-cols-3 gap-4 text-center">
@@ -436,7 +424,7 @@ const AgricultureDurablePage = () => {
                         NPK
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Lecture nutritive
+                        {t('agricultureDurableAgroSolStatNpk')}
                       </div>
                     </div>
                     <div className="bg-amber-100 dark:bg-amber-500/15 rounded-xl p-4">
@@ -444,7 +432,7 @@ const AgricultureDurablePage = () => {
                         pH
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Équilibre chimique
+                        {t('agricultureDurableAgroSolStatPh')}
                       </div>
                     </div>
                     <div className="bg-amber-100 dark:bg-amber-500/15 rounded-xl p-4">
@@ -452,7 +440,7 @@ const AgricultureDurablePage = () => {
                         Continu
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Suivi vivant du sol
+                        {t('agricultureDurableAgroSolStatContinuous')}
                       </div>
                     </div>
                   </div>
@@ -462,7 +450,7 @@ const AgricultureDurablePage = () => {
               <div className="order-1 lg:order-2">
                 <img
                   src={agroSolImg}
-                  alt="AgroSol - intelligence du sol"
+                  alt={t('agricultureDurableAgroSolImgAlt')}
                   className="rounded-3xl shadow-2xl w-full"
                 />
               </div>
@@ -475,7 +463,7 @@ const AgricultureDurablePage = () => {
               <div>
                 <img
                   src={agroIrrigationImg}
-                  alt="AgroIrrigation - pilotage de l'eau"
+                  alt={t('agricultureDurableAgroIrrigationImgAlt')}
                   className="rounded-3xl shadow-2xl w-full"
                 />
               </div>
@@ -488,47 +476,45 @@ const AgricultureDurablePage = () => {
                     </div>
                     <div>
                       <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">
-                        AGROIRRIGATION
+                        {t('agricultureDurableAgroIrrigationBadge')}
                       </span>
                       <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-                        Pilotage hydrique
+                        {t('agricultureDurableAgroIrrigationTitle')}
                       </h3>
                     </div>
                   </div>
 
                   <p className="text-xl text-blue-600 dark:text-blue-400 font-semibold mb-4">
-                    L’eau devient une variable maîtrisée, non subie
+                    {t('agricultureDurableAgroIrrigationSubtitle')}
                   </p>
 
                   <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                    AgroIrrigation croise l’état hydrique, la dynamique culturale,
-                    la météo et les caractéristiques du sol pour soutenir une
-                    irrigation plus cohérente avec le besoin réel.
+                    {t('agricultureDurableAgroIrrigationDesc')}
                   </p>
 
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div className="bg-blue-100 dark:bg-blue-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                        Eau
+                        {t('agricultureDurableAgroIrrigationStatWater')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Ressource pilotée
+                        {t('agricultureDurableAgroIrrigationStatWaterLabel')}
                       </div>
                     </div>
                     <div className="bg-blue-100 dark:bg-blue-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                        Continu
+                        {t('agricultureDurableAgroIrrigationStatContinuous')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Lecture dynamique
+                        {t('agricultureDurableAgroIrrigationStatContinuousLabel')}
                       </div>
                     </div>
                     <div className="bg-blue-100 dark:bg-blue-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                        Priorité
+                        {t('agricultureDurableAgroIrrigationStatPriority')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Décision assistée
+                        {t('agricultureDurableAgroIrrigationStatPriorityLabel')}
                       </div>
                     </div>
                   </div>
@@ -548,47 +534,45 @@ const AgricultureDurablePage = () => {
                     </div>
                     <div>
                       <span className="text-sm font-semibold text-purple-600 dark:text-purple-400 uppercase tracking-wider">
-                        NOYASAT
+                        {t('agricultureDurableNoyaSatBadge')}
                       </span>
                       <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
-                        Vision spatiale de la parcelle
+                        {t('agricultureDurableNoyaSatTitle')}
                       </h3>
                     </div>
                   </div>
 
                   <p className="text-xl text-purple-600 dark:text-purple-400 font-semibold mb-4">
-                    Détecter plus tôt pour agir avec plus de justesse
+                    {t('agricultureDurableNoyaSatSubtitle')}
                   </p>
 
                   <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                    NoyaSat apporte une lecture visuelle et spatiale de la
-                    parcelle, identifie les zones sous tension et oriente des
-                    vérifications ou interventions mieux ciblées.
+                    {t('agricultureDurableNoyaSatDesc')}
                   </p>
 
                   <div className="grid grid-cols-3 gap-4 text-center">
                     <div className="bg-purple-100 dark:bg-purple-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                        NDVI
+                        {t('agricultureDurableNoyaSatStatNdvi')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Lecture végétative
+                        {t('agricultureDurableNoyaSatStatNdviLabel')}
                       </div>
                     </div>
                     <div className="bg-purple-100 dark:bg-purple-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                        Zones
+                        {t('agricultureDurableNoyaSatStatZones')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Diagnostic spatial
+                        {t('agricultureDurableNoyaSatStatZonesLabel')}
                       </div>
                     </div>
                     <div className="bg-purple-100 dark:bg-purple-500/15 rounded-xl p-4">
                       <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                        Précoce
+                        {t('agricultureDurableNoyaSatStatEarly')}
                       </div>
                       <div className="text-sm text-slate-600 dark:text-slate-300">
-                        Détection avancée
+                        {t('agricultureDurableNoyaSatStatEarlyLabel')}
                       </div>
                     </div>
                   </div>
@@ -598,7 +582,7 @@ const AgricultureDurablePage = () => {
               <div className="order-1 lg:order-2">
                 <img
                   src={agroSatImg}
-                  alt="NoyaSat - vision satellite"
+                  alt={t('agricultureDurableNoyaSatImgAlt')}
                   className="rounded-3xl shadow-2xl w-full"
                 />
               </div>
@@ -618,11 +602,11 @@ const AgricultureDurablePage = () => {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-20" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              Une lecture ESG ancrée dans le réel
+              {t('agricultureDurableEsgTitle')}
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-green-500 to-blue-500 mx-auto mb-6"></div>
             <p className="text-2xl text-green-600 dark:text-green-400 font-semibold">
-              Des indicateurs utiles avant d’être déclaratifs
+              {t('agricultureDurableEsgSubtitle')}
             </p>
           </motion.div>
 
@@ -636,24 +620,23 @@ const AgricultureDurablePage = () => {
                   <Leaf className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-                  Environnement
+                  {t('agricultureDurableEsgEnvTitle')}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                  Réduire les gaspillages, mieux allouer les ressources et
-                  documenter les gains environnementaux dans le temps.
+                  {t('agricultureDurableEsgEnvDesc')}
                 </p>
                 <div className="space-y-3 text-sm text-slate-600 dark:text-slate-400 text-left">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Efficience hydrique mesurable</span>
+                    <span>{t('agricultureDurableEsgEnvBenefit1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Intrants mieux ciblés</span>
+                    <span>{t('agricultureDurableEsgEnvBenefit2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span>Base de suivi environnemental</span>
+                    <span>{t('agricultureDurableEsgEnvBenefit3')}</span>
                   </div>
                 </div>
               </div>
@@ -665,24 +648,23 @@ const AgricultureDurablePage = () => {
                   <Users className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-                  Social
+                  {t('agricultureDurableEsgSocialTitle')}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                  Équiper les équipes terrain et les exploitants d’outils plus
-                  lisibles, plus rapides et plus utiles à la décision.
+                  {t('agricultureDurableEsgSocialDesc')}
                 </p>
                 <div className="space-y-3 text-sm text-slate-600 dark:text-slate-400 text-left">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span>Montée en compétence</span>
+                    <span>{t('agricultureDurableEsgSocialBenefit1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span>Réduction de l’incertitude terrain</span>
+                    <span>{t('agricultureDurableEsgSocialBenefit2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span>Meilleure continuité opérationnelle</span>
+                    <span>{t('agricultureDurableEsgSocialBenefit3')}</span>
                   </div>
                 </div>
               </div>
@@ -694,24 +676,23 @@ const AgricultureDurablePage = () => {
                   <Shield className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-slate-900 dark:text-white">
-                  Gouvernance
+                  {t('agricultureDurableEsgGovernanceTitle')}
                 </h3>
                 <p className="text-slate-700 dark:text-slate-300 mb-6 leading-relaxed">
-                  Structurer les données, historiser les décisions et améliorer la
-                  qualité du reporting technique et de gestion.
+                  {t('agricultureDurableEsgGovernanceDesc')}
                 </p>
                 <div className="space-y-3 text-sm text-slate-600 dark:text-slate-400 text-left">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>Traçabilité des actions</span>
+                    <span>{t('agricultureDurableEsgGovernanceBenefit1')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>Historique opérationnel consolidé</span>
+                    <span>{t('agricultureDurableEsgGovernanceBenefit2')}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                    <span>Base exploitable pour pilotage & ESG</span>
+                    <span>{t('agricultureDurableEsgGovernanceBenefit3')}</span>
                   </div>
                 </div>
               </div>
@@ -723,47 +704,44 @@ const AgricultureDurablePage = () => {
             variants={itemVariants}
           >
             <h3 className="text-3xl font-bold text-center mb-12 text-slate-900 dark:text-white">
-              Une performance durable se suit selon trois horizons
+              {t('agricultureDurablePerformanceTitle')}
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
               <div className="text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
                 <CloudRain className="w-10 h-10 text-blue-500 mx-auto mb-4" />
                 <div className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  Ressource
+                  {t('agricultureDurablePerformanceMetricResource')}
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Eau, fréquence d’irrigation, efficience d’usage
+                  {t('agricultureDurablePerformanceResourceDesc')}
                 </p>
               </div>
 
               <div className="text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
                 <Sprout className="w-10 h-10 text-green-500 mx-auto mb-4" />
                 <div className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  Agronomie
+                  {t('agricultureDurablePerformanceMetricAgronomy')}
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Sol, culture, stress, régularité des performances
+                  {t('agricultureDurablePerformanceAgronomyDesc')}
                 </p>
               </div>
 
               <div className="text-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700">
                 <LineChart className="w-10 h-10 text-purple-500 mx-auto mb-4" />
                 <div className="text-2xl font-bold text-slate-900 dark:text-white mb-2">
-                  Exécution
+                  {t('agricultureDurablePerformanceMetricExecution')}
                 </div>
                 <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Décisions, interventions, stabilité opérationnelle
+                  {t('agricultureDurablePerformanceExecutionDesc')}
                 </p>
               </div>
             </div>
 
             <div className="p-6 bg-emerald-100 dark:bg-emerald-500/10 rounded-2xl border border-emerald-300 dark:border-emerald-400/20">
               <p className="text-center text-slate-700 dark:text-slate-300 text-lg leading-relaxed">
-                La durabilité a de la valeur lorsqu’elle améliore la qualité des
-                décisions, réduit les pertes évitables et rend la performance plus
-                résiliente dans le temps. C’est ce lien entre impact et pilotage
-                qu’AgroNoya cherche à matérialiser.
+                {t('agricultureDurableSustainabilityValue')}
               </p>
             </div>
           </motion.div>
@@ -781,9 +759,9 @@ const AgricultureDurablePage = () => {
         <div className="container mx-auto px-6">
           <motion.div className="text-center mb-16" variants={itemVariants}>
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-8">
-              Construire une exploitation plus durable,
+              {t('agricultureDurableFinalCtaTitle')}
               <span className="block text-emerald-500 dark:text-emerald-400 mt-3">
-                c’est d’abord construire un meilleur système de décision
+                {t('agricultureDurableFinalCtaSubtitle')}
               </span>
             </h2>
           </motion.div>
@@ -798,14 +776,11 @@ const AgricultureDurablePage = () => {
               </div>
 
               <blockquote className="text-xl text-slate-700 dark:text-slate-300 mb-6 italic leading-relaxed">
-                “AgroNoya positionne la donnée agricole comme un levier de
-                résilience, d’efficience et de performance. Notre objectif est de
-                rendre chaque hectare plus lisible, chaque décision plus défendable
-                et chaque saison plus pilotable.”
+                {t('agricultureDurableQuote')}
               </blockquote>
 
               <div className="text-emerald-600 dark:text-emerald-400 font-semibold">
-                Vision produit AgroNoya
+                {t('agricultureDurableQuoteAuthor')}
               </div>
             </div>
           </motion.div>
@@ -832,8 +807,7 @@ const AgricultureDurablePage = () => {
             </div>
 
             <p className="text-slate-600 dark:text-slate-400 text-lg">
-              Une page pensée pour parler autant aux exploitants qu’aux partenaires,
-              décideurs et acteurs de transformation du secteur agricole.
+              {t('agricultureDurableAudienceDesc')}
             </p>
           </motion.div>
         </div>

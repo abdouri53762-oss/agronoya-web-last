@@ -28,8 +28,8 @@ const Solutions = () => {
       shortDescription: t("agroSolDesc"),
       image: agroSolImg,
       gradient: "from-emerald-500 to-teal-600",
-      category: "Analyse Sol",
-      badge: "IA Avancée",
+      category: t("categorySoilAnalysis"),
+      badge: t("badgeAdvancedAI"),
       link: "/solutions/agro-sol"
     },
     {
@@ -40,8 +40,8 @@ const Solutions = () => {
       shortDescription: t("agroSatDesc"),
       image: agroSatImg,
       gradient: "from-blue-500 to-indigo-600",
-      category: "Satellite",
-      badge: "Temps Réel",
+      category: t("categorySatellite"),
+      badge: t("badgeRealTime"),
       link: "/solutions/agro-sat"
     },
     {
@@ -52,8 +52,8 @@ const Solutions = () => {
       shortDescription: t("droneMultispectralDesc"),
       image: droneMultispectralImg,
       gradient: "from-purple-500 to-pink-600",
-      category: "Drone",
-      badge: "Haute Précision",
+      category: t("categoryDrone"),
+      badge: t("badgeHighPrecision"),
       link: "/solutions/drone-multispectral"
     },
     {
@@ -64,8 +64,8 @@ const Solutions = () => {
       shortDescription: t("agroIrrigationDesc"),
       image: agroIrrigationImg,
       gradient: "from-cyan-500 to-blue-600",
-      category: "Irrigation",
-      badge: "Smart Water",
+      category: t("categoryIrrigation"),
+      badge: t("badgeSmartWater"),
       link: "/solutions/agro-irrigation"
     },
     {
@@ -76,8 +76,8 @@ const Solutions = () => {
       shortDescription: t("agroWeatherDesc"),
       image: agroWeatherImg,
       gradient: "from-orange-500 to-red-600",
-      category: "Météo",
-      badge: "Prédictif",
+      category: t("categoryWeather"),
+      badge: t("badgePredictive"),
       link: "/solutions/agro-weather"
     },
     {
@@ -88,8 +88,8 @@ const Solutions = () => {
       shortDescription: t("noyaDiagDesc"),
       image: noyaDiagImg,
       gradient: "from-green-500 to-emerald-600",
-      category: "Diagnostic",
-      badge: "IA Vision",
+      category: t("categoryDiagnostics"),
+      badge: t("badgeAI"),
       link: "/solutions/noya-diag"
     },
     {
@@ -100,8 +100,8 @@ const Solutions = () => {
       shortDescription: t("noyaGPTDesc"),
       image: noyaGPTImg,
       gradient: "from-violet-500 to-purple-600",
-      category: "Assistant IA",
-      badge: "ChatGPT Agri",
+      category: t("categoryIA"),
+      badge: t("badgeChatGPT"),
       link: "/solutions/noya-gpt"
     },
     {
@@ -112,8 +112,8 @@ const Solutions = () => {
       shortDescription: t("dashboardAgroNoyaDesc"),
       image: dashboardAgroNoyaImg,
       gradient: "from-slate-500 to-gray-600",
-      category: "Dashboard",
-      badge: "Tout-en-Un",
+      category: t("categoryDashboard"),
+      badge: t("badgeAllInOne"),
       link: "/solutions/dashboard-agronoya"
     },
     {
@@ -124,8 +124,8 @@ const Solutions = () => {
       shortDescription: t("moduleESGDesc"),
       image: moduleESGImg,
       gradient: "from-lime-500 to-green-600",
-      category: "Durabilité",
-      badge: "ESG Ready",
+      category: t("categorySustainability"),
+      badge: t("badgeESGReady"),
       link: "/solutions/module-esg"
     },
     {
@@ -136,8 +136,8 @@ const Solutions = () => {
       shortDescription: t("marketplaceAgroStoreDesc"),
       image: marketplaceAgroStoreImg,
       gradient: "from-amber-500 to-orange-600",
-      category: "Marketplace",
-      badge: "E-commerce",
+      category: t("categoryMarketplace"),
+      badge: t("badgeEcommerce"),
       link: "/solutions/marketplace-agro-store"
     },
     {
@@ -148,8 +148,8 @@ const Solutions = () => {
       shortDescription: t("collectiveAlertSystemDesc"),
       image: collectiveAlertSystemImg,
       gradient: "from-red-500 to-pink-600",
-      category: "Alerte",
-      badge: "Communauté",
+      category: t("categoryAlerts"),
+      badge: t("badgeCommunity"),
       link: "/solutions/collective-alert-system"
     },
     {
@@ -160,8 +160,8 @@ const Solutions = () => {
       shortDescription: t("irrigationFailureMonitoringDesc"),
       image: irrigationFailureMonitoringImg,
       gradient: "from-teal-500 to-cyan-600",
-      category: "Monitoring",
-      badge: "Prévention",
+      category: t("categoryMonitoring"),
+      badge: t("badgePrevention"),
       link: "/solutions/irrigation-failure-monitoring"
     },
     {
@@ -172,8 +172,8 @@ const Solutions = () => {
       shortDescription: t("carbonCertificationDesc"),
       image: carbonCertificationImg,
       gradient: "from-emerald-500 to-green-600",
-      category: "Certification",
-      badge: "Carbone+",
+      category: t("categoryCertification"),
+      badge: t("badgeCarbonPlus"),
       link: "/solutions/carbon-certification"
     }
   ];
@@ -230,7 +230,7 @@ const Solutions = () => {
           to={solution.link || "#"} 
           className={`inline-flex items-center px-6 py-3 rounded-xl bg-gradient-to-r ${solution.gradient} text-white font-semibold text-sm shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group/btn`}
         >
-          <span>Découvrir</span>
+          <span>{t('decouvrir')}</span>
           <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
         </Link>
       </div>
@@ -255,7 +255,7 @@ const Solutions = () => {
         <div className="text-center mb-20 fade-in">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#57D53B]/10 text-[#57D53B] text-sm font-semibold mb-6">
             <Sparkles className="w-4 h-4 mr-2" />
-            Solutions Innovantes
+            {t('solutionsBadge')}
           </div>
           <h2 className="text-5xl lg:text-6xl font-bold text-[#57D53B] dark:text-gray-100 mb-6 bg-gradient-to-r from-[#57D53B] to-emerald-600 bg-clip-text">
             {t("solutionsTitle")}
@@ -276,7 +276,7 @@ const Solutions = () => {
         <div className="text-center mt-20">
           <div className="inline-flex items-center px-8 py-4 rounded-2xl bg-gradient-to-r from-[#57D53B] to-emerald-600 text-white font-semibold text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 cursor-pointer">
             <Zap className="w-5 h-5 mr-2" />
-            Découvrir Toutes Nos Solutions
+            {t('solutionsCTA')}
           </div>
         </div>
       </div>

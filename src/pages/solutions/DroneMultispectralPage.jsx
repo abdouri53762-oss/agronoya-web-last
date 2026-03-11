@@ -23,29 +23,28 @@ const DroneMultispectralPage = () => {
               <div className="text-white">
                 <div className="inline-flex items-center bg-orange-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
                   <Plane className="w-5 h-5 text-orange-400 mr-3" />
-                  <span className="text-orange-400 font-medium">Inspection Aérienne</span>
+                  <span className="text-orange-400 font-medium">{t('droneMultispectralHeroBadge')}</span>
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Drone Multispectral
+                  {t('droneMultispectral')}
                 </h1>
                 
                 <h2 className="text-2xl lg:text-3xl text-orange-400 mb-6 font-semibold">
-                  Inspection Haute Précision
+                  {t('droneMultispectralHeroSubtitle')}
                 </h2>
                 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Inspection aérienne haute précision avec IA pour détection précoce des maladies, 
-                  stress hydrique et anomalies localisées. Cartographie détaillée de vos parcelles.
+                  {t('droneMultispectralHeroDesc')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center group transition-all duration-300">
-                    Réserver un Vol
+                    {t('droneMultispectralBookFlight')}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                   <Link to="/contact" className="border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-center transition-all duration-300">
-                    Devis Personnalisé
+                    {t('droneMultispectralCustomQuote')}
                   </Link>
                 </div>
               </div>
@@ -69,10 +68,10 @@ const DroneMultispectralPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Performances Exceptionnelles
+              {t('droneMultispectralFactsTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              La précision aérienne au service de votre agriculture
+              {t('droneMultispectralFactsSubtitle')}
             </p>
           </div>
 
@@ -80,27 +79,27 @@ const DroneMultispectralPage = () => {
             {[
               {
                 icon: <Target className="w-8 h-8" />,
-                metric: "2cm",
-                title: "Résolution Spatiale",
-                description: "Précision centimétrique garantie"
+                metric: t('droneMultispectralFact1Metric'),
+                title: t('droneMultispectralFact1Title'),
+                description: t('droneMultispectralFact1Desc')
               },
               {
                 icon: <Clock className="w-8 h-8" />,
-                metric: "50 ha/h",
-                title: "Vitesse Couverture",
-                description: "Inspection rapide grandes surfaces"
+                metric: t('droneMultispectralFact2Metric'),
+                title: t('droneMultispectralFact2Title'),
+                description: t('droneMultispectralFact2Desc')
               },
               {
                 icon: <Eye className="w-8 h-8" />,
-                metric: "5 bandes",
-                title: "Capteurs Spectraux",
-                description: "RGB + Rouge-Edge + NIR"
+                metric: t('droneMultispectralFact3Metric'),
+                title: t('droneMultispectralFact3Title'),
+                description: t('droneMultispectralFact3Desc')
               },
               {
                 icon: <Activity className="w-8 h-8" />,
-                metric: "95%",
-                title: "Détection Précoce",
-                description: "Maladies avant symptômes visibles"
+                metric: t('droneMultispectralFact4Metric'),
+                title: t('droneMultispectralFact4Title'),
+                description: t('droneMultispectralFact4Desc')
               }
             ].map((fact, index) => (
               <div key={index} className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-orange-500/50 transition-all duration-300">
@@ -121,10 +120,10 @@ const DroneMultispectralPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Technologies Embarquées
+              {t('droneMultispectralTechTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Équipements de pointe pour une analyse multispectrale complète
+              {t('droneMultispectralTechDesc')}
             </p>
           </div>
 
@@ -141,26 +140,26 @@ const DroneMultispectralPage = () => {
             {[
               {
                 icon: <Camera className="w-8 h-8" />,
-                title: "Caméra RGB",
-                description: "Images haute résolution couleur",
+                title: t('droneMultispectralTech1Title'),
+                description: t('droneMultispectralTech1Desc'),
                 image: "/src/assets/drone_agriculture.jpg"
               },
               {
                 icon: <Eye className="w-8 h-8" />,
-                title: "Capteur NIR",
-                description: "Proche infrarouge pour santé végétale",
+                title: t('droneMultispectralTech2Title'),
+                description: t('droneMultispectralTech2Desc'),
                 image: "/src/assets/drone_multispectral_field.jpg"
               },
               {
                 icon: <MapPin className="w-8 h-8" />,
-                title: "GPS RTK",
-                description: "Géolocalisation centimétrique",
+                title: t('droneMultispectralTech3Title'),
+                description: t('droneMultispectralTech3Desc'),
                 image: "/src/assets/drone_agriculture.jpg"
               },
               {
                 icon: <Zap className="w-8 h-8" />,
-                title: "IA Embarquée",
-                description: "Traitement temps réel des données",
+                title: t('droneMultispectralTech4Title'),
+                description: t('droneMultispectralTech4Desc'),
                 image: "/src/assets/drone_multispectral_field.jpg"
               }
             ].map((tech, index) => (
@@ -190,22 +189,20 @@ const DroneMultispectralPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-white mb-6">
-                Détection Précoce Intelligente
+                {t('droneMultispectralFeatureTitle')}
               </h2>
               <p className="text-gray-300 mb-8 leading-relaxed">
-                Nos drones équipés de capteurs multispectraux et d'IA détectent les problèmes 
-                avant qu'ils ne soient visibles à l'œil nu. Cartographie précise des zones 
-                à problèmes pour interventions ciblées.
+                {t('droneMultispectralFeatureDesc')}
               </p>
 
               <div className="space-y-4 mb-8">
                 {[
-                  "Détection maladies 2-3 semaines avant symptômes",
-                  "Cartographie stress hydrique haute résolution",
-                  "Comptage plants et estimation rendements",
-                  "Surveillance croissance et développement",
-                  "Détection ravageurs et carences nutritionnelles",
-                  "Rapports géolocalisés pour interventions précises"
+                  t('droneMultispectralFeature1'),
+                  t('droneMultispectralFeature2'),
+                  t('droneMultispectralFeature3'),
+                  t('droneMultispectralFeature4'),
+                  t('droneMultispectralFeature5'),
+                  t('droneMultispectralFeature6')
                 ].map((feature, index) => (
                   <div key={index} className="flex items-center">
                     <CheckCircle className="w-5 h-5 text-orange-400 mr-3 flex-shrink-0" />
@@ -216,7 +213,7 @@ const DroneMultispectralPage = () => {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
-                  Voir Exemples Cartes
+                  {t('droneMultispectralMapExamples')}
                 </button>
                 <button className="border border-orange-500 text-orange-400 hover:bg-orange-500 hover:text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300">
                   Spécifications Techniques

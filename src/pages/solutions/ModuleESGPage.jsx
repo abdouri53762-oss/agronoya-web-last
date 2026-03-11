@@ -1,8 +1,11 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Leaf, Award, TrendingUp, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const ModuleESGPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-[#0A0B0D]">
       <section className="relative py-20 overflow-hidden">
@@ -13,26 +16,25 @@ const ModuleESGPage = () => {
               <div className="text-white">
                 <div className="inline-flex items-center bg-green-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
                   <Leaf className="w-5 h-5 text-green-400 mr-3" />
-                  <span className="text-green-400 font-medium">Durabilité ESG</span>
+                  <span className="text-green-400 font-medium">{t('moduleESGHeroBadge')}</span>
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">Module ESG</h1>
-                <h2 className="text-2xl lg:text-3xl text-green-400 mb-6 font-semibold">Certification Durable</h2>
+                <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">{t('moduleESGTitle')}</h1>
+                <h2 className="text-2xl lg:text-3xl text-green-400 mb-6 font-semibold">{t('moduleESGSubtitle')}</h2>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Module ESG intégré pour certification carbone, reporting durabilité et conformité réglementaire. 
-                  Valorisez vos pratiques agricoles responsables.
+                  {t('moduleESGHeroDesc')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center group transition-all duration-300">
-                    Calculer Empreinte <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    {t('moduleESGCalculateButton')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                   <Link to="/contact" className="border border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-center transition-all duration-300">
-                    Certification ESG
+                    {t('moduleESGCertificationButton')}
                   </Link>
                 </div>
               </div>
               <div className="relative">
                 <div className="bg-gradient-to-br from-green-500/20 to-emerald-600/20 rounded-2xl p-8 backdrop-blur-sm border border-green-500/30">
-                  <img src="/src/assets/module_esg.png" alt="Module ESG" className="w-full h-auto rounded-lg" />
+                  <img src="/src/assets/module_esg.png" alt={t('moduleESGImageAlt')} className="w-full h-auto rounded-lg" />
                 </div>
               </div>
             </div>
@@ -44,10 +46,10 @@ const ModuleESGPage = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { icon: <Award className="w-8 h-8" />, metric: "ISO 14001", title: "Certifications", description: "Standards internationaux" },
-              { icon: <TrendingUp className="w-8 h-8" />, metric: "-40%", title: "Réduction CO2", description: "Impact carbone mesuré" },
-              { icon: <Globe className="w-8 h-8" />, metric: "EU", title: "Conformité", description: "Réglementation européenne" },
-              { icon: <Leaf className="w-8 h-8" />, metric: "100%", title: "Traçabilité", description: "Pratiques documentées" }
+              { icon: <Award className="w-8 h-8" />, metric: "ISO 14001", title: t('moduleESGFactCertificationsTitle'), description: t('moduleESGFactCertificationsDesc') },
+              { icon: <TrendingUp className="w-8 h-8" />, metric: "-40%", title: t('moduleESGFactReductionTitle'), description: t('moduleESGFactReductionDesc') },
+              { icon: <Globe className="w-8 h-8" />, metric: "EU", title: t('moduleESGFactComplianceTitle'), description: t('moduleESGFactComplianceDesc') },
+              { icon: <Leaf className="w-8 h-8" />, metric: "100%", title: t('moduleESGFactTraceabilityTitle'), description: t('moduleESGFactTraceabilityDesc') }
             ].map((fact, index) => (
               <div key={index} className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500/20 rounded-full mb-4">
@@ -65,13 +67,13 @@ const ModuleESGPage = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="mb-12">
-            <img src="/src/assets/sustainability_certifications.jpg" alt="Certifications Durabilité" className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl" />
+            <img src="/src/assets/sustainability_certifications.jpg" alt={t('moduleESGImageAlt')} className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { title: "Bilan Carbone", description: "Calcul automatique empreinte CO2 de l'exploitation", benefits: ["Mesure précise", "Suivi évolution", "Crédits carbone"] },
-              { title: "Reporting ESG", description: "Rapports conformes aux standards internationaux", benefits: ["ISO 14001", "GRI Standards", "TCFD"] },
-              { title: "Certification Bio", description: "Accompagnement certification agriculture biologique", benefits: ["Cahier charges", "Audit préparation", "Suivi conformité"] }
+              { title: t('moduleESGFeatureCarbonTitle'), description: t('moduleESGFeatureCarbonDesc'), benefits: [t('moduleESGFeatureCarbonBenefit1'), t('moduleESGFeatureCarbonBenefit2'), t('moduleESGFeatureCarbonBenefit3')] },
+              { title: t('moduleESGFeatureReportingTitle'), description: t('moduleESGFeatureReportingDesc'), benefits: [t('moduleESGFeatureReportingBenefit1'), t('moduleESGFeatureReportingBenefit2'), t('moduleESGFeatureReportingBenefit3')] },
+              { title: t('moduleESGFeatureCertificationTitle'), description: t('moduleESGFeatureCertificationDesc'), benefits: [t('moduleESGFeatureCertificationBenefit1'), t('moduleESGFeatureCertificationBenefit2'), t('moduleESGFeatureCertificationBenefit3')] }
             ].map((app, index) => (
               <div key={index} className="p-6 bg-gray-800/30 rounded-lg border border-gray-700 hover:border-green-500/50 transition-all duration-300">
                 <h3 className="text-xl font-bold text-white mb-4">{app.title}</h3>
@@ -92,16 +94,16 @@ const ModuleESGPage = () => {
 
       <section className="py-20 bg-gradient-to-r from-green-900/20 to-emerald-900/20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">Valorisez Votre Agriculture Durable</h2>
+          <h2 className="text-4xl font-bold text-white mb-6">{t('moduleESGCtaTitle')}</h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Transformez vos pratiques durables en avantage concurrentiel avec nos certifications ESG reconnues.
+            {t('moduleESGCtaDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center group transition-all duration-300">
-              Démarrer Certification <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+              {t('moduleESGCtaStartButton')} <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </button>
             <Link to="/contact" className="border border-green-500 text-green-400 hover:bg-green-500 hover:text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300">
-              Audit ESG Gratuit
+              {t('moduleESGCtaAuditButton')}
             </Link>
           </div>
         </div>

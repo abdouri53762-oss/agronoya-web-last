@@ -1,8 +1,10 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, Cpu, Wifi, BarChart3, Zap, Target, TrendingUp, Shield, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const AgroSolPage = () => {
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0A0B0D]">
@@ -20,29 +22,28 @@ const AgroSolPage = () => {
               <div className="text-white">
                 <div className="inline-flex items-center bg-emerald-500/20 backdrop-blur-sm rounded-full px-6 py-3 mb-8">
                   <Cpu className="w-5 h-5 text-emerald-400 mr-3" />
-                  <span className="text-emerald-400 font-medium">Solution IoT Avancée</span>
+                  <span className="text-emerald-400 font-medium">{t('agroSolHeroBadge')}</span>
                 </div>
                 
                 <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                  Agro Sol
+                  {t('agroSol')}
                 </h1>
                 
                 <h2 className="text-2xl lg:text-3xl text-emerald-400 mb-6 font-semibold">
-                  Analyse Intelligente des Sols
+                  {t('agroSolHeroSubtitle')}
                 </h2>
                 
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  Révolutionnez votre approche de la fertilisation avec nos capteurs NPK/pH/température 
-                  connectés et l'intelligence artificielle NoyaSol pour des recommandations localisées ultra-précises.
+                  {t('agroSolHeroDesc')}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold flex items-center justify-center group transition-all duration-300">
-                    Demander une Démonstration
+                    {t('agroSolDemo')}
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
                   </button>
                   <Link to="/contact" className="border border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white px-8 py-4 rounded-lg font-semibold text-center transition-all duration-300">
-                    Obtenir un Devis
+                    {t('agroSolQuote')}
                   </Link>
                 </div>
               </div>
@@ -66,10 +67,10 @@ const AgroSolPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Faits Marquants
+              {t('agroSolFactsTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Des résultats concrets qui transforment votre agriculture
+              {t('agroSolFactsSubtitle')}
             </p>
           </div>
 
@@ -77,27 +78,27 @@ const AgroSolPage = () => {
             {[
               {
                 icon: <Target className="w-8 h-8" />,
-                metric: "+25%",
-                title: "Augmentation Rendements",
-                description: "Optimisation précise de la nutrition"
+                metric: t('agroSolStat1Metric'),
+                title: t('agroSolStat1Title'),
+                description: t('agroSolStat1Desc')
               },
               {
                 icon: <TrendingUp className="w-8 h-8" />,
-                metric: "-30%",
-                title: "Réduction Coûts",
-                description: "Application ciblée des fertilisants"
+                metric: t('agroSolStat2Metric'),
+                title: t('agroSolStat2Title'),
+                description: t('agroSolStat2Desc')
               },
               {
                 icon: <Shield className="w-8 h-8" />,
-                metric: "95%",
-                title: "Précision Mesures",
-                description: "Fiabilité des capteurs IoT"
+                metric: t('agroSolStat3Metric'),
+                title: t('agroSolStat3Title'),
+                description: t('agroSolStat3Desc')
               },
               {
                 icon: <Clock className="w-8 h-8" />,
-                metric: "15 min",
-                title: "Fréquence Données",
-                description: "Mise à jour en temps réel"
+                metric: t('agroSolStat4Metric'),
+                title: t('agroSolStat4Title'),
+                description: t('agroSolStat4Desc')
               }
             ].map((fact, index) => (
               <div key={index} className="text-center p-6 bg-gray-800/50 rounded-lg border border-gray-700 hover:border-emerald-500/50 transition-all duration-300">
@@ -118,10 +119,10 @@ const AgroSolPage = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-white mb-4">
-              Technologies de Pointe
+              {t('agroSolTechTitle')}
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Notre solution combine les dernières innovations en IoT, IA et analyse de données
+              {t('agroSolTechDesc')}
             </p>
           </div>
 

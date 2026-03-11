@@ -1,7 +1,9 @@
 import React from 'react';
 import { Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import Solutions from '../components/features/Solutions';
 const NosSolutionsPage = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-[#0b1f1a] text-white">
       <div className="relative overflow-hidden px-4 pb-16 pt-24">
@@ -14,20 +16,17 @@ const NosSolutionsPage = () => {
         <div className="container relative z-10 mx-auto text-center">
           <div className="mb-6 inline-flex items-center rounded-full border border-[#57D53B]/20 bg-[#57D53B]/10 px-4 py-2 text-sm font-semibold text-[#57D53B]">
             <Sparkles className="mr-2 h-4 w-4" />
-            Écosystème AgroNoya
+            {t('agronoyaEcosystem')}
           </div>
 
           <h1 className="mb-6 text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             <span className="bg-gradient-to-r from-[#57D53B] to-emerald-400 bg-clip-text text-transparent">
-              Nos Solutions
+              {t('nosSolutions')}
             </span>
           </h1>
 
           <p className="mx-auto max-w-4xl text-xl leading-relaxed text-slate-300 md:text-2xl">
-            Découvrez notre gamme complète de solutions agricoles intelligentes.
-            De l’analyse du sol à la commercialisation, nous révolutionnons chaque
-            étape de votre agriculture avec des technologies de pointe pour
-            optimiser vos rendements et maximiser vos profits durablement.
+            {t('nosSolutionsIntro')}
           </p>
         </div>
       </div>
